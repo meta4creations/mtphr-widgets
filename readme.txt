@@ -16,7 +16,6 @@ Adds the following widgets: **Twitter**, **Social**, **Recent Comments**, **Rece
 
 ### Twitter Widget
 Create a twitter feed to display your latest tweets. Options include:
-
 * Title
 * Twitter Username
 * Number of Tweets
@@ -25,14 +24,12 @@ Create a twitter feed to display your latest tweets. Options include:
 
 ### Social Widget
 Display an unlimited list of your social site links. Options include:
-
 * Title
 * Dynamically created website list
 * Open links in a new window/tab
 
 ### Recent Comments Widget
 Display your sites most recent comments. Options include:
-
 * Title
 * Number of Comments
 * Excerpt Length
@@ -40,7 +37,6 @@ Display your sites most recent comments. Options include:
 
 ### Recent Posts Widget
 Display your sites most recent posts. Options include:
-
 * Title
 * Number of Posts
 * Excerpt Length
@@ -49,13 +45,11 @@ Display your sites most recent posts. Options include:
 
 ### Contact Widget
 Create an unlimited list of contact info (or a listing of anything else). Showing a title and description. Options include:
-
 * Title
 * Dynamically created list of Titles & Descriptions
 
 ### Post Navigation
 Add looping post navigation to single posts, including a "home" link. Options include:
-
 * Title
 * Home link text
 * Custom home link
