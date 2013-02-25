@@ -14,7 +14,7 @@ Adds the following widgets: Twitter, Social, Recent Comments, Recent Posts, Cont
 
 Adds the following widgets: **Twitter**, **Social**, **Recent Comments**, **Recent Posts**, **Contact**, **Post Navigation**.
 
-** Twitter Widget **
+**Twitter Widget**
 Create a twitter feed to display your latest tweets. Options include:
 * Title
 * Twitter Username
@@ -22,20 +22,20 @@ Create a twitter feed to display your latest tweets. Options include:
 * Show (twitter) Icon
 * Use (user) Avatar
 
-** Social Widget **
+**Social Widget**
 Display an unlimited list of your social site links. Options include:
 * Title
 * Dynamically created website list
 * Open links in a new window/tab
 
-** Recent Comments Widget **
+**Recent Comments Widget**
 Display your sites most recent comments. Options include:
 * Title
 * Number of Comments
 * Excerpt Length
 * Show Avatar
 
-** Recent Posts Widget **
+**Recent Posts Widget**
 Display your sites most recent posts. Options include:
 * Title
 * Number of Posts
@@ -43,12 +43,12 @@ Display your sites most recent posts. Options include:
 * Author
 * Category
 
-** Contact Widget **
+**Contact Widget**
 Create an unlimited list of contact info (or a listing of anything else). Showing a title and description. Options include:
 * Title
 * Dynamically created list of Titles & Descriptions
 
-** Post Navigation **
+**Post Navigation**
 Add looping post navigation to single posts, including a "home" link. Options include:
 * Title
 * Home link text
@@ -56,7 +56,7 @@ Add looping post navigation to single posts, including a "home" link. Options in
 * Previous link text
 * Next link text
 
-** Advanced Info **
+**Advanced Info**
 Each widget includes a **shortcode generator**. Copy and paste the shortcodes into your posts to display the widget contents anywhere on your site.
 
 Each widget also displays the widget ID of the widget. This can be helpful if you wish to use any of the filters built into the widgets. 
