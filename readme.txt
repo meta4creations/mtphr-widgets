@@ -16,45 +16,45 @@ Adds the following widgets: **Twitter**, **Social**, **Recent Comments**, **Rece
 
 **Twitter Widget**
 Create a twitter feed to display your latest tweets. Options include:
-* Title
-* Twitter Username
-* Number of Tweets
-* Show (twitter) Icon
-* Use (user) Avatar
+*Title
+*Twitter Username
+*Number of Tweets
+*Show (twitter) Icon
+*Use (user) Avatar
 
 **Social Widget**
 Display an unlimited list of your social site links. Options include:
-* Title
-* Dynamically created website list
-* Open links in a new window/tab
+*Title
+*Dynamically created website list
+*Open links in a new window/tab
 
 **Recent Comments Widget**
 Display your sites most recent comments. Options include:
-* Title
-* Number of Comments
-* Excerpt Length
-* Show Avatar
+*Title
+*Number of Comments
+*Excerpt Length
+*Show Avatar
 
 **Recent Posts Widget**
 Display your sites most recent posts. Options include:
-* Title
-* Number of Posts
-* Excerpt Length
-* Author
-* Category
+*Title
+*Number of Posts
+*Excerpt Length
+*Author
+*Category
 
 **Contact Widget**
 Create an unlimited list of contact info (or a listing of anything else). Showing a title and description. Options include:
-* Title
-* Dynamically created list of Titles & Descriptions
+*Title
+*Dynamically created list of Titles & Descriptions
 
 **Post Navigation**
 Add looping post navigation to single posts, including a "home" link. Options include:
-* Title
-* Home link text
-* Custom home link
-* Previous link text
-* Next link text
+*Title
+*Home link text
+*Custom home link
+*Previous link text
+*Next link text
 
 **Advanced Info**
 Each widget includes a **shortcode generator**. Copy and paste the shortcodes into your posts to display the widget contents anywhere on your site.
