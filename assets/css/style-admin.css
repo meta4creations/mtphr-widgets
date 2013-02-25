@@ -1,0 +1,54 @@
+/* Table of Contents
+
+* General
+* Social
+* Contact
+
+*/
+
+/* General
+------------------------------------------------------------ */
+
+pre.mtphr-widgets-code {
+	margin: 0 0 5px 0;
+	padding: 10px;
+	background: #FFF;
+	border: 1px solid #EEE;
+	white-space: normal;
+	word-break: break-all;
+	
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.widget .widget-inside pre.mtphr-widgets-code p {
+	margin: 0;
+	word-break: break-all;
+}
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+}
+.clearfix:after {
+  clear: both;
+}
+
+/* Social
+------------------------------------------------------------ */
+
+.widget-mtphr-social-widget-id,
+.widget-mtphr-social-shortcode {
+	display: none;
+}
+
+/* Contact
+------------------------------------------------------------ */
+
+.mtphr-widget-id,
+.mtphr-widget-shortcode {
+	display: none;
+}
