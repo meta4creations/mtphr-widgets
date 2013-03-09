@@ -88,6 +88,9 @@ Check out the 'Installation' tab.
 
 == Changelog ==
 
+= 2.0.2 =
+* Fixed bug in shortcode.
+
 = 2.0.1 =
 * Fixed bug in shortcode.
 * Updated navigation widget with order and orderby parameters.
@@ -97,6 +100,9 @@ Check out the 'Installation' tab.
 * Added shortcodes to all widgets.
 
 == Upgrade Notice ==
+
+= 2.0.2 =
+Fixed bug in shortcode.
 
 = 2.0.1 =
 Fixed bug in shortcode. Updated navigation widget with order and orderby parameters.

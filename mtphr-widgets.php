@@ -2,7 +2,7 @@
 /*
 Plugin Name: Metaphor Widgets
 Description: Custom widgets pack. Includes recent posts, recent comments, contact, twitter, social, & navigation widgets.
-Version: 2.0.1
+Version: 2.0.2
 Author: Metaphor Creations
 Author URI: http://www.metaphorcreations.com
 License: GPL2

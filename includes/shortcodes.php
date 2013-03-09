@@ -12,7 +12,7 @@ add_shortcode( 'mtphr_contact_widget', 'mtphr_contact_widget_display' );
 /**
  * Display the contact widget shortcode
  *
- * @since 2.0.1
+ * @since 2.0.2
  */
 function mtphr_contact_widget_display( $atts, $content = null ) {
 	extract( shortcode_atts( array(
@@ -26,15 +26,16 @@ function mtphr_contact_widget_display( $atts, $content = null ) {
 	// Loop through the info and create a formatted array
 	$info_array = array();
 	foreach( $contact_groups as $group ) {
-	
-		$title = isset( $info_assets[0] ) ? sanitize_text_field($info_assets[0]) : '';
-		$description = isset( $info_assets[1] ) ? wp_kses_post(html_entity_decode($info_assets[1])) : '';
 		
 		// Split the site name and url
 		$info_assets = explode( '***', $group );
+		
+		$info_title = isset( $info_assets[0] ) ? sanitize_text_field($info_assets[0]) : '';
+		$info_description = isset( $info_assets[1] ) ? wp_kses_post(html_entity_decode($info_assets[1])) : '';
+		
 		$info = array(
-			'title' => $title,
-			'description' => $description
+			'title' => $info_title,
+			'description' => $info_description
 		);
 		$info_array[] = $info;
 	}
