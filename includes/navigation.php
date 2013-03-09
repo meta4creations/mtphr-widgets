@@ -47,7 +47,7 @@ function mtphr_post_navigation() {
 /**
  * Display the widget
  *
- * @since 2.0.0
+ * @since 2.0.1
  */
 function widget( $args, $instance ) {
 
@@ -62,6 +62,11 @@ function widget( $args, $instance ) {
 	$home_link = apply_filters( 'mtphr_widgets_navigation_home_link', $instance['home_link'], $widget_id );
 	$previous = apply_filters( 'mtphr_widgets_navigation_previous', $instance['previous'], $widget_id );
 	$next = apply_filters( 'mtphr_widgets_navigation_next', $instance['next'], $widget_id );
+	
+	$orderby = isset( $instance['orderby'] ) ? $instance['orderby'] : 'date';
+	$order = isset( $instance['order'] ) ? $instance['order'] : 'DESC';
+	$orderby = apply_filters( 'mtphr_widgets_navigation_orderby', $orderby, $widget_id );
+	$order = apply_filters( 'mtphr_widgets_navigation_order', $order, $widget_id );
 	
 	// Before widget (defined by themes)
 	echo $before_widget;
@@ -78,34 +83,28 @@ function widget( $args, $instance ) {
 		$home = preg_replace('/{type}/s', $obj->labels->name, $home);
 		$home_link = ( $home_link != '' ) ? esc_url($home_link) : get_post_type_archive_link( get_post_type() );
 		
-		// Get the previous post
-		$prev_post = get_previous_post();
-		if( empty( $prev_post ) ) {
-			$p = get_posts( array(
-		    'post_type' => get_post_type(),
-		    'numberposts' => 1,
-		    'order' => 'DESC'
-			));
-			$prev_post = $p[0];
+		$p_objs = get_posts( array(
+	    'post_type' => get_post_type(),
+	    'numberposts' => -1,
+	    'orderby' => $orderby,
+	    'order' => $order
+		));
+		$p_ids = array();
+		foreach( $p_objs as $p ) {
+			$p_ids[] = $p->ID;
 		}
 		
-		// Get the next post
-		$next_post = get_next_post();
-		if( empty( $next_post ) ) {
-			$p = get_posts( array(
-		    'post_type' => get_post_type(),
-		    'numberposts' => 1,
-		    'order' => 'ASC'
-			));
-			$next_post = $p[0];
-		}
+		// Get the current position
+		$current = array_search( get_the_id(), $p_ids );
+		$prev_post = (($current-1) < 0) ? (count($p_ids)-1) : $current-1;
+		$next_post = (($current+1) == count($p_ids)) ? 0 : $current+1;
 		?>
 		
 		<nav>
 			<ul>
 				<?php if( $home != '' ) { ?><li class="mtphr-post-navigation-home"><a href="<?php echo $home_link; ?>"><?php echo $home; ?></a></li><?php } ?>
-				<?php if( $previous != '' ) { ?><li class="mtphr-post-navigation-previous"><a href="<?php echo get_permalink($prev_post->ID); ?>"><?php echo $previous; ?></a></li><?php } ?>
-				<?php if( $next != '' ) { ?><li class="mtphr-post-navigation-next"><a href="<?php echo get_permalink($next_post->ID); ?>"><?php echo $next; ?></a></li><?php } ?>
+				<?php if( $previous != '' ) { ?><li class="mtphr-post-navigation-previous"><a href="<?php echo get_permalink($p_ids[$prev_post]); ?>"><?php echo $previous; ?></a></li><?php } ?>
+				<?php if( $next != '' ) { ?><li class="mtphr-post-navigation-next"><a href="<?php echo get_permalink($p_ids[$next_post]); ?>"><?php echo $next; ?></a></li><?php } ?>
 			</ul>
 		</nav>
 	
@@ -119,7 +118,7 @@ function widget( $args, $instance ) {
 /**
  * Update the widget
  *
- * @since 2.0.0
+ * @since 2.0.1
  */
 function update( $new_instance, $old_instance ) {
 	
@@ -131,6 +130,8 @@ function update( $new_instance, $old_instance ) {
 	$instance['home_link'] = esc_url( $new_instance['home_link'] );
 	$instance['previous'] = sanitize_text_field( $new_instance['previous'] );
 	$instance['next'] = sanitize_text_field( $new_instance['next'] );
+	$instance['orderby'] = $new_instance['orderby'];
+	$instance['order'] = $new_instance['order'];
 
 	return $instance;
 }
@@ -138,7 +139,7 @@ function update( $new_instance, $old_instance ) {
 /**
  * Widget settings
  *
- * @since 2.0.0
+ * @since 2.0.1
  */
 function form( $instance ) {
 
@@ -149,6 +150,8 @@ function form( $instance ) {
 		'home_link' => '',
 		'previous' => __('Previous', 'mtphr-widgets'),
 		'next' => __('Next', 'mtphr-widgets'),
+		'orderby' => 'date',
+		'order' => 'DESC',
 		'advanced' => ''
 	);
 	
@@ -184,6 +187,29 @@ function form( $instance ) {
 		<input class="widefat" id="<?php echo $this->get_field_id( 'next' ); ?>" name="<?php echo $this->get_field_name( 'next' ); ?>" value="<?php echo $instance['next']; ?>" style="width:97%;" />
 	</p>
 	
+	<!-- Order: Select -->
+	<p>
+		<label for="<?php echo $this->get_field_id( 'order' ); ?>"><?php _e( 'Query order:', 'mtphr-galleries' ); ?></label><br/>
+		<select id="<?php echo $this->get_field_id( 'orderby' ); ?>" name="<?php echo $this->get_field_name( 'orderby' ); ?>">
+		<?php
+		$order_array = array( 'ID', 'author', 'title', 'name', 'date', 'modified', 'parent', 'rand', 'comment_count', 'menu_order' );
+		foreach( $order_array as $o ) {
+			$selected = ( $instance['orderby'] == $o ) ? ' selected="selected"' : '';
+			echo '<option value="'.$o.'"'.$selected.'>'.$o.'</option>';
+		}
+		?>
+		</select>
+		<select id="<?php echo $this->get_field_id( 'order' ); ?>" name="<?php echo $this->get_field_name( 'order' ); ?>">
+		<?php
+		$order_array = array( 'ASC', 'DESC' );
+		foreach( $order_array as $o ) {
+			$selected = ( $instance['order'] == $o ) ? ' selected="selected"' : '';
+			echo '<option value="'.$o.'"'.$selected.'>'.$o.'</option>';
+		}
+		?>
+		</select>
+	</p>
+	
 	<!-- Advanced: Checkbox -->
 	<p class="mtphr-widget-advanced">
 		<input class="checkbox" type="checkbox" <?php checked( $instance['advanced'], 'on' ); ?> id="<?php echo $this->get_field_id( 'advanced' ); ?>" name="<?php echo $this->get_field_name( 'advanced' ); ?>" />
@@ -205,6 +231,8 @@ function form( $instance ) {
 		$shortcode .= ( $instance['home'] != '' ) ? ' home="'.$instance['home'].'"' : '';
 		$shortcode .= ( $instance['previous'] != '' ) ? ' previous="'.$instance['previous'].'"' : '';
 		$shortcode .= ( $instance['next'] != '' ) ? ' next="'.$instance['next'].'"' : '';
+		$shortcode .= ( $instance['orderby'] != '' ) ? ' orderby="'.$instance['orderby'].'"' : '';
+		$shortcode .= ( $instance['order'] != '' ) ? ' order="'.$instance['order'].'"' : '';
 		$shortcode .= ']';
 		?>
 		<pre class="mtphr-widgets-code"><p><?php echo $shortcode; ?></p></pre>

@@ -88,11 +88,18 @@ Check out the 'Installation' tab.
 
 == Changelog ==
 
-= 2.0 =
+= 2.0.1 =
+* Fixed bug in shortcode.
+* Updated navigation widget with order and orderby parameters.
+
+= 2.0.0 =
 * Updated all widgets.
 * Added shortcodes to all widgets.
 
 == Upgrade Notice ==
 
-= 2.0 =
+= 2.0.1 =
+Fixed bug in shortcode. Updated navigation widget with order and orderby parameters.
+
+= 2.0.0 =
 Updated all widgets. Added shortcodes to all widgets.
