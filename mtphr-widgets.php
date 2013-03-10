@@ -2,7 +2,7 @@
 /*
 Plugin Name: Metaphor Widgets
 Description: Custom widgets pack. Includes recent posts, recent comments, contact, twitter, social, & navigation widgets.
-Version: 2.0.2
+Version: 2.0.3
 Author: Metaphor Creations
 Author URI: http://www.metaphorcreations.com
 License: GPL2
@@ -45,9 +45,9 @@ if( in_array('mtphr-widgets-pack-1/mtphr-widgets-pack-1.php', $active_plugins) )
 	
 	/**Define Widget Constants */
 	if ( WP_DEBUG ) {
-		define ( 'MTPHR_WIDGETS_VERSION', '2.0.1-'.time() );
+		define ( 'MTPHR_WIDGETS_VERSION', '2.0.3-'.time() );
 	} else {
-		define ( 'MTPHR_WIDGETS_VERSION', '2.0.1' );
+		define ( 'MTPHR_WIDGETS_VERSION', '2.0.3' );
 	}
 	define ( 'MTPHR_WIDGETS_DIR', plugin_dir_path(__FILE__) );
 	define ( 'MTPHR_WIDGETS_URL', plugins_url().'/mtphr-widgets' );
@@ -71,4 +71,5 @@ if( in_array('mtphr-widgets-pack-1/mtphr-widgets-pack-1.php', $active_plugins) )
 	require_once( MTPHR_WIDGETS_DIR.'includes/social.php' );
 	require_once( MTPHR_WIDGETS_DIR.'includes/contact.php' );
 	require_once( MTPHR_WIDGETS_DIR.'includes/navigation.php' );
+	require_once( MTPHR_WIDGETS_DIR.'includes/collapse.php' );
 }

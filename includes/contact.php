@@ -1,12 +1,12 @@
 <?php
 
-/* Register the widget - @since 1.0 */
+/* Register the widget - @since 2.0.0 */
 add_action( 'widgets_init', 'mtphr_contact_widget_init' );
 
 /**
  * Register the widget
  *
- * @since 1.0
+ * @since 2.0.0
  */
 function mtphr_contact_widget_init() {
 	register_widget( 'mtphr_contact_widget' );
@@ -18,7 +18,7 @@ function mtphr_contact_widget_init() {
 /**
  * Create a class for the widget
  *
- * @since 1.0
+ * @since 2.0.0
  */
 class mtphr_contact_widget extends WP_Widget {
 	
@@ -48,7 +48,7 @@ function mtphr_contact_widget() {
 /**
  * Display the widget
  *
- * @since 2.0.0
+ * @since 2.0.3
  */
 function widget( $args, $instance ) {
 	
@@ -74,7 +74,7 @@ function widget( $args, $instance ) {
 	if( isset($contact_info[0]) ) {
 		foreach( $contact_info as $info ) {
 		
-			echo '<tr class="mtphr-contact-widget-info"></li>';
+			echo '<tr class="mtphr-contact-widget-info">';
 			if( $info['title'] != '' ) {
 				echo '<td class="mtphr-contact-widget-title"><p>'.sanitize_text_field($info['title']).'</p></td>';
 				echo '<td><p>'.make_clickable(nl2br(wp_kses_post($info['description']))).'</p></td>';
@@ -118,7 +118,7 @@ function update( $new_instance, $old_instance ) {
 /**
  * Widget settings
  *
- * @since 2.0.0
+ * @since 2.0.3
  */
 function form( $instance ) {
 
@@ -212,8 +212,8 @@ function form( $instance ) {
 		<?php
 		$shortcode = '[mtphr_contact_widget';
 		$shortcode .= ( $instance['title'] != '' ) ? ' title="'.$instance['title'].'"' : '';
+		$shortcode .= ']';
 		if( isset($instance['contact_info'][0]) ) {
-			$shortcode .= ' contact_info="';
 			$all_info = '';
 			foreach( $instance['contact_info'] as $info ) {
 				$all_info .= sanitize_text_field($info['title']).'***'.esc_attr(nl2br($info['description'])).':::';
@@ -221,7 +221,7 @@ function form( $instance ) {
 			$all_info = substr( $all_info, 0, -3 );
 			$shortcode .= $all_info.'"';
 		}
-		$shortcode .= ']';
+		$shortcode .= '[/mtphr_contact_widget]';
 		?>
 		<pre class="mtphr-widgets-code"><p><?php echo $shortcode; ?></p></pre>
 	</span>

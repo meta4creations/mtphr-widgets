@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Metaphor Widgets v2.0.0\n"
+"Project-Id-Version: Metaphor Widgets v2.0.3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2013-02-25 01:16:48+0000\n"
+"PO-Revision-Date: 2013-03-10 01:58:37+0000\n"
 "Last-Translator: admin <joe@metaphorcreations.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -36,9 +36,10 @@ msgstr "Metaphor Recent Comments"
 msgid "%s ago"
 msgstr "%s ago"
 
+#: includes/collapse.php:128
 #: includes/comments.php:156
 #: includes/contact.php:154
-#: includes/navigation.php:159
+#: includes/navigation.php:162
 #: includes/posts.php:167
 #: includes/social.php:145
 #: includes/twitter.php:126
@@ -62,9 +63,10 @@ msgstr "Excerpt Length:"
 msgid "Show Avatar?"
 msgstr "Show Avatar?"
 
+#: includes/collapse.php:174
 #: includes/comments.php:181
 #: includes/contact.php:200
-#: includes/navigation.php:190
+#: includes/navigation.php:216
 #: includes/posts.php:219
 #: includes/social.php:197
 #: includes/twitter.php:155
@@ -72,9 +74,10 @@ msgstr "Show Avatar?"
 msgid "Show Advanced Info"
 msgstr "Show Advanced Info"
 
+#: includes/collapse.php:179
 #: includes/comments.php:186
 #: includes/contact.php:205
-#: includes/navigation.php:195
+#: includes/navigation.php:221
 #: includes/posts.php:224
 #: includes/social.php:202
 #: includes/twitter.php:160
@@ -82,9 +85,10 @@ msgstr "Show Advanced Info"
 msgid "Widget ID:"
 msgstr "Widget ID:"
 
+#: includes/collapse.php:185
 #: includes/comments.php:192
 #: includes/contact.php:211
-#: includes/navigation.php:201
+#: includes/navigation.php:227
 #: includes/posts.php:230
 #: includes/social.php:208
 #: includes/twitter.php:166
@@ -125,6 +129,7 @@ msgstr "Fax"
 msgid "Title"
 msgstr "Title"
 
+#: includes/collapse.php:141
 #: includes/contact.php:167
 #@ mtphr-widgets
 msgid "Description"
@@ -255,40 +260,40 @@ msgstr "Displays previous, next, and archive links for single posts."
 msgid "Metaphor Post Navigation"
 msgstr "Metaphor Post Navigation"
 
-#: includes/navigation.php:148
-#: includes/shortcodes.php:227
+#: includes/navigation.php:149
+#: includes/shortcodes.php:279
 #@ mtphr-widgets
 msgid " home"
 msgstr " home"
 
-#: includes/navigation.php:150
-#: includes/shortcodes.php:229
+#: includes/navigation.php:151
+#: includes/shortcodes.php:281
 #@ mtphr-widgets
 msgid "Previous"
 msgstr "Previous"
 
-#: includes/navigation.php:151
-#: includes/shortcodes.php:230
+#: includes/navigation.php:152
+#: includes/shortcodes.php:282
 #@ mtphr-widgets
 msgid "Next"
 msgstr "Next"
 
-#: includes/navigation.php:165
+#: includes/navigation.php:168
 #@ mtphr-widgets
 msgid "Home link text:"
 msgstr "Home link text:"
 
-#: includes/navigation.php:171
+#: includes/navigation.php:174
 #@ mtphr-widgets
 msgid "Custom home link:"
 msgstr "Custom home link:"
 
-#: includes/navigation.php:177
+#: includes/navigation.php:180
 #@ mtphr-widgets
 msgid "Previous link text:"
 msgstr "Previous link text:"
 
-#: includes/navigation.php:183
+#: includes/navigation.php:186
 #@ mtphr-widgets
 msgid "Next link text:"
 msgstr "Next link text:"
@@ -307,4 +312,39 @@ msgstr "Get Social"
 #@ mtphr-widgets
 msgid "Recent Tweets"
 msgstr "Recent Tweets"
+
+#: includes/collapse.php:35
+#@ mtphr-widgets
+msgid "Displays collapsible content."
+msgstr "Displays collapsible content."
+
+#: includes/collapse.php:45
+#@ mtphr-widgets
+msgid "Metaphor Collapse"
+msgstr "Metaphor Collapse"
+
+#: includes/collapse.php:114
+#@ mtphr-widgets
+msgid "Information"
+msgstr "Information"
+
+#: includes/collapse.php:117
+#@ mtphr-widgets
+msgid "Add a heading here..."
+msgstr "Add a heading here..."
+
+#: includes/collapse.php:118
+#@ mtphr-widgets
+msgid "Add a description here..."
+msgstr "Add a description here..."
+
+#: includes/collapse.php:136
+#@ mtphr-widgets
+msgid "Heading"
+msgstr "Heading"
+
+#: includes/navigation.php:192
+#@ mtphr-galleries
+msgid "Query order:"
+msgstr ""
 

@@ -12,16 +12,15 @@ add_shortcode( 'mtphr_contact_widget', 'mtphr_contact_widget_display' );
 /**
  * Display the contact widget shortcode
  *
- * @since 2.0.2
+ * @since 2.0.3
  */
 function mtphr_contact_widget_display( $atts, $content = null ) {
 	extract( shortcode_atts( array(
-		'title' => '',
-		'contact_info' => ''
+		'title' => ''
 	), $atts ) );
 	
 	// Split up the contact info
-	$contact_groups = explode( ':::', $contact_info );
+	$contact_groups = explode( ':::', $content );
 	
 	// Loop through the info and create a formatted array
 	$info_array = array();
@@ -52,6 +51,55 @@ function mtphr_contact_widget_display( $atts, $content = null ) {
 	);
 	ob_start();
 	the_widget( 'mtphr_contact_widget', $instance, $args );
+	return ob_get_clean();
+}
+
+
+
+
+add_shortcode( 'mtphr_collapse_widget', 'mtphr_collapse_widget_display' );
+/**
+ * Display the contact widget shortcode
+ *
+ * @since 2.0.3
+ */
+function mtphr_collapse_widget_display( $atts, $content = null ) {
+	extract( shortcode_atts( array(
+		'title' => ''
+	), $atts ) );
+
+	// Split up the contact info
+	$collapse_groups = explode( ':::', $content );
+	
+	// Loop through the info and create a formatted array
+	$info_array = array();
+	foreach( $collapse_groups as $group ) {
+		
+		// Split the site name and url
+		$info_assets = explode( '***', $group );
+		
+		$info_header = isset( $info_assets[0] ) ? sanitize_text_field($info_assets[0]) : '';
+		$info_description = isset( $info_assets[1] ) ? wp_kses_post(html_entity_decode($info_assets[1])) : '';
+		
+		$info = array(
+			'title' => $info_header,
+			'description' => $info_description
+		);
+		$info_array[] = $info;
+	}
+	
+	$instance = array(
+		'title' => sanitize_text_field($title),
+		'collapse_info' => $info_array
+	);
+	$args = array(
+		'before_widget' => '<aside class="widget mtphr-collapse-widget">',
+		'after_widget' => '</aside>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>'
+	);
+	ob_start();
+	the_widget( 'mtphr_collapse_widget', $instance, $args );
 	return ob_get_clean();
 }
 

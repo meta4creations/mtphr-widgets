@@ -62,6 +62,12 @@ function mtphr_widgets_scripts(){
 	// Load the global widgets stylesheet
 	wp_register_style( 'mtphr-widgets', MTPHR_WIDGETS_URL.'/assets/css/style.css', false, MTPHR_WIDGETS_VERSION );
   wp_enqueue_style( 'mtphr-widgets' );
+  
+  wp_register_script( 'jquery-easing', MTPHR_WIDGETS_URL.'/assets/js/jquery.easing.1.3.js', array('jquery'), MTPHR_WIDGETS_VERSION, true );
+  
+  // Load the global widgets js
+	wp_register_script( 'mtphr-widgets', MTPHR_WIDGETS_URL.'/assets/js/script.js', array('jquery','jquery-easing'), MTPHR_WIDGETS_VERSION, true );
+  wp_enqueue_script( 'mtphr-widgets' );
 }
 
 

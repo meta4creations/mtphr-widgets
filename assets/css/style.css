@@ -6,6 +6,7 @@
 * Twitter Widget
 * Social Widget
 * Contact Widget
+* Collapse Widget
 
 */
 
@@ -210,5 +211,31 @@
 	margin-bottom: 0;
 }
 
+/* Collapse Widget
+------------------------------------------------------------ */
+
+.mtphr-collapse-widget-heading {
+	position: relative;
+	padding-left: 17px;
+	margin-bottom: 0;
+}
+.mtphr-collapse-widget-toggle {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	display: block;
+	width: 9px;
+	height: 9px;
+	background: url(../images/toggle.png) no-repeat left top;
+	background-size: 9px 45px;
+	margin-top: -5px;
+}
+.mtphr-collapse-widget-heading.active .mtphr-collapse-widget-toggle {
+	background-position: 0 -36px;
+}
+.mtphr-collapse-widget-description {
+	display: none;
+	padding-left: 17px;
+}
 
 
