@@ -109,6 +109,9 @@ Check out the 'Installation' tab.
 
 == Changelog ==
 
+= 2.0.4 =
+* Updated to make sure the collapse widget was included.
+
 = 2.0.3 =
 * Added collapse widget.
 * Modified contact shortcode output.
@@ -125,6 +128,9 @@ Check out the 'Installation' tab.
 * Added shortcodes to all widgets.
 
 == Upgrade Notice ==
+
+= 2.0.4 =
+Updated to make sure the collapse widget was included.
 
 = 2.0.3 =
 Added collapse widget. Modified contact shortcode output.
