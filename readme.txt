@@ -109,6 +109,9 @@ Check out the 'Installation' tab.
 
 == Changelog ==
 
+= 2.0.5 =
+* Added retina images.
+
 = 2.0.4 =
 * Updated to make sure the collapse widget was included.
 
@@ -128,6 +131,9 @@ Check out the 'Installation' tab.
 * Added shortcodes to all widgets.
 
 == Upgrade Notice ==
+
+= 2.0.5 =
+Added retina images.
 
 = 2.0.4 =
 Updated to make sure the collapse widget was included.

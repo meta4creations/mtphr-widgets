@@ -121,6 +121,12 @@
 	height: 30px;
 	background: #CCC url(../images/icons-social.png) no-repeat -5px -5px;
 }
+@media screen and (-webkit-device-pixel-ratio: 2) {
+	.mtphr-twitter-widget-image {
+		background-image: url(../images/icons-social@2x.png);
+		-webkit-background-size: 500px 1000px;
+	}
+}
 .mtphr-twitter-widget-image img {
 	width: 30px;
 	height: 30px;
@@ -141,6 +147,7 @@
 	width: 40px;
 	height: 40px;
 	background-image: url(../images/icons-social.png);
+	-webkit-background-size: 895px 800px;
 	background-repeat: no-repeat;
 	margin: 0 0 4px 4px;
 	text-indent: -9999px;
@@ -197,6 +204,63 @@
 .mtphr-social-widget-blogger { background-position: -360px -90px; }
 .mtphr-social-widget-yahoobuzz { background-position: -405px -90px; }
 
+@media screen and (-webkit-device-pixel-ratio: 2) {
+	.mtphr-social-widget-site {
+		background-image: url(../images/icons-social@2x.png);
+		-webkit-background-size: 500px 1000px;
+	}
+	.mtphr-social-widget-twitter { background-position: 0px 0px; }
+	.mtphr-social-widget-facebook { background-position: -43px 0px; }
+	.mtphr-social-widget-linkedin { background-position: -86px 0px; }
+	.mtphr-social-widget-googleplus { background-position: -129px 0px; }
+	.mtphr-social-widget-flickr { background-position: -172px 0px; }
+	.mtphr-social-widget-tridadvisor { background-position: -215px 0px; }
+	.mtphr-social-widget-reddit { background-position: -258px 0px; }
+	.mtphr-social-widget-posterous { background-position: -301px 0px; }
+	.mtphr-social-widget-plurk { background-position: -344px 0px; }
+	.mtphr-social-widget-ebay { background-position: -387px 0px; }
+	.mtphr-social-widget-netvibes { background-position: 0px -43px; }
+	.mtphr-social-widget-picasa { background-position: -43px -43px; }
+	.mtphr-social-widget-digg { background-position: -86px -43px; }
+	.mtphr-social-widget-newsvine { background-position: -129px -43px; }
+	.mtphr-social-widget-rss { background-position: -172px -43px; }
+	.mtphr-social-widget-stumbleupon { background-position: -215px -43px; }
+	.mtphr-social-widget-aim { background-position: -258px -43px; }
+	.mtphr-social-widget-youtube { background-position: -301px -43px; }
+	.mtphr-social-widget-lastfm { background-position: -344px -43px; }
+	.mtphr-social-widget-myspace { background-position: -387px -43px; }
+	.mtphr-social-widget-msn { background-position: 0px -86px; }
+	.mtphr-social-widget-paypal { background-position: -43px -86px; }
+	.mtphr-social-widget-windows { background-position: -86px -86px; }
+	.mtphr-social-widget-wordpress { background-position: -129px -86px; }
+	.mtphr-social-widget-yahoo { background-position: -172px -86px; }
+	.mtphr-social-widget-dribble { background-position: -215px -86px; }
+	.mtphr-social-widget-apple { background-position: -258px -86px; }
+	.mtphr-social-widget-bebo { background-position: -301px -86px; }
+	.mtphr-social-widget-cargo { background-position: -344px -86px; }
+	.mtphr-social-widget-ember { background-position: -387px -86px; }
+	.mtphr-social-widget-evernote { background-position: 0px -129px; }
+	.mtphr-social-widget-googletalk { background-position: -43px -129px; }
+	.mtphr-social-widget-skype { background-position: -86px -129px; }
+	.mtphr-social-widget-feedburner { background-position: -129px -129px; }
+	.mtphr-social-widget-tumblr { background-position: -172px -129px; }
+	.mtphr-social-widget-android { background-position: -215px -129px; }
+	.mtphr-social-widget-bing { background-position: -258px -129px; }
+	.mtphr-social-widget-metacafe { background-position: -301px -129px; }
+	.mtphr-social-widget-orkut { background-position: -344px -129px; }
+	.mtphr-social-widget-delicious { background-position: -387px -129px; }
+	.mtphr-social-widget-amazon { background-position: 0px -172px; }
+	.mtphr-social-widget-grooveshark { background-position: -43px -172px; }
+	.mtphr-social-widget-deviantart { background-position: -86px -172px; }
+	.mtphr-social-widget-behance { background-position: -129px -172px; }
+	.mtphr-social-widget-vimeo { background-position: -172px -172px; }
+	.mtphr-social-widget-mobileme { background-position: -215px -172px; }
+	.mtphr-social-widget-magnolia { background-position: -258px -172px; }
+	.mtphr-social-widget-mixx { background-position: -301px -172px; }
+	.mtphr-social-widget-blogger { background-position: -344px -172px; }
+	.mtphr-social-widget-yahoobuzz { background-position: -387px -172px; }
+}
+
 /* Contact Widget
 ------------------------------------------------------------ */
 
@@ -229,6 +293,11 @@
 	background: url(../images/toggle.png) no-repeat left top;
 	background-size: 9px 45px;
 	margin-top: -5px;
+}
+@media screen and (-webkit-device-pixel-ratio: 2) {
+	.mtphr-collapse-widget-toggle {
+		background: url(../images/toggle@2x.png) no-repeat left top;
+	}
 }
 .mtphr-collapse-widget-heading.active .mtphr-collapse-widget-toggle {
 	background-position: 0 -36px;

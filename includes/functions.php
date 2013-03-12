@@ -283,12 +283,12 @@ function mtphr_widgets_social_site_css() {
 	$left = 0;
 	$top = 0;
 	foreach( $s as $i=>$val ) { ?>
-		.mtphr-social-widget-<?php echo $i; ?> {
-			background-position: <?php echo intval(-45*$left); ?>px <?php echo intval(-45*$top); ?>px;
+		#site-footer  .mtphr-social-widget-<?php echo $i; ?> {
+			background-position: <?php echo intval(-43*$left); ?>px <?php echo (intval(-43*$top)); ?>px;
 		}<br/>
 		<?php
 		$left = intval($left+1);
-		if( $left == 20 ) {
+		if( $left == 10 ) {
 			$left = 0;
 			$top = intval($top+1);
 		}

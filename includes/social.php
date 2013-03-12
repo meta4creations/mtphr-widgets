@@ -82,7 +82,7 @@ function widget( $args, $instance ) {
 		
 		echo '</div>'; 	
 	}
-
+	
 	// After widget (defined by themes)
 	echo $after_widget;
 }
