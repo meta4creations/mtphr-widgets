@@ -109,6 +109,9 @@ Check out the 'Installation' tab.
 
 == Changelog ==
 
+= 2.0.6 =
+* Minor update to Collapse widget description output.
+
 = 2.0.5 =
 * Added retina images.
 
@@ -131,6 +134,9 @@ Check out the 'Installation' tab.
 * Added shortcodes to all widgets.
 
 == Upgrade Notice ==
+
+= 2.0.6 =
+Minor update to Collapse widget description output.
 
 = 2.0.5 =
 Added retina images.

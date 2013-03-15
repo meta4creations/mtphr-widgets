@@ -48,7 +48,7 @@ function mtphr_collapse_widget() {
 /**
  * Display the widget
  *
- * @since 2.0.3
+ * @since 2.0.6
  */
 function widget( $args, $instance ) {
 	
@@ -75,7 +75,7 @@ function widget( $args, $instance ) {
 				?>
 					<div class="mtphr-collapse-widget-block">
 					<p class="mtphr-collapse-widget-heading"><a href="#"><span class="mtphr-collapse-widget-toggle"></span><?php echo sanitize_text_field($info['title']); ?></a></p>
-					<p class="mtphr-collapse-widget-description"><?php echo make_clickable(nl2br(wp_kses_post($info['description']))); ?></p></div>
+					<p class="mtphr-collapse-widget-description"><?php echo make_clickable($info['description']); ?></p></div>
 				<?php
 			}	
 		}
