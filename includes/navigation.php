@@ -189,7 +189,7 @@ function form( $instance ) {
 	
 	<!-- Order: Select -->
 	<p>
-		<label for="<?php echo $this->get_field_id( 'order' ); ?>"><?php _e( 'Query order:', 'mtphr-galleries' ); ?></label><br/>
+		<label for="<?php echo $this->get_field_id( 'order' ); ?>"><?php _e( 'Query order:', 'mtphr-widgets' ); ?></label><br/>
 		<select id="<?php echo $this->get_field_id( 'orderby' ); ?>" name="<?php echo $this->get_field_name( 'orderby' ); ?>">
 		<?php
 		$order_array = array( 'ID', 'author', 'title', 'name', 'date', 'modified', 'parent', 'rand', 'comment_count', 'menu_order' );

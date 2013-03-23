@@ -48,7 +48,7 @@ function mtphr_contact_widget() {
 /**
  * Display the widget
  *
- * @since 2.0.3
+ * @since 2.0.7
  */
 function widget( $args, $instance ) {
 	
@@ -59,6 +59,11 @@ function widget( $args, $instance ) {
 	$title = apply_filters( 'widget_title', $title );
 	
 	$widget_id = ( isset($args['widget_id']) ) ? $args['widget_id'] : -1;
+	
+	// Populate with old info
+	if( !isset($instance['contact_info']) ) {
+		$instance = mtphr_widgets_contact_update($instance);	
+	}
 	$contact_info = apply_filters( 'mtphr_widgets_contact_info', $instance['contact_info'], $widget_id );
 	
 	// Before widget (defined by themes)
@@ -68,12 +73,12 @@ function widget( $args, $instance ) {
 	if ( $title ) {
 		echo $before_title . $title . $after_title;
 	}
-	
+
 	echo '<table>';	
 	
-	if( isset($contact_info[0]) ) {
+	if( is_array($contact_info) ) {
 		foreach( $contact_info as $info ) {
-		
+
 			echo '<tr class="mtphr-contact-widget-info">';
 			if( $info['title'] != '' ) {
 				echo '<td class="mtphr-contact-widget-title"><p>'.sanitize_text_field($info['title']).'</p></td>';

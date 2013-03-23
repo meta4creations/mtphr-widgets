@@ -48,7 +48,7 @@ function mtphr_social_widget() {
 /**
  * Display the widget
  *
- * @since 2.0.0
+ * @since 2.0.7
  */
 function widget( $args, $instance ) {
 
@@ -59,6 +59,12 @@ function widget( $args, $instance ) {
 	$title = apply_filters( 'widget_title', $title );
 	
 	$widget_id = ( isset($args['widget_id']) ) ? $args['widget_id'] : -1;
+	
+	// Populate with old info
+	if( !isset($instance['sites']) ) {
+		$instance = mtphr_widgets_social_update($instance);
+		$instance['new_tab'] = false;
+	}
 	$sites = apply_filters( 'mtphr_widgets_social_sites', $instance['sites'], $widget_id );
 	$new_tab = apply_filters( 'mtphr_widgets_social_new_tab', $instance['new_tab'], $widget_id );
 	

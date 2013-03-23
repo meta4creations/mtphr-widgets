@@ -296,3 +296,57 @@ function mtphr_widgets_social_site_css() {
 }
 
 
+
+
+add_action('admin_notices', 'mtphr_widgets_settings_notice');
+/**
+ * Create an admin notice to create settings
+ *
+ * @since 2.0.7
+ */
+function mtphr_widgets_settings_notice(){
+
+	if( !mtphr_widgets_check_twitter_access() ) {
+	
+		$link = admin_url().'plugins.php?page=mtphr_widgets_settings';
+		?>
+    <div class="updated">
+       <p><?php _e('You (now) must authorize <strong>Metaphor Widgets</strong> access through Twitter before you can display any feeds.', 'mtphr-widgets'); ?><br/><?php printf( __('<a href="%s"><strong>Click here</strong></a> to generate a pin and grant acces to <strong>Metaphor Widgets</strong>.', 'mtphr-widgets'), $link ); ?></p>
+    </div>
+    <?php
+  }
+}
+
+
+
+
+/**
+ * Check for Twitter access
+ *
+ * @since 2.0.7
+ */
+function mtphr_widgets_check_twitter_access() {
+
+	$access = get_option('mtphr_widgets_twitter_access', array());
+	return isset($access['oauth_token']);
+}
+
+
+
+
+/**
+ * Delete the cached feeds
+ *
+ * @since 2.0.7
+ */
+function mtphr_widgets_twitter_delete_cache() {
+
+	$directory = MTPHR_WIDGETS_DIR.'assets/cache/';
+	$files = scandir($directory);
+	$files = array_slice( $files, 2 );
+	if( is_array($files) && count($files) > 0 ) {
+		foreach ( $files as $file ) {
+			unlink($directory.$file);
+		}
+	}
+}

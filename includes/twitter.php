@@ -186,7 +186,7 @@ function form( $instance ) {
 /**
  * Display the feed 
  *
- * @since 1.4
+ * @since 2.0.7
  */
 function mtphr_twitter_widget_feed( $twitter_name, $widget_limit, $twitter_image, $twitter_avatar ) {
 
@@ -207,28 +207,28 @@ function mtphr_twitter_widget_feed( $twitter_name, $widget_limit, $twitter_image
 		
 			// Turn on output buffering
 			ob_start();
-
+			
 			// Save the feed
 			$twitter_feed = mtphr_get_twitter_widget_feed( $twitter_name );
 			
 			// If errors, use old file
-			if ( mtphr_check_twitter_widget_error($twitter_feed) ) {
-				
-				// Get the cache file contents & display the feed
+			if ( !$twitter_feed ) {
+		
 				if ( (file_exists($cachefile)) ) {
+					
+					// Get the cached file
 					$twitter_feed = file_get_contents( $cachefile );
 					
 					// Resave the feed to reset the cache time
 					$fp = fopen( $cachefile, 'w' );
-					fwrite( $fp, $twitter_feed );
+					fwrite( $fp, $feed );
 					fclose( $fp );
-
+					
 					mtphr_display_twitter_widget_feed( $twitter_feed, $widget_limit, $twitter_image, $twitter_avatar );	
 				}
 			
-			// Else populate updated data
 			} else {
-		
+	
 				// Create or open the cache file
 				$fp = fopen( $cachefile, 'w' );
 				
@@ -251,46 +251,37 @@ function mtphr_twitter_widget_feed( $twitter_name, $widget_limit, $twitter_image
 /**
  * Use curl to get the feed
  *
- * @since 1.2
+ * @since 2.0.7
  */
 function mtphr_get_twitter_widget_feed( $twitter_name ) {
-	
-	// Set the limit
-	$limit = '31';
-	
-	$ch = curl_init();
-	@curl_setopt( $ch, CURLOPT_URL, 'http://api.twitter.com/1/statuses/user_timeline/'.$twitter_name.'.json?count='.$limit.'&include_rts=true&callback=?' );
-	@curl_setopt( $ch, CURLOPT_CONNECTTIMEOUT, 5 );
-	@curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
-	
-	// Save the data
-	$json = curl_exec( $ch );
-	curl_close( $ch );
-	
-	// Return the data
-	return $json;
-}
 
-/**
- * Check for twitter errors
- *
- * @since 1.2
- */
-function mtphr_check_twitter_widget_error( $twitter_feed ) {
-
-	$error = false;
+	$access = get_option('mtphr_widgets_twitter_access', array());
 	
-	// Save the data as json data
-	$json_data = json_decode( $twitter_feed, true );
+	if( isset($access['oauth_token']) ) {
+		
+		$tmhOAuth = new tmhOAuth(array(
+		  'consumer_key'    => 'KEEIyPyhpjNBrnYCjwDoNg',
+		  'consumer_secret' => '2jRa8Z5jWUnN8cDaiawTa6SPXZzWLkQJNWmL2z7ohc',
+		  'user_token'      => $access['oauth_token'],
+		  'user_secret'     => $access['oauth_token_secret'],
+		));
 	
-	if( empty($twitter_feed) ) {
-		$error = true;
-	} else {
-		if ( isset($json_data['error']) || isset($json_data['errors']) ) {
-			$error = true;
+		$args = array(
+			'screen_name' => $twitter_name,
+		  'count' => 200,
+		  'include_rts' => true
+		);
+		$code = $tmhOAuth->request('GET', $tmhOAuth->url('1.1/statuses/user_timeline'), $args);
+		$response = $tmhOAuth->response;
+	
+		if ($code == 200) {
+			return $tmhOAuth->response['response'];
+		} else {
+			return false;
 		}
+	} else {
+		return false;
 	}
-	return $error;
 }
 
 /**

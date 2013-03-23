@@ -47,7 +47,7 @@ function mtphr_posts_widget() {
 /**
  * Display the widget
  *
- * @since 2.0.0
+ * @since 2.0.7
  */
 function widget( $args, $instance ) {
 	
@@ -61,6 +61,8 @@ function widget( $args, $instance ) {
 	$widget_limit = apply_filters( 'mtphr_widgets_post_limit', intval( $instance['widget_limit'] ), $widget_id );
 	$excerpt_length = apply_filters( 'mtphr_widgets_post_excerpt_length', intval( $instance['excerpt_length'] ), $widget_id );
 	$author = apply_filters( 'mtphr_widgets_post_author', sanitize_text_field($instance['author']), $widget_id );
+	
+	$instance['category'] = isset($instance['category']) ? $instance['category'] : '';
 	$category = apply_filters( 'mtphr_widgets_post_category', sanitize_text_field($instance['category']), $widget_id );
 	
 	if ( $widget_limit == 0 ) {

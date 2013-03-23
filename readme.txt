@@ -109,6 +109,10 @@ Check out the 'Installation' tab.
 
 == Changelog ==
 
+= 2.0.7 =
+* Added settings page to connect to Twitter API.
+* Updated widgets for smooth transition from older plugins.
+
 = 2.0.6 =
 * Minor update to Collapse widget description output.
 
@@ -134,6 +138,9 @@ Check out the 'Installation' tab.
 * Added shortcodes to all widgets.
 
 == Upgrade Notice ==
+
+= 2.0.7 =
+Added settings page to connect to Twitter API. Updated widgets for smooth transition from older plugins.
 
 = 2.0.6 =
 Minor update to Collapse widget description output.
