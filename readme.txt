@@ -109,6 +109,9 @@ Check out the 'Installation' tab.
 
 == Changelog ==
 
+= 2.0.8 =
+* Added class check for tmhOAuth.
+
 = 2.0.7 =
 * Added settings page to connect to Twitter API.
 * Updated widgets for smooth transition from older plugins.
@@ -138,6 +141,9 @@ Check out the 'Installation' tab.
 * Added shortcodes to all widgets.
 
 == Upgrade Notice ==
+
+= 2.0.8 =
+Added class check for tmhOAuth.
 
 = 2.0.7 =
 Added settings page to connect to Twitter API. Updated widgets for smooth transition from older plugins.
