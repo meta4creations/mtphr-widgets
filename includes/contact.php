@@ -21,14 +21,14 @@ function mtphr_contact_widget_init() {
  * @since 2.0.0
  */
 class mtphr_contact_widget extends WP_Widget {
-	
+
 /**
  * Widget setup
  *
  * @since 2.0.0
  */
 function mtphr_contact_widget() {
-	
+
 	// Widget settings
 	$widget_ops = array(
 		'classname' => 'mtphr-contact-widget',
@@ -51,31 +51,31 @@ function mtphr_contact_widget() {
  * @since 2.0.7
  */
 function widget( $args, $instance ) {
-	
+
 	extract( $args );
 
-	// User-selected settings	
+	// User-selected settings
 	$title = $instance['title'];
 	$title = apply_filters( 'widget_title', $title );
-	
+
 	$widget_id = ( isset($args['widget_id']) ) ? $args['widget_id'] : -1;
-	
+
 	// Populate with old info
 	if( !isset($instance['contact_info']) ) {
-		$instance = mtphr_widgets_contact_update($instance);	
+		$instance = mtphr_widgets_contact_update($instance);
 	}
 	$contact_info = apply_filters( 'mtphr_widgets_contact_info', $instance['contact_info'], $widget_id );
-	
+
 	// Before widget (defined by themes)
 	echo $before_widget;
-	
+
 	// Title of widget (before and after defined by themes)
 	if ( $title ) {
 		echo $before_title . $title . $after_title;
 	}
 
-	echo '<table>';	
-	
+	echo '<table>';
+
 	if( is_array($contact_info) ) {
 		foreach( $contact_info as $info ) {
 
@@ -87,7 +87,7 @@ function widget( $args, $instance ) {
 				echo '<td colspan="2"><p>'.make_clickable(nl2br(wp_kses_post($info['description']))).'</p></td>';
 			}
 			echo '</tr>';
-			
+
 		}
 	}
 
@@ -103,14 +103,14 @@ function widget( $args, $instance ) {
  * @since 2.0.0
  */
 function update( $new_instance, $old_instance ) {
-	
+
 	$instance = $old_instance;
 
 	// Strip tags (if needed) and update the widget settings
 	$instance['title'] = sanitize_text_field( $new_instance['title'] );
 	$instance['contact_info'] = $new_instance['contact_info'];
 	$instance['advanced'] = $new_instance['advanced'];
-	
+
 	// No longer supported
 	$instance['email'] = sanitize_email( $new_instance['email'] );
 	$instance['telephone'] = sanitize_text_field( $new_instance['telephone'] );
@@ -123,7 +123,7 @@ function update( $new_instance, $old_instance ) {
 /**
  * Widget settings
  *
- * @since 2.0.3
+ * @since 2.0.9
  */
 function form( $instance ) {
 
@@ -150,10 +150,10 @@ function form( $instance ) {
 		),
 		'advanced' => ''
 	);
-	
+
 	$instance = wp_parse_args( (array) $instance, $defaults );
 	$instance = mtphr_widgets_contact_update( $instance ); ?>
-	
+
   <!-- Widget Title: Text Input -->
 	<p>
 		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'mtphr-widgets' ); ?></label>
@@ -161,7 +161,7 @@ function form( $instance ) {
 	</p>
 
 	<?php
-	// Create the contact structure	
+	// Create the contact structure
 	$contact_structure = array(
 		'title' => array(
 			'header' => __('Title', 'mtphr-widgets'),
@@ -174,7 +174,7 @@ function form( $instance ) {
 			'rows' => 1
 		)
 	);
-	
+
 	// Set the widget fields
 	$fields = array(
 		'contact_info' => array(
@@ -184,9 +184,9 @@ function form( $instance ) {
 			'widget_value' => $instance['contact_info']
 		)
 	);
-	
+
 	foreach( $fields as $name => $field ) {
-	
+
 		echo '<span class="mtphr-widgets-metaboxer-field mtphr-widgets-metaboxer-widget-field mtphr-widgets-metaboxer-'.$field['type'].' mtphr-widgets-metaboxer-'.$name.'">';
 		if( isset($field['name']) ) {
 			echo '<label>'.$field['name'].'</label>';
@@ -198,19 +198,19 @@ function form( $instance ) {
 		echo '</span>';
 	}
 	?>
-	
+
 	<!-- Advanced: Checkbox -->
 	<p class="mtphr-widget-advanced">
 		<input class="checkbox" type="checkbox" <?php checked( $instance['advanced'], 'on' ); ?> id="<?php echo $this->get_field_id( 'advanced' ); ?>" name="<?php echo $this->get_field_name( 'advanced' ); ?>" />
 		<label for="<?php echo $this->get_field_id( 'advanced' ); ?>"><?php _e( 'Show Advanced Info', 'mtphr-widgets' ); ?></label>
 	</p>
-	
+
 	<!-- Widget ID: Text -->
 	<p class="mtphr-widget-id">
 		<label for="<?php echo $this->get_field_id( 'widget_id' ); ?>"><?php _e( 'Widget ID:', 'mtphr-widgets' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id( 'widget_id' ); ?>" name="<?php echo $this->get_field_name( 'widget_id' ); ?>" value="<?php echo substr( $this->get_field_id(''), 0, -1 ); ?>" style="width:97%;" disabled />
 	</p>
-	
+
 	<!-- Shortcode -->
 	<span class="mtphr-widget-shortcode">
 		<label><?php _e( 'Shortcode:', 'mtphr-widgets' ); ?></label>
@@ -224,13 +224,13 @@ function form( $instance ) {
 				$all_info .= sanitize_text_field($info['title']).'***'.esc_attr(nl2br($info['description'])).':::';
 			}
 			$all_info = substr( $all_info, 0, -3 );
-			$shortcode .= $all_info.'"';
+			$shortcode .= $all_info;
 		}
 		$shortcode .= '[/mtphr_contact_widget]';
 		?>
 		<pre class="mtphr-widgets-code"><p><?php echo $shortcode; ?></p></pre>
 	</span>
-  	
+
 	<?php
 }
 }

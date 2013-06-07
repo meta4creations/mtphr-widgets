@@ -1,15 +1,15 @@
 <?php
 
-/* Register the widget - @since 1.0 */
-add_action( 'widgets_init', 'mtphr_posts_widget_init' );
+/* Register the widget - @since 2.0.9 */
+add_action( 'widgets_init', 'mtphr_tabbed_posts_widget_init' );
 
 /**
  * Register the widget
  *
- * @since 1.0
+ * @since 2.0.9
  */
-function mtphr_posts_widget_init() {
-	register_widget( 'mtphr_posts_widget' );
+function mtphr_tabbed_posts_widget_init() {
+	register_widget( 'mtphr_tabbed_posts_widget' );
 }
 
 
@@ -18,36 +18,36 @@ function mtphr_posts_widget_init() {
 /**
  * Create a class for the widget
  *
- * @since 1.0
+ * @since 2.0.9
  */
-class mtphr_posts_widget extends WP_Widget {
+class mtphr_tabbed_posts_widget extends WP_Widget {
 
 /**
  * Widget setup
  *
- * @since 1.0
+ * @since 2.0.9
  */
-function mtphr_posts_widget() {
+function mtphr_tabbed_posts_widget() {
 
 	// Widget settings
 	$widget_ops = array(
-		'classname' => 'mtphr-posts-widget',
+		'classname' => 'mtphr-tabbed-posts-widget',
 		'description' => __('Displays recent posts.', 'mtphr-widgets')
 	);
 
 	// Widget control settings
 	$control_ops = array(
-		'id_base' => 'mtphr-posts'
+		'id_base' => 'mtphr-tabbed-posts'
 	);
 
 	// Create the widget
-	$this->WP_Widget( 'mtphr-posts', __('Metaphor Recent Posts', 'mtphr-widgets'), $widget_ops, $control_ops );
+	$this->WP_Widget( 'mtphr-tabbed-posts', __('Metaphor Tabbed Posts', 'mtphr-widgets'), $widget_ops, $control_ops );
 }
 
 /**
  * Display the widget
  *
- * @since 2.0.7
+ * @since 2.0.9
  */
 function widget( $args, $instance ) {
 
@@ -60,21 +60,13 @@ function widget( $args, $instance ) {
 	$widget_id = ( isset($args['widget_id']) ) ? $args['widget_id'] : -1;
 	$widget_limit = apply_filters( 'mtphr_widgets_post_limit', intval( $instance['widget_limit'] ), $widget_id );
 	$excerpt_length = apply_filters( 'mtphr_widgets_post_excerpt_length', intval( $instance['excerpt_length'] ), $widget_id );
-	$read_more = isset( $instance['read_more'] ) ? $instance['read_more'] : __('Read more', 'mtphr-widgets');
-	$read_more = apply_filters( 'mtphr_widgets_post_read_more', sanitize_text_field($read_more), $widget_id );
-	$author = apply_filters( 'mtphr_widgets_post_author', sanitize_text_field($instance['author']), $widget_id );
-
-	$instance['category'] = isset($instance['category']) ? $instance['category'] : '';
-	$category = apply_filters( 'mtphr_widgets_post_category', sanitize_text_field($instance['category']), $widget_id );
 
 	if ( $widget_limit == 0 ) {
 		$widget_limit = 3;
 	}
-	/*
-if ( $excerpt_length == 0 ) {
-		$excerpt_length = 72;
+	if ( $excerpt_length == 0 ) {
+		$excerpt_length = 60;
 	}
-*/
 
 	// Before widget (defined by themes)
 	echo $before_widget;
@@ -84,42 +76,50 @@ if ( $excerpt_length == 0 ) {
 		echo $before_title . $title . $after_title;
 	}
 
+	global $wp_query;
+	$original_query = $wp_query;
+	$popular_posts = '';
+	$recent_posts = '';
+
+	// Get the popular posts
 	$args = array(
 		'post_type'=> 'post',
 		'posts_per_page' => $widget_limit,
-		'author_name' => $author,
-		'category_name' => $category
+		'orderby' => 'comment_count'
 	);
-	$args = apply_filters( 'mtphr_widgets_post_args', $args, $widget_id );
-
-	// Save the original query & create a new one
-	global $wp_query;
-	$original_query = $wp_query;
 	$wp_query = null;
 	$wp_query = new WP_Query();
 	$wp_query->query( $args );
 
-	if ( have_posts() ) :
-
-	$output = '<ul>';
-
-	// Start the Loop
-	while ( $wp_query->have_posts() ) : $wp_query->the_post();
-
-		$output .= '<li>';
-		$output .= '<a class="mtphr-posts-widget-title" href="'.get_permalink().'">'.get_the_title().'</a> ';
-		if( $excerpt_length > 0 ) {
-			$output .= mtphr_widgets_post_excerpt( $excerpt_length );
-		}
-		if( $read_more != '' ) {
-			$output .= '<span class="readmore-wrapper"><a class="readmore" href="'.get_permalink().'">Read more</a></span>';
-		}
-		$output .= '</li>';
-
+	if ( have_posts() ) : while ( $wp_query->have_posts() ) : $wp_query->the_post();
+		$popular_posts .= '<li>';
+		$popular_posts .= '<a class="mtphr-tabbed-posts-widget-title" href="'.get_permalink().'">'.get_the_title().'</a> ';
+		$popular_posts .= '<small class="mtphr-tabbed-posts-widget-date">'.get_the_time( get_option('date_format') ).'</small>';
+		$popular_posts .= mtphr_widgets_post_excerpt( $excerpt_length );
+		$popular_posts .= '</li>';
 	endwhile;
+	else :
+	endif;
 
-	$output .= '</ul>';
+	wp_reset_postdata();
 
+	// Get the recent posts
+	$args = array(
+		'post_type'=> 'post',
+		'posts_per_page' => $widget_limit,
+		'orderby' => 'date'
+	);
+	$wp_query = null;
+	$wp_query = new WP_Query();
+	$wp_query->query( $args );
+
+	if ( have_posts() ) : while ( $wp_query->have_posts() ) : $wp_query->the_post();
+		$recent_posts .= '<li>';
+		$recent_posts .= '<a class="mtphr-tabbed-posts-widget-title" href="'.get_permalink().'">'.get_the_title().'</a> ';
+		$recent_posts .= '<span class="mtphr-tabbed-posts-widget-date">'.get_the_time( get_option('date_format') ).'</span>';
+		$recent_posts .= mtphr_widgets_post_excerpt( $excerpt_length );
+		$recent_posts .= '</li>';
+	endwhile;
 	else :
 	endif;
 
@@ -127,8 +127,29 @@ if ( $excerpt_length == 0 ) {
 	$wp_query = $original_query;
 	wp_reset_postdata();
 
-	echo $output;
+	?>
+	<table>
+		<tr>
+			<td class="mtphr-tabbed-posts-link"><a href="#0" rel="nofollow"><?php _e('Popular', 'mtphr-widgets'); ?></a></td>
+			<td class="mtphr-tabbed-posts-link"><a href="#1" rel="nofollow"><?php _e('Recent', 'mtphr-widgets'); ?></a></td>
+		</tr>
+		<tr>
+			<td class="mtphr-tabbed-posts-content-container" colspan="2">
+				<div class="mtphr-tabbed-posts-content">
+					<div class="mtphr-tabbed-posts-content-wrapper">
+						<ul><?php echo $popular_posts; ?></ul>
+					</div>
+				</div>
+				<div class="mtphr-tabbed-posts-content">
+					<div class="mtphr-tabbed-posts-content-wrapper">
+						<ul><?php echo $recent_posts; ?></ul>
+					</div>
+				</div>
+			</td>
+		</tr>
+	</table>
 
+	<?php
 	// After widget (defined by themes)
 	echo $after_widget;
 }
@@ -146,9 +167,7 @@ function update( $new_instance, $old_instance ) {
 	$instance['title'] = sanitize_text_field( $new_instance['title'] );
 	$instance['widget_limit'] = intval( $new_instance['widget_limit'] );
 	$instance['excerpt_length'] = intval( $new_instance['excerpt_length'] );
-	$instance['read_more'] = sanitize_text_field( $new_instance['read_more'] );
-	$instance['author'] = $new_instance['author'];
-	$instance['category'] = $new_instance['category'];
+	$instance['date_format'] = sanitize_text_field( $new_instance['date_format'] );
 	$instance['advanced'] = $new_instance['advanced'];
 
 	return $instance;
@@ -165,10 +184,8 @@ function form( $instance ) {
 	$defaults = array(
 		'title' => __('Blog Posts', 'mtphr-widgets'),
 		'widget_limit' => 3,
-		'excerpt_length' => 72,
-		'read_more' => __('Read more', 'mtphr-widgets'),
-		'author' => '',
-		'category' => '',
+		'excerpt_length' => 60,
+		'date_format' => get_option('date_format'),
 		'advanced' => ''
 	);
 
@@ -180,56 +197,23 @@ function form( $instance ) {
 		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:97%;" />
 	</p>
 
-  <!-- Widget Limit: Text Input -->
+  <!-- Widget Limit: Number Input -->
 	<p>
 		<label for="<?php echo $this->get_field_id( 'widget_limit' ); ?>"><?php _e( 'Number of Posts:', 'mtphr-widgets' ); ?></label><br/>
 		<input class="widefat" type="number" id="<?php echo $this->get_field_id( 'widget_limit' ); ?>" name="<?php echo $this->get_field_name( 'widget_limit' ); ?>" value="<?php echo $instance['widget_limit']; ?>" style="width:50px;" />
 	</p>
 
-	<!-- Excerpt Length: Text Input -->
+	<!-- Excerpt Length: Number Input -->
 	<p>
 		<label for="<?php echo $this->get_field_id( 'excerpt_length' ); ?>"><?php _e( 'Excerpt Length:', 'mtphr-widgets' ); ?></label><br/>
 		<input class="widefat" type="number" id="<?php echo $this->get_field_id( 'excerpt_length' ); ?>" name="<?php echo $this->get_field_name( 'excerpt_length' ); ?>" value="<?php echo $instance['excerpt_length']; ?>" style="width:50px;" />
 	</p>
 
-	<!--Read More: Text Input -->
+	<!-- Date Formate: Text Input -->
 	<p>
-		<label for="<?php echo $this->get_field_id( 'read_more' ); ?>"><?php _e( 'More Text :', 'mtphr-widgets' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'read_more' ); ?>" name="<?php echo $this->get_field_name( 'read_more' ); ?>" value="<?php echo $instance['read_more']; ?>" style="width:97%;" />
+		<label for="<?php echo $this->get_field_id( 'date_format' ); ?>"><?php _e( 'Date Format:', 'mtphr-widgets' ); ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id( 'date_format' ); ?>" name="<?php echo $this->get_field_name( 'date_format' ); ?>" value="<?php echo $instance['date_format']; ?>" style="width:97%;" />
 	</p>
-
-	<!-- Author: Select -->
-	<table style="margin: 0 0 1em;">
-		<tr><td>
-			<label for="<?php echo $this->get_field_id( 'author' ); ?>"><?php _e( 'Author:', 'mtphr-widgets' ); ?></label><br/>
-			<select name="<?php echo $this->get_field_name( 'author' ); ?>" id="<?php echo $this->get_field_id( 'author' ); ?>">
-			<option value="">-----</option>
-			<?php
-			$authors = mtphr_widgets_author_array();
-			foreach( $authors as $author ) {
-				if( $instance['author'] == $author ) { ?>
-					<option value="<?php echo $author; ?>" selected="selected"><?php echo $author; ?></option>
-				<?php } else { ?>
-					<option value="<?php echo $author; ?>"><?php echo $author; ?></option>
-				<?php } ?>
-			<?php } ?>
-			</select>
-		</td><td>
-			<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php _e( 'Category:', 'mtphr-widgets' ); ?></label><br/>
-			<select name="<?php echo $this->get_field_name( 'category' ); ?>" id="<?php echo $this->get_field_id( 'category' ); ?>">
-			<option value="">-----</option>
-			<?php
-			$categories = get_categories();
-			foreach( $categories as $category ) {
-				if( $instance['category'] == $category->slug ) { ?>
-					<option value="<?php echo $category->slug; ?>" selected="selected"><?php echo $category->name; ?></option>
-				<?php } else { ?>
-					<option value="<?php echo $category->slug; ?>"><?php echo $category->name; ?></option>
-				<?php } ?>
-			<?php } ?>
-			</select>
-		</td></tr>
-	</table>
 
 	<!-- Advanced: Checkbox -->
 	<p class="mtphr-widget-advanced">
@@ -247,11 +231,10 @@ function form( $instance ) {
 	<span class="mtphr-widget-shortcode">
 		<label><?php _e( 'Shortcode:', 'mtphr-widgets' ); ?></label>
 		<?php
-		$shortcode = '[mtphr_posts_widget';
+		$shortcode = '[mtphr_tabbed_posts_widget';
 		$shortcode .= ( $instance['title'] != '' ) ? ' title="'.$instance['title'].'"' : '';
 		$shortcode .= ( $instance['widget_limit'] != '' ) ? ' limit="'.$instance['widget_limit'].'"' : '';
 		$shortcode .= ( $instance['excerpt_length'] != '' ) ? ' excerpt_length="'.$instance['excerpt_length'].'"' : '';
-		$shortcode .= ( $instance['read_more'] != '' ) ? ' read_more="'.$instance['read_more'].'"' : '';
 		$shortcode .= ( $instance['author'] != '' ) ? ' author="'.$instance['author'].'"' : '';
 		$shortcode .= ( $instance['category'] != '' ) ? ' category="'.$instance['category'].'"' : '';
 		$shortcode .= ']';

@@ -12,12 +12,12 @@ add_action( 'plugins_loaded', 'mtphr_widgets_localization' );
 /**
  * Setup localization
  *
- * @since 2.0.0
+ * @since 2.0.9
  */
 function mtphr_widgets_localization() {
-  load_plugin_textdomain( 'mtphr-widgets', false, MTPHR_WIDGETS_DIR.'languages/' );
+  load_plugin_textdomain( 'mtphr-widgets', false, 'mtphr-widgets/languages/' );
 }
- 
+
 
 
 
@@ -29,7 +29,7 @@ function mtphr_widgets_localization() {
 function mtphr_widgets_twitter_links( $string ) {
 
 	$string = make_clickable( $string );
-	$string = preg_replace("/[@]+([A-Za-z0-9-_]+)/", "<a href=\"http://twitter.com/\\1\" target=\"_blank\">\\0</a>", $string ); 
+	$string = preg_replace("/[@]+([A-Za-z0-9-_]+)/", "<a href=\"http://twitter.com/\\1\" target=\"_blank\">\\0</a>", $string );
 	$string = preg_replace("/[#]+([A-Za-z0-9-_]+)/", "<a href=\"http://twitter.com/search?q=%23\\1\" target=\"_blank\">\\0</a>", $string );
 
   return $string;
@@ -45,7 +45,7 @@ function mtphr_widgets_twitter_links( $string ) {
  */
 function mtphr_widgets_author_array( $add=false, $args=false ) {
 	$defaults = array(
-	  'exclude_admin' => false, 
+	  'exclude_admin' => false,
 	  'show_fullname' => false,
 	  'hide_empty'    => false,
 	  'echo'          => false,
@@ -71,7 +71,7 @@ function mtphr_widgets_author_array( $add=false, $args=false ) {
 function mtphr_widgets_post_excerpt( $charlength ) {
 	$excerpt = get_the_excerpt();
 	$charlength++;
-	
+
 	$output = '';
 	if ( mb_strlen( $excerpt ) > $charlength ) {
 		$subex = mb_substr( $excerpt, 0, $charlength - 5 );
@@ -127,7 +127,7 @@ function mtphr_widgets_comment_excerpt( $excerpt, $charlength ) {
  * @since 2.0.0
  */
 function mtphr_widgets_social_sites() {
-	
+
 	$social_sites = array(
 		'twitter' => 'Twitter',
 		'facebook' => 'Facebook',
@@ -180,7 +180,7 @@ function mtphr_widgets_social_sites() {
 		'blogger' => 'Blogger',
 		'yahoobuzz' => 'Yahoo! Buzz'
 	);
-	
+
 	return $social_sites;
 }
 
@@ -223,7 +223,7 @@ function mtphr_widgets_social_update( $instance ) {
 		);
 		$instance['linkedin_link'] = '';
 	}
-	
+
 	return $instance;
 }
 
@@ -307,7 +307,7 @@ add_action('admin_notices', 'mtphr_widgets_settings_notice');
 function mtphr_widgets_settings_notice(){
 
 	if( !mtphr_widgets_check_twitter_access() ) {
-	
+
 		$link = admin_url().'plugins.php?page=mtphr_widgets_settings';
 		?>
     <div class="updated">

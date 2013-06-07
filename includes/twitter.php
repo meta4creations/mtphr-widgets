@@ -21,14 +21,14 @@ function mtphr_twitter_widget_init() {
  * @since 1.0
  */
 class mtphr_twitter_widget extends WP_Widget {
-	
+
 /**
  * Widget setup
  *
  * @since 1.0
  */
 function mtphr_twitter_widget() {
-	
+
 	// Widget settings
 	$widget_ops = array(
 		'classname' => 'mtphr-twitter-widget',
@@ -50,31 +50,31 @@ function mtphr_twitter_widget() {
  * @since 2.0.0
  */
 function widget( $args, $instance ) {
-	
+
 	extract( $args );
 
-	// User-selected settings	
+	// User-selected settings
 	$title = $instance['title'];
 	$title = apply_filters( 'widget_title', $title );
-	
+
 	$widget_id = ( isset($args['widget_id']) ) ? $args['widget_id'] : -1;
 	$twitter_name = apply_filters( 'mtphr_widgets_twitter_name', sanitize_text_field( $instance['twitter_name'] ), $widget_id );
 	$widget_limit = apply_filters( 'mtphr_widgets_twitter_limit', intval( $instance['widget_limit'] ), $widget_id );
 	$twitter_image = apply_filters( 'mtphr_widgets_twitter_image', isset( $instance['widget_image'] ), $widget_id );
 	$twitter_avatar = apply_filters( 'mtphr_widgets_twitter_avatar', isset( $instance['widget_avatar'] ), $widget_id );
-	
+
 	if ( $widget_limit == '' || $widget_limit == 0 ) {
 		$widget_limit = 3;
 	}
-	
+
 	// Before widget (defined by themes)
 	echo $before_widget;
-	
+
 	// Title of widget (before and after defined by themes)
 	if ( $title ) {
 		echo $before_title . $title . $after_title;
-	}	
-	
+	}
+
 	// Display the twitter feed
 	mtphr_twitter_widget_feed( $twitter_name, $widget_limit, $twitter_image, $twitter_avatar );
 
@@ -88,7 +88,7 @@ function widget( $args, $instance ) {
  * @since 2.0.0
  */
 function update( $new_instance, $old_instance ) {
-	
+
 	$instance = $old_instance;
 
 	// Strip tags (if needed) and update the widget settings
@@ -118,27 +118,27 @@ function form( $instance ) {
 		'widget_avatar' => '',
 		'advanced' => ''
 	);
-	
+
 	$instance = wp_parse_args( (array) $instance, $defaults ); ?>
-	
+
   <!-- Widget Title: Text Input -->
 	<p>
 		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'mtphr-widgets' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:97%;" />
 	</p>
-    
+
   <!-- Twitter Username: Text Input -->
 	<p>
 		<label for="<?php echo $this->get_field_id( 'twitter_name' ); ?>"><?php _e( 'Twitter Username:', 'mtphr-widgets' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id( 'twitter_name' ); ?>" name="<?php echo $this->get_field_name( 'twitter_name' ); ?>" value="<?php echo $instance['twitter_name']; ?>" style="width:97%;" />
 	</p>
-	
+
   <!-- Widget Limit: Text Input -->
 	<p>
 		<label for="<?php echo $this->get_field_id( 'widget_limit' ); ?>"><?php _e( 'Number of Tweets:', 'mtphr-widgets' ); ?></label><br/>
 		<input class="widefat" type="number" id="<?php echo $this->get_field_id( 'widget_limit' ); ?>" name="<?php echo $this->get_field_name( 'widget_limit' ); ?>" value="<?php echo $instance['widget_limit']; ?>" style="width:50px;" />
 	</p>
-	
+
 	<!-- Display Widget Image: Checkbox -->
 	<p>
 		<input class="checkbox" type="checkbox" <?php checked( $instance['widget_image'], 'on' ); ?> id="<?php echo $this->get_field_id( 'widget_image' ); ?>" name="<?php echo $this->get_field_name( 'widget_image' ); ?>" />
@@ -148,19 +148,19 @@ function form( $instance ) {
 		<input class="checkbox" type="checkbox" <?php checked( $instance['widget_avatar'], 'on' ); ?> id="<?php echo $this->get_field_id( 'widget_avatar' ); ?>" name="<?php echo $this->get_field_name( 'widget_avatar' ); ?>" />
 		<label for="<?php echo $this->get_field_id( 'widget_avatar' ); ?>"><?php _e( 'Use Avatar?', 'mtphr-widgets' ); ?></label>
 	</p>
-	
+
 	<!-- Advanced: Checkbox -->
 	<p class="mtphr-widget-advanced">
 		<input class="checkbox" type="checkbox" <?php checked( $instance['advanced'], 'on' ); ?> id="<?php echo $this->get_field_id( 'advanced' ); ?>" name="<?php echo $this->get_field_name( 'advanced' ); ?>" />
 		<label for="<?php echo $this->get_field_id( 'advanced' ); ?>"><?php _e( 'Show Advanced Info', 'mtphr-widgets' ); ?></label>
 	</p>
-	
+
 	<!-- Widget ID: Text -->
 	<p class="mtphr-widget-id">
 		<label for="<?php echo $this->get_field_id( 'widget_id' ); ?>"><?php _e( 'Widget ID:', 'mtphr-widgets' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id( 'widget_id' ); ?>" name="<?php echo $this->get_field_name( 'widget_id' ); ?>" value="<?php echo substr( $this->get_field_id(''), 0, -1 ); ?>" style="width:97%;" disabled />
 	</p>
-	
+
 	<!-- Shortcode -->
 	<span class="mtphr-widget-shortcode">
 		<label><?php _e( 'Shortcode:', 'mtphr-widgets' ); ?></label>
@@ -175,7 +175,7 @@ function form( $instance ) {
 		?>
 		<pre class="mtphr-widgets-code"><p><?php echo $shortcode; ?></p></pre>
 	</span>
-	
+
 	<?php
 }
 }
@@ -184,64 +184,64 @@ function form( $instance ) {
 
 
 /**
- * Display the feed 
+ * Display the feed
  *
  * @since 2.0.7
  */
 function mtphr_twitter_widget_feed( $twitter_name, $widget_limit, $twitter_image, $twitter_avatar ) {
 
 	if ( $twitter_name != "" ) {
-		
+
 		// Create variables for the cache file and cache time
 		$cachefile = MTPHR_WIDGETS_DIR.'assets/cache/' . $twitter_name . '-twitter-cache';
 		$cachetime = 600;
-		
+
 		// if the file exists & the time it was created is less then cache time
 		if ( (file_exists($cachefile)) && ( time() - $cachetime < filemtime($cachefile) ) ) {
-			
+
 			// Get the cache file contents & display the feed
 			$twitter_feed = file_get_contents( $cachefile );
 			mtphr_display_twitter_widget_feed( $twitter_feed, $widget_limit, $twitter_image, $twitter_avatar );
-			
+
 		} else {
-		
+
 			// Turn on output buffering
 			ob_start();
-			
+
 			// Save the feed
 			$twitter_feed = mtphr_get_twitter_widget_feed( $twitter_name );
-			
+
 			// If errors, use old file
 			if ( !$twitter_feed ) {
-		
+
 				if ( (file_exists($cachefile)) ) {
-					
+
 					// Get the cached file
 					$twitter_feed = file_get_contents( $cachefile );
-					
+
 					// Resave the feed to reset the cache time
 					$fp = fopen( $cachefile, 'w' );
 					fwrite( $fp, $feed );
 					fclose( $fp );
-					
-					mtphr_display_twitter_widget_feed( $twitter_feed, $widget_limit, $twitter_image, $twitter_avatar );	
+
+					mtphr_display_twitter_widget_feed( $twitter_feed, $widget_limit, $twitter_image, $twitter_avatar );
 				}
-			
+
 			} else {
-	
+
 				// Create or open the cache file
 				$fp = fopen( $cachefile, 'w' );
-				
+
 				// Write the twitter feed to the cache file
 				fwrite( $fp, $twitter_feed );
-				
+
 				// Close the file
 				fclose( $fp );
-	
+
 				// Display the twitter feed
 				mtphr_display_twitter_widget_feed( $twitter_feed, $widget_limit, $twitter_image, $twitter_avatar );
 			}
-			
+
 			// End and close the output buffer
 			ob_end_flush();
 		}
@@ -256,16 +256,16 @@ function mtphr_twitter_widget_feed( $twitter_name, $widget_limit, $twitter_image
 function mtphr_get_twitter_widget_feed( $twitter_name ) {
 
 	$access = get_option('mtphr_widgets_twitter_access', array());
-	
+
 	if( isset($access['oauth_token']) ) {
-		
+
 		$tmhOAuth = new tmhOAuth(array(
 		  'consumer_key'    => 'KEEIyPyhpjNBrnYCjwDoNg',
 		  'consumer_secret' => '2jRa8Z5jWUnN8cDaiawTa6SPXZzWLkQJNWmL2z7ohc',
 		  'user_token'      => $access['oauth_token'],
 		  'user_secret'     => $access['oauth_token_secret'],
 		));
-	
+
 		$args = array(
 			'screen_name' => $twitter_name,
 		  'count' => 200,
@@ -273,7 +273,7 @@ function mtphr_get_twitter_widget_feed( $twitter_name ) {
 		);
 		$code = $tmhOAuth->request('GET', $tmhOAuth->url('1.1/statuses/user_timeline'), $args);
 		$response = $tmhOAuth->response;
-	
+
 		if ($code == 200) {
 			return $tmhOAuth->response['response'];
 		} else {
@@ -287,61 +287,61 @@ function mtphr_get_twitter_widget_feed( $twitter_name ) {
 /**
  * Display the feed on th site
  *
- * @since 1.2
+ * @since 2.0.9
  */
 function mtphr_display_twitter_widget_feed( $twitter_feed, $widget_limit, $twitter_image, $twitter_avatar ) {
-	
+
 	// Store the data in a variable
 	$output = "<ul>";
-	
+
 	// If the feed is not empty
 	if( !empty($twitter_feed) ) {
-		
+
 		// Save the data as json data
 		$json_data = json_decode( $twitter_feed, true );
-		
+
 		// Create a limit variable
 		$limit = sizeof( $json_data );
 		if ( $widget_limit < $limit ) {
 			$limit = $widget_limit;
 		}
-		
+
 		if ( isset($json_data['error']) ) {
 			$output .= '<li>'.$json_data['error'].'</li>';
 		} elseif ( isset($json_data['errors']) ) {
 			foreach( $json_data['errors'] as $error ) {
 				$output .= '<li>'.__('Error','mtphr-widgets').' '.$error['code'].': '.$error['message'].'</li>';
-			}	
+			}
 		} else {
-			
+
 			// Loop through the tweets
 			for ( $i=0; $i < $limit; $i++ ) {
-		
+
 				$twitter_name = $json_data[$i]['user']['screen_name'];
 				$twitter_user_avatar = $json_data[$i]['user']['profile_image_url'];
 				$twitter_text = $json_data[$i]['text'];
 				$twitter_date = $json_data[$i]['created_at'];
 				$twitter_id = $json_data[$i]['id_str'];
 
-				
+
 				if( $twitter_image || $twitter_avatar ) {
 					$output .= '<li class="show-image">';
 					$output .= '<span class="mtphr-twitter-widget-image">';
 					if( $twitter_avatar ) {
-						$output .= '<img src="'.$twitter_user_avatar.'" />';
-					}	
+						$output .= '<img src="'.$twitter_user_avatar.'" alt="'.$twitter_name.'" />';
+					}
 					$output .= '</span>';
 				} else {
 					$output .= '<li>';
 				}
 				$output .= '"'.mtphr_widgets_twitter_links( $twitter_text ).'"<span class="mtphr-twitter-widget-date">'.human_time_diff( strtotime($twitter_date), current_time('timestamp') ).' '.__('ago','mtphr-widgets').'</span>';
-				$output .= '</li>';	
+				$output .= '</li>';
 			}
 		}
 	} else {
 		$output .= '<li><p>'.__('Sorry, but there was a problem connecting to the API.','mtphr-widgets').'</p></li>';
 	}
 	$output .= '</ul>';
-	
+
 	echo $output;
 }

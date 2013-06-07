@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Metaphor Widgets v2.0.7\n"
+"Project-Id-Version: Metaphor Widgets v2.0.9\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2013-03-23 17:22:28+0000\n"
+"PO-Revision-Date: 2013-06-07 14:42:32+0000\n"
 "Last-Translator: admin <joe@metaphorcreations.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -40,20 +40,23 @@ msgstr "%s ago"
 #: includes/comments.php:156
 #: includes/contact.php:159
 #: includes/navigation.php:162
-#: includes/posts.php:169
+#: includes/posts.php:179
 #: includes/social.php:151
+#: includes/tabbed-posts.php:196
 #: includes/twitter.php:126
 #@ mtphr-widgets
 msgid "Title:"
 msgstr "Title:"
 
-#: includes/posts.php:175
+#: includes/posts.php:185
+#: includes/tabbed-posts.php:202
 #@ mtphr-widgets
 msgid "Number of Posts:"
 msgstr "Number of Posts:"
 
 #: includes/comments.php:168
-#: includes/posts.php:181
+#: includes/posts.php:191
+#: includes/tabbed-posts.php:208
 #@ mtphr-widgets
 msgid "Excerpt Length:"
 msgstr "Excerpt Length:"
@@ -67,8 +70,9 @@ msgstr "Show Avatar?"
 #: includes/comments.php:181
 #: includes/contact.php:205
 #: includes/navigation.php:216
-#: includes/posts.php:221
+#: includes/posts.php:237
 #: includes/social.php:203
+#: includes/tabbed-posts.php:221
 #: includes/twitter.php:155
 #@ mtphr-widgets
 msgid "Show Advanced Info"
@@ -78,8 +82,9 @@ msgstr "Show Advanced Info"
 #: includes/comments.php:186
 #: includes/contact.php:210
 #: includes/navigation.php:221
-#: includes/posts.php:226
+#: includes/posts.php:242
 #: includes/social.php:208
+#: includes/tabbed-posts.php:226
 #: includes/twitter.php:160
 #@ mtphr-widgets
 msgid "Widget ID:"
@@ -89,8 +94,9 @@ msgstr "Widget ID:"
 #: includes/comments.php:192
 #: includes/contact.php:216
 #: includes/navigation.php:227
-#: includes/posts.php:232
+#: includes/posts.php:248
 #: includes/social.php:214
+#: includes/tabbed-posts.php:232
 #: includes/twitter.php:166
 #@ mtphr-widgets
 msgid "Shortcode:"
@@ -136,6 +142,7 @@ msgid "Description"
 msgstr "Description"
 
 #: includes/posts.php:35
+#: includes/tabbed-posts.php:35
 #@ mtphr-widgets
 msgid "Displays recent posts."
 msgstr "Displays recent posts."
@@ -145,12 +152,12 @@ msgstr "Displays recent posts."
 msgid "Metaphor Recent Posts"
 msgstr "Metaphor Recent Posts"
 
-#: includes/posts.php:188
+#: includes/posts.php:204
 #@ mtphr-widgets
 msgid "Author:"
 msgstr "Author:"
 
-#: includes/posts.php:202
+#: includes/posts.php:218
 #@ mtphr-widgets
 msgid "Category:"
 msgstr "Category:"
@@ -298,7 +305,8 @@ msgstr "Previous link text:"
 msgid "Next link text:"
 msgstr "Next link text:"
 
-#: includes/posts.php:157
+#: includes/posts.php:166
+#: includes/tabbed-posts.php:185
 #@ mtphr-widgets
 msgid "Blog Posts"
 msgstr "Blog Posts"
@@ -390,11 +398,6 @@ msgstr "Your pin"
 msgid "Metaphor Widgets Settings"
 msgstr "Metaphor Widgets Settings"
 
-#: includes/settings.php:178
-#@ mtphr-widgets
-msgid "Generate a pin from Twitter to grant access to Ditty Twitter Ticker"
-msgstr "Generate a pin from Twitter to grant access to Ditty Twitter Ticker"
-
 #: includes/settings.php:258
 #@ mtphr-widgets
 msgid "<p><strong>There was an error connecting to Twitter.</strong><br/>Please reset the settings and try again in a couple minutes.</p>"
@@ -429,4 +432,40 @@ msgstr "Access token secret:"
 #@ mtphr-widgets
 msgid "<strong>There was an error accessing your account.</strong><br/>Please reset the settings and try again in a couple minutes."
 msgstr "<strong>There was an error accessing your account.</strong><br/>Please reset the settings and try again in a couple minutes."
+
+#: includes/posts.php:63
+#: includes/posts.php:169
+#@ mtphr-widgets
+msgid "Read more"
+msgstr "Read more"
+
+#: includes/posts.php:197
+#@ mtphr-widgets
+msgid "More Text :"
+msgstr "More Text :"
+
+#: includes/settings.php:178
+#@ mtphr-widgets
+msgid "Generate a pin from Twitter to grant access to Metaphor Widgets"
+msgstr "Generate a pin from Twitter to grant access to Metaphor Widgets"
+
+#: includes/tabbed-posts.php:44
+#@ mtphr-widgets
+msgid "Metaphor Tabbed Posts"
+msgstr "Metaphor Tabbed Posts"
+
+#: includes/tabbed-posts.php:133
+#@ mtphr-widgets
+msgid "Popular"
+msgstr "Popular"
+
+#: includes/tabbed-posts.php:134
+#@ mtphr-widgets
+msgid "Recent"
+msgstr "Recent"
+
+#: includes/tabbed-posts.php:214
+#@ mtphr-widgets
+msgid "Date Format:"
+msgstr "Date Format:"
 

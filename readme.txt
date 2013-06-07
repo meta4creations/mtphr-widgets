@@ -8,7 +8,7 @@ Stable tag: /trunk/
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Adds the following widgets: Twitter, Social, Recent Comments, Recent Posts, Contact, Post Navigation, Collapse 
+Adds the following widgets: Twitter, Social, Recent Comments, Recent Posts, Contact, Post Navigation, Collapse
 
 == Description ==
 
@@ -78,7 +78,7 @@ Create an unlimited list of collapsible content. Showing a heading and descripti
 ### Advanced Info
 Each widget includes a **shortcode generator**. Copy and paste the shortcodes into your posts to display the widget contents anywhere on your site.
 
-Each widget also displays the widget ID of the widget. This can be helpful if you wish to use any of the filters built into the widgets. 
+Each widget also displays the widget ID of the widget. This can be helpful if you wish to use any of the filters built into the widgets.
 
 == Installation ==
 
@@ -108,6 +108,14 @@ Check out the 'Installation' tab.
 8. Widget/Shortcode Display
 
 == Changelog ==
+
+= 2.0.9 =
+* Fixed localization script.
+* Added alt tag to Twitter widget avatar.
+* Added it_IT.mo & it_IT.po files.
+* Added Tabbed Posts widget.
+* Added 'Read More' attribute to Recent Posts widget.
+* Removed extra quote after Contact widget shortcode generation.
 
 = 2.0.8 =
 * Added class check for tmhOAuth.
@@ -141,6 +149,9 @@ Check out the 'Installation' tab.
 * Added shortcodes to all widgets.
 
 == Upgrade Notice ==
+
+= 2.0.9 =
+Fixed localization script. Added alt tag to Twitter widget avatar. Added it_IT.mo & it_IT.po files. Added Tabbed Posts widget. Added 'Read More' attribute to Recent Posts widget. Removed extra quote after Contact widget shortcode generation.
 
 = 2.0.8 =
 Added class check for tmhOAuth.

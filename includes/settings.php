@@ -4,8 +4,8 @@
  *
  * @package Metaphor Widgets
  */
- 
- 
+
+
 
 
 add_action( 'admin_menu', 'mtphr_widgets_settings_menu', 9 );
@@ -42,55 +42,55 @@ function mtphr_widgets_initialize_settings() {
 	$settings = get_option('mtphr_widgets_general_settings', array());
 	$oauth = get_option('mtphr_widgets_twitter_oath', array());
 	$access = get_option('mtphr_widgets_twitter_access', array());
-	
+
 	$pin = isset($settings['pin']) ? $settings['pin'] : '';
-	
+
 	$token = isset($oauth['oauth_token']) ? $oauth['oauth_token'] : '';
 	$token_secret = isset($oauth['oauth_token_secret']) ? $oauth['oauth_token_secret'] : '';
-	
+
 	$display = isset($access['oauth_token']) ? true : false;
 	$error = false;
-	
+
 	if( !$display ) {
 		if( $pin != '' && $token != '' ) {
 			$display = mtphr_widgets_twitter_tokens();
 			$error = !$display;
 		}
 	}
-	
+
 	$fields = array();
-	
+
 	if( $display ) {
-	
+
 		$fields['token'] = array(
 			'title' => '<strong>'.__( 'Access granted!', 'mtphr-widgets' ).'</strong>',
 			'type' => 'access_tokens'
 		);
-		
+
 		$fields['reset'] = array(
 			'title' => '',
 			'type' => 'twitter_reset'
 		);
 
 	} elseif( $error ) {
-	
+
 		$fields['error'] = array(
 			'title' => __( 'Access error', 'mtphr-widgets' ),
 			'type' => 'error',
 		);
-		
+
 		$fields['reset'] = array(
 			'title' => '',
 			'type' => 'twitter_reset'
 		);
-	
+
 	} else {
 
 		$fields['authorize'] = array(
 			'title' => __( 'Generate pin from Twitter', 'mtphr-widgets' ),
 			'type' => 'authorize',
 		);
-		
+
 		$fields['pin'] = array(
 			'title' => __( 'Your pin', 'mtphr-widgets' ),
 			'type' => 'text',
@@ -104,11 +104,11 @@ $fields['test'] = array(
 		'type' => 'twitter_test'
 	);
 */
-	
-	if( false == get_option('mtphr_widgets_general_settings') ) {	
+
+	if( false == get_option('mtphr_widgets_general_settings') ) {
 		add_option( 'mtphr_widgets_general_settings' );
 	}
-	
+
 	/* Register the general options */
 	add_settings_section(
 		'mtphr_widgets_general_settings_section',				// ID used to identify this section and with which to register options
@@ -142,14 +142,14 @@ function mtphr_widgets_settings_display( $active_tab = null ) {
 	?>
 	<!-- Create a header in the default WordPress 'wrap' container -->
 	<div class="wrap">
-	
+
 		<div id="icon-themes" class="icon32"></div>
 		<h2><?php _e( 'Metaphor Widgets Settings', 'mtphr-widgets' ); ?></h2>
 		<?php settings_errors(); ?>
-		
+
 		<ul style="margin-bottom:20px;" class="subsubsub">
 		</ul>
-		
+
 		<br class="clear" />
 
 		<form method="post" action="options.php">
@@ -159,7 +159,7 @@ function mtphr_widgets_settings_display( $active_tab = null ) {
 			submit_button();
 			?>
 		</form>
-		
+
 	</div><!-- /.wrap -->
 	<?php
 }
@@ -170,12 +170,12 @@ function mtphr_widgets_settings_display( $active_tab = null ) {
 /**
  * General options section callback
  *
- * @since 2.0.7
+ * @since 2.0.9
  */
 function mtphr_widgets_general_settings_callback() {
 	?>
 	<div style="margin-bottom: 20px;">
-		<h4 style="margin-top:0;"><?php _e( 'Generate a pin from Twitter to grant access to Ditty Twitter Ticker', 'mtphr-widgets' ); ?></h4>
+		<h4 style="margin-top:0;"><?php _e( 'Generate a pin from Twitter to grant access to Metaphor Widgets', 'mtphr-widgets' ); ?></h4>
 	</div>
 	<?php
 }
@@ -187,31 +187,31 @@ function mtphr_widgets_general_settings_callback() {
  * The custom field callback.
  *
  * @since 2.0.7
- */ 
+ */
 function mtphr_widgets_settings_callback( $args ) {
-	
+
 	// First, we read the options collection
 	if( isset($args['option']) ) {
 		$options = get_option( $args['option'] );
 		$value = isset( $options[$args['option_id']] ) ? $options[$args['option_id']] : '';
 	} else {
 		$value = get_option( $args['id'] );
-	}	
+	}
 	if( $value == '' && isset($args['default']) ) {
 		$value = $args['default'];
 	}
 	if( isset($args['type']) ) {
-	
+
 		echo '<div class="mtphr-widgets-metaboxer-field mtphr-widgets-metaboxer-'.$args['type'].'">';
-		
+
 		// Call the function to display the field
 		if ( function_exists('mtphr_widgets_metaboxer_'.$args['type']) ) {
 			call_user_func( 'mtphr_widgets_metaboxer_'.$args['type'], $args, $value );
 		}
-		
+
 		echo '<div>';
 	}
-	
+
 	// Add a descriptions
 	if( isset($args['description']) ) {
 		echo '<span class="description"><small>'.$args['description'].'</small></span>';
@@ -230,30 +230,30 @@ function mtphr_widgets_metaboxer_authorize( $field, $value='' ) {
 
 	// Get the settings
 	$oauth = get_option('mtphr_widgets_twitter_oath', array());
-	
+
 	$tmhOAuth = new tmhOAuth(array(
 	  'consumer_key'    => 'KEEIyPyhpjNBrnYCjwDoNg',
 	  'consumer_secret' => '2jRa8Z5jWUnN8cDaiawTa6SPXZzWLkQJNWmL2z7ohc',
 	));
 
-	if( !isset($oauth['oauth_token']) ) { 
+	if( !isset($oauth['oauth_token']) ) {
 
 		$callback = 'oob';
 	  $params = array(
 	    'oauth_callback' => $callback
 	  );
-	
+
 	  $code = $tmhOAuth->request('POST', $tmhOAuth->url('oauth/request_token', ''), $params);
-	
+
 	  if ($code == 200) {
-	  	
-	  	// Update the settings with oauth  	
+
+	  	// Update the settings with oauth
 	  	$response = $tmhOAuth->extract_params($tmhOAuth->response['response']);
 	  	update_option( 'mtphr_widgets_twitter_oath', $response );
 
 	    $authurl = $tmhOAuth->url("oauth/authorize", '') .  "?oauth_token={$response['oauth_token']}";
 	    echo '<a target="_blank" href="'. $authurl . '">' . $authurl . '</a>';
-	
+
 	  } else {
 	    _e('<p><strong>There was an error connecting to Twitter.</strong><br/>Please reset the settings and try again in a couple minutes.</p>', 'mtphr-widgets');
 	    mtphr_widgets_metaboxer_twitter_reset();
@@ -272,7 +272,7 @@ function mtphr_widgets_metaboxer_authorize( $field, $value='' ) {
  * @since 2.0.7
  */
 function mtphr_widgets_twitter_tokens() {
-	
+
 	// Get the settings
 	$settings = get_option('mtphr_widgets_general_settings', array());
 	$oauth = get_option('mtphr_widgets_twitter_oath', array());
@@ -283,10 +283,10 @@ function mtphr_widgets_twitter_tokens() {
 	));
 
   if( isset($oauth['oauth_token']) && isset($settings['pin']) ) {
-	  
+
 	  $tmhOAuth->config['user_token']  = $oauth['oauth_token'];
 	  $tmhOAuth->config['user_secret'] = $oauth['oauth_token_secret'];
-	
+
 	  $code = $tmhOAuth->request('POST', $tmhOAuth->url('oauth/access_token', ''), array(
 	    'oauth_verifier' => $settings['pin']
 	  ));
@@ -295,11 +295,11 @@ function mtphr_widgets_twitter_tokens() {
 
 		  $access = $tmhOAuth->extract_params($tmhOAuth->response['response']);
 	    update_option( 'mtphr_widgets_twitter_access', $access );
-	    
+
 	    // Delete the cached files
 	    mtphr_widgets_twitter_delete_cache();
 	    return true;
-	    
+
 	  } else {
 	  	return false;
 	  }
@@ -319,7 +319,7 @@ function mtphr_widgets_twitter_tokens() {
 function mtphr_widgets_metaboxer_access_tokens( $field, $value='' ) {
 
 	$access = get_option('mtphr_widgets_twitter_access', array());
-	
+
 	echo '<p>'.__('Screen name:', 'mtphr-widgets').' <strong>'.$access['screen_name'].'</strong></p>';
 	echo '<p>'.__('User ID:', 'mtphr-widgets').' <strong>'.$access['user_id'].'</strong></p>';
 	echo '<p>'.__('Access token:', 'mtphr-widgets').' <strong>'.$access['oauth_token'].'</strong></p>';
@@ -364,11 +364,11 @@ function mtphr_widgets_metaboxer_twitter_test( $field, $value='' ) {
 	echo '<strong>mtphr_widgets_general_settings</strong><br/>';
 	$settings = get_option('mtphr_widgets_general_settings', array());
 	print_r( $settings );
-	
+
 	echo '<p>&nbsp;</p><strong>mtphr_widgets_twitter_oath</strong><br/>';
 	$oauth = get_option('mtphr_widgets_twitter_oath', array());
 	print_r( $oauth );
-	
+
 	echo '<p>&nbsp;</p><strong>mtphr_widgets_twitter_access</strong><br/>';
 	$access = get_option('mtphr_widgets_twitter_access', array());
 	print_r( $access );
@@ -389,16 +389,16 @@ function mtphr_widgets_twitter_reset() {
 	jQuery( document ).ready( function($) {
 		$('.mtphr-widgets-twitter-reset').click( function(e) {
 			e.preventDefault();
-			
+
 			var $spinner = $(this).next();
 			$spinner.show();
-			
+
 			// Create the display
 			var data = {
 				action: 'mtphr_widgets_twitter_ajax_reset',
 				security: '<?php echo wp_create_nonce('mtphr-widgets'); ?>'
 			};
-		
+
 			// since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
 			jQuery.post( ajaxurl, data, function( response ) {
 				if( response ) {
@@ -419,17 +419,17 @@ add_action( 'wp_ajax_mtphr_widgets_twitter_ajax_reset', 'mtphr_widgets_twitter_a
  * @since 2.0.7
  */
 function mtphr_widgets_twitter_ajax_reset() {
-	
+
 	// Get access to the database
 	global $wpdb;
-	
+
 	// Check the nonce
 	check_ajax_referer( 'mtphr-widgets', 'security' );
-	
+
 	delete_option( 'mtphr_widgets_twitter_oath' );
 	delete_option( 'mtphr_widgets_twitter_access' );
 	delete_option( 'mtphr_widgets_general_settings' );
-	
+
 	return true;
 
 	die(); // this is required to return a proper result
