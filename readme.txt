@@ -109,6 +109,9 @@ Check out the 'Installation' tab.
 
 == Changelog ==
 
+= 2.1.0 =
+* Fixed 'Read More' attribute to Recent Posts widget.
+
 = 2.0.9 =
 * Fixed localization script.
 * Added alt tag to Twitter widget avatar.
@@ -149,6 +152,9 @@ Check out the 'Installation' tab.
 * Added shortcodes to all widgets.
 
 == Upgrade Notice ==
+
+= 2.1.0 =
+Fixed 'Read More' attribute to Recent Posts widget
 
 = 2.0.9 =
 Fixed localization script. Added alt tag to Twitter widget avatar. Added it_IT.mo & it_IT.po files. Added Tabbed Posts widget. Added 'Read More' attribute to Recent Posts widget. Removed extra quote after Contact widget shortcode generation.

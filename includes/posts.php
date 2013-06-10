@@ -47,7 +47,7 @@ function mtphr_posts_widget() {
 /**
  * Display the widget
  *
- * @since 2.0.7
+ * @since 2.1.0
  */
 function widget( $args, $instance ) {
 
@@ -112,7 +112,7 @@ if ( $excerpt_length == 0 ) {
 			$output .= mtphr_widgets_post_excerpt( $excerpt_length );
 		}
 		if( $read_more != '' ) {
-			$output .= '<span class="readmore-wrapper"><a class="readmore" href="'.get_permalink().'">Read more</a></span>';
+			$output .= '<span class="readmore-wrapper"><a class="readmore" href="'.get_permalink().'">'.$read_more.'</a></span>';
 		}
 		$output .= '</li>';
 
