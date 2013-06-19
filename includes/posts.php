@@ -47,7 +47,7 @@ function mtphr_posts_widget() {
 /**
  * Display the widget
  *
- * @since 2.1.0
+ * @since 2.1.1
  */
 function widget( $args, $instance ) {
 
@@ -107,13 +107,14 @@ if ( $excerpt_length == 0 ) {
 	while ( $wp_query->have_posts() ) : $wp_query->the_post();
 
 		$output .= '<li>';
-		$output .= '<a class="mtphr-posts-widget-title" href="'.get_permalink().'">'.get_the_title().'</a> ';
+		$content = '<a class="mtphr-posts-widget-title" href="'.get_permalink().'">'.get_the_title().'</a> ';
 		if( $excerpt_length > 0 ) {
-			$output .= mtphr_widgets_post_excerpt( $excerpt_length );
+			$content .= mtphr_widgets_post_excerpt( $excerpt_length );
 		}
 		if( $read_more != '' ) {
-			$output .= '<span class="readmore-wrapper"><a class="readmore" href="'.get_permalink().'">'.$read_more.'</a></span>';
+			$content .= '<span class="readmore-wrapper"><a class="readmore" href="'.get_permalink().'">'.$read_more.'</a></span>';
 		}
+		$output .= apply_filters( 'mtphr_widgets_posts_content', $content, $excerpt_length, $read_more );
 		$output .= '</li>';
 
 	endwhile;

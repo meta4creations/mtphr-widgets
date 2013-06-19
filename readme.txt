@@ -109,6 +109,10 @@ Check out the 'Installation' tab.
 
 == Changelog ==
 
+= 2.1.1 =
+* Added 'mtphr_widgets_posts_content' filter to posts widget.
+* Fixed php short code in the settings.php file.
+
 = 2.1.0 =
 * Fixed 'Read More' attribute to Recent Posts widget.
 
@@ -152,6 +156,9 @@ Check out the 'Installation' tab.
 * Added shortcodes to all widgets.
 
 == Upgrade Notice ==
+
+= 2.1.1 =
+Added 'mtphr_widgets_posts_content' filter to posts widget. Fixed php short code in the settings.php file.
 
 = 2.1.0 =
 Fixed 'Read More' attribute to Recent Posts widget

@@ -381,7 +381,7 @@ add_action('admin_footer', 'mtphr_widgets_twitter_reset');
 /**
  * Add reset jQuery
  *
- * @since 2.0.7
+ * @since 2.1.1
  */
 function mtphr_widgets_twitter_reset() {
 	?>
@@ -409,7 +409,7 @@ function mtphr_widgets_twitter_reset() {
 		});
 	});
 	</script>
-	<?
+	<?php
 }
 
 add_action( 'wp_ajax_mtphr_widgets_twitter_ajax_reset', 'mtphr_widgets_twitter_ajax_reset' );
