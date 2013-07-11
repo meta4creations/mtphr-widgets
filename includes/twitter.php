@@ -47,7 +47,7 @@ function mtphr_twitter_widget() {
 /**
  * Display the widget
  *
- * @since 2.0.0
+ * @since 2.1.2
  */
 function widget( $args, $instance ) {
 
@@ -75,8 +75,12 @@ function widget( $args, $instance ) {
 		echo $before_title . $title . $after_title;
 	}
 
-	// Display the twitter feed
-	mtphr_twitter_widget_feed( $twitter_name, $widget_limit, $twitter_image, $twitter_avatar );
+	if( !mtphr_widgets_check_twitter_access() ) {
+		echo __( 'Twitter feed must be authorized.', 'mtphr-widgets' );
+	} else {
+		// Display the twitter feed
+		mtphr_twitter_widget_feed( $twitter_name, $widget_limit, $twitter_image, $twitter_avatar );
+	}
 
 	// After widget (defined by themes)
 	echo $after_widget;
@@ -105,7 +109,7 @@ function update( $new_instance, $old_instance ) {
 /**
  * Widget settings
  *
- * @since 2.0.0
+ * @since 2.1.2
  */
 function form( $instance ) {
 
@@ -119,64 +123,73 @@ function form( $instance ) {
 		'advanced' => ''
 	);
 
-	$instance = wp_parse_args( (array) $instance, $defaults ); ?>
+	$instance = wp_parse_args( (array) $instance, $defaults );
 
-  <!-- Widget Title: Text Input -->
-	<p>
-		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'mtphr-widgets' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:97%;" />
-	</p>
+	if( !mtphr_widgets_check_twitter_access() ) {
+		$link = admin_url().'plugins.php?page=mtphr_widgets_settings'; ?>
 
-  <!-- Twitter Username: Text Input -->
-	<p>
-		<label for="<?php echo $this->get_field_id( 'twitter_name' ); ?>"><?php _e( 'Twitter Username:', 'mtphr-widgets' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'twitter_name' ); ?>" name="<?php echo $this->get_field_name( 'twitter_name' ); ?>" value="<?php echo $instance['twitter_name']; ?>" style="width:97%;" />
-	</p>
+    <div>
+       <p><?php _e('You must authorize <strong>Metaphor Widgets</strong> access through Twitter before you can display any feeds.', 'mtphr-widgets'); ?><br/><br/><?php printf( __('<a href="%s"><strong>Click here</strong></a> to generate a pin and grant acces to <strong>Metaphor Widgets</strong>.', 'mtphr-widgets'), $link ); ?></p>
+    </div>
 
-  <!-- Widget Limit: Text Input -->
-	<p>
-		<label for="<?php echo $this->get_field_id( 'widget_limit' ); ?>"><?php _e( 'Number of Tweets:', 'mtphr-widgets' ); ?></label><br/>
-		<input class="widefat" type="number" id="<?php echo $this->get_field_id( 'widget_limit' ); ?>" name="<?php echo $this->get_field_name( 'widget_limit' ); ?>" value="<?php echo $instance['widget_limit']; ?>" style="width:50px;" />
-	</p>
+  <?php } else { ?>
 
-	<!-- Display Widget Image: Checkbox -->
-	<p>
-		<input class="checkbox" type="checkbox" <?php checked( $instance['widget_image'], 'on' ); ?> id="<?php echo $this->get_field_id( 'widget_image' ); ?>" name="<?php echo $this->get_field_name( 'widget_image' ); ?>" />
-		<label for="<?php echo $this->get_field_id( 'widget_image' ); ?>"><?php _e( 'Show Icon?', 'mtphr-widgets' ); ?></label>
-		&nbsp;
-		<!-- Use Avatar: Checkbox -->
-		<input class="checkbox" type="checkbox" <?php checked( $instance['widget_avatar'], 'on' ); ?> id="<?php echo $this->get_field_id( 'widget_avatar' ); ?>" name="<?php echo $this->get_field_name( 'widget_avatar' ); ?>" />
-		<label for="<?php echo $this->get_field_id( 'widget_avatar' ); ?>"><?php _e( 'Use Avatar?', 'mtphr-widgets' ); ?></label>
-	</p>
+	  <!-- Widget Title: Text Input -->
+		<p>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'mtphr-widgets' ); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:97%;" />
+		</p>
 
-	<!-- Advanced: Checkbox -->
-	<p class="mtphr-widget-advanced">
-		<input class="checkbox" type="checkbox" <?php checked( $instance['advanced'], 'on' ); ?> id="<?php echo $this->get_field_id( 'advanced' ); ?>" name="<?php echo $this->get_field_name( 'advanced' ); ?>" />
-		<label for="<?php echo $this->get_field_id( 'advanced' ); ?>"><?php _e( 'Show Advanced Info', 'mtphr-widgets' ); ?></label>
-	</p>
+	  <!-- Twitter Username: Text Input -->
+		<p>
+			<label for="<?php echo $this->get_field_id( 'twitter_name' ); ?>"><?php _e( 'Twitter Username:', 'mtphr-widgets' ); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'twitter_name' ); ?>" name="<?php echo $this->get_field_name( 'twitter_name' ); ?>" value="<?php echo $instance['twitter_name']; ?>" style="width:97%;" />
+		</p>
 
-	<!-- Widget ID: Text -->
-	<p class="mtphr-widget-id">
-		<label for="<?php echo $this->get_field_id( 'widget_id' ); ?>"><?php _e( 'Widget ID:', 'mtphr-widgets' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'widget_id' ); ?>" name="<?php echo $this->get_field_name( 'widget_id' ); ?>" value="<?php echo substr( $this->get_field_id(''), 0, -1 ); ?>" style="width:97%;" disabled />
-	</p>
+	  <!-- Widget Limit: Text Input -->
+		<p>
+			<label for="<?php echo $this->get_field_id( 'widget_limit' ); ?>"><?php _e( 'Number of Tweets:', 'mtphr-widgets' ); ?></label><br/>
+			<input class="widefat" type="number" id="<?php echo $this->get_field_id( 'widget_limit' ); ?>" name="<?php echo $this->get_field_name( 'widget_limit' ); ?>" value="<?php echo $instance['widget_limit']; ?>" style="width:50px;" />
+		</p>
 
-	<!-- Shortcode -->
-	<span class="mtphr-widget-shortcode">
-		<label><?php _e( 'Shortcode:', 'mtphr-widgets' ); ?></label>
-		<?php
-		$shortcode = '[mtphr_twitter_widget';
-		$shortcode .= ( $instance['title'] != '' ) ? ' title="'.$instance['title'].'"' : '';
-		$shortcode .= ( $instance['twitter_name'] != '' ) ? ' twitter_name="'.$instance['twitter_name'].'"' : '';
-		$shortcode .= ( $instance['widget_limit'] != '' ) ? ' limit="'.$instance['widget_limit'].'"' : '';
-		$shortcode .= ( $instance['widget_image'] != '' ) ? ' image="'.$instance['widget_image'].'"' : '';
-		$shortcode .= ( $instance['widget_avatar'] != '' ) ? ' avatar="'.$instance['widget_avatar'].'"' : '';
-		$shortcode .= ']';
-		?>
-		<pre class="mtphr-widgets-code"><p><?php echo $shortcode; ?></p></pre>
-	</span>
+		<!-- Display Widget Image: Checkbox -->
+		<p>
+			<input class="checkbox" type="checkbox" <?php checked( $instance['widget_image'], 'on' ); ?> id="<?php echo $this->get_field_id( 'widget_image' ); ?>" name="<?php echo $this->get_field_name( 'widget_image' ); ?>" />
+			<label for="<?php echo $this->get_field_id( 'widget_image' ); ?>"><?php _e( 'Show Icon?', 'mtphr-widgets' ); ?></label>
+			&nbsp;
+			<!-- Use Avatar: Checkbox -->
+			<input class="checkbox" type="checkbox" <?php checked( $instance['widget_avatar'], 'on' ); ?> id="<?php echo $this->get_field_id( 'widget_avatar' ); ?>" name="<?php echo $this->get_field_name( 'widget_avatar' ); ?>" />
+			<label for="<?php echo $this->get_field_id( 'widget_avatar' ); ?>"><?php _e( 'Use Avatar?', 'mtphr-widgets' ); ?></label>
+		</p>
 
-	<?php
+		<!-- Advanced: Checkbox -->
+		<p class="mtphr-widget-advanced">
+			<input class="checkbox" type="checkbox" <?php checked( $instance['advanced'], 'on' ); ?> id="<?php echo $this->get_field_id( 'advanced' ); ?>" name="<?php echo $this->get_field_name( 'advanced' ); ?>" />
+			<label for="<?php echo $this->get_field_id( 'advanced' ); ?>"><?php _e( 'Show Advanced Info', 'mtphr-widgets' ); ?></label>
+		</p>
+
+		<!-- Widget ID: Text -->
+		<p class="mtphr-widget-id">
+			<label for="<?php echo $this->get_field_id( 'widget_id' ); ?>"><?php _e( 'Widget ID:', 'mtphr-widgets' ); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'widget_id' ); ?>" name="<?php echo $this->get_field_name( 'widget_id' ); ?>" value="<?php echo substr( $this->get_field_id(''), 0, -1 ); ?>" style="width:97%;" disabled />
+		</p>
+
+		<!-- Shortcode -->
+		<span class="mtphr-widget-shortcode">
+			<label><?php _e( 'Shortcode:', 'mtphr-widgets' ); ?></label>
+			<?php
+			$shortcode = '[mtphr_twitter_widget';
+			$shortcode .= ( $instance['title'] != '' ) ? ' title="'.$instance['title'].'"' : '';
+			$shortcode .= ( $instance['twitter_name'] != '' ) ? ' twitter_name="'.$instance['twitter_name'].'"' : '';
+			$shortcode .= ( $instance['widget_limit'] != '' ) ? ' limit="'.$instance['widget_limit'].'"' : '';
+			$shortcode .= ( $instance['widget_image'] != '' ) ? ' image="'.$instance['widget_image'].'"' : '';
+			$shortcode .= ( $instance['widget_avatar'] != '' ) ? ' avatar="'.$instance['widget_avatar'].'"' : '';
+			$shortcode .= ']';
+			?>
+			<pre class="mtphr-widgets-code"><p><?php echo $shortcode; ?></p></pre>
+		</span>
+
+	<?php } // End else statement
 }
 }
 
@@ -329,6 +342,8 @@ function mtphr_display_twitter_widget_feed( $twitter_feed, $widget_limit, $twitt
 					$output .= '<span class="mtphr-twitter-widget-image">';
 					if( $twitter_avatar ) {
 						$output .= '<img src="'.$twitter_user_avatar.'" alt="'.$twitter_name.'" />';
+					} else {
+						$output .= '<i class="mtphr-socon-twitter"></i>';
 					}
 					$output .= '</span>';
 				} else {

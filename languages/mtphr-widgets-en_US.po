@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Metaphor Widgets v2.0.9\n"
+"Project-Id-Version: Metaphor Widgets v2.1.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2013-06-07 14:42:32+0000\n"
+"PO-Revision-Date: 2013-07-11 16:20:06+0000\n"
 "Last-Translator: admin <joe@metaphorcreations.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -40,22 +40,22 @@ msgstr "%s ago"
 #: includes/comments.php:156
 #: includes/contact.php:159
 #: includes/navigation.php:162
-#: includes/posts.php:179
+#: includes/posts.php:180
 #: includes/social.php:151
 #: includes/tabbed-posts.php:196
-#: includes/twitter.php:126
+#: includes/twitter.php:139
 #@ mtphr-widgets
 msgid "Title:"
 msgstr "Title:"
 
-#: includes/posts.php:185
+#: includes/posts.php:186
 #: includes/tabbed-posts.php:202
 #@ mtphr-widgets
 msgid "Number of Posts:"
 msgstr "Number of Posts:"
 
 #: includes/comments.php:168
-#: includes/posts.php:191
+#: includes/posts.php:192
 #: includes/tabbed-posts.php:208
 #@ mtphr-widgets
 msgid "Excerpt Length:"
@@ -70,10 +70,10 @@ msgstr "Show Avatar?"
 #: includes/comments.php:181
 #: includes/contact.php:205
 #: includes/navigation.php:216
-#: includes/posts.php:237
+#: includes/posts.php:238
 #: includes/social.php:203
 #: includes/tabbed-posts.php:221
-#: includes/twitter.php:155
+#: includes/twitter.php:168
 #@ mtphr-widgets
 msgid "Show Advanced Info"
 msgstr "Show Advanced Info"
@@ -82,10 +82,10 @@ msgstr "Show Advanced Info"
 #: includes/comments.php:186
 #: includes/contact.php:210
 #: includes/navigation.php:221
-#: includes/posts.php:242
+#: includes/posts.php:243
 #: includes/social.php:208
 #: includes/tabbed-posts.php:226
-#: includes/twitter.php:160
+#: includes/twitter.php:173
 #@ mtphr-widgets
 msgid "Widget ID:"
 msgstr "Widget ID:"
@@ -94,10 +94,10 @@ msgstr "Widget ID:"
 #: includes/comments.php:192
 #: includes/contact.php:216
 #: includes/navigation.php:227
-#: includes/posts.php:248
+#: includes/posts.php:249
 #: includes/social.php:214
 #: includes/tabbed-posts.php:232
-#: includes/twitter.php:166
+#: includes/twitter.php:179
 #@ mtphr-widgets
 msgid "Shortcode:"
 msgstr "Shortcode:"
@@ -113,19 +113,19 @@ msgid "Metaphor Contact"
 msgstr "Metaphor Contact"
 
 #: includes/contact.php:135
-#: includes/functions.php:243
+#: includes/functions.php:244
 #@ mtphr-widgets
 msgid "Email"
 msgstr "Email"
 
 #: includes/contact.php:139
-#: includes/functions.php:250
+#: includes/functions.php:251
 #@ mtphr-widgets
 msgid "Tel"
 msgstr "Tel"
 
 #: includes/contact.php:143
-#: includes/functions.php:257
+#: includes/functions.php:258
 #@ mtphr-widgets
 msgid "Fax"
 msgstr "Fax"
@@ -152,12 +152,12 @@ msgstr "Displays recent posts."
 msgid "Metaphor Recent Posts"
 msgstr "Metaphor Recent Posts"
 
-#: includes/posts.php:204
+#: includes/posts.php:205
 #@ mtphr-widgets
 msgid "Author:"
 msgstr "Author:"
 
-#: includes/posts.php:218
+#: includes/posts.php:219
 #@ mtphr-widgets
 msgid "Category:"
 msgstr "Category:"
@@ -197,37 +197,37 @@ msgstr "Displays a users latest twitter comments."
 msgid "Metaphor Twitter Feed"
 msgstr "Metaphor Twitter Feed"
 
-#: includes/twitter.php:132
+#: includes/twitter.php:145
 #@ mtphr-widgets
 msgid "Twitter Username:"
 msgstr "Twitter Username:"
 
-#: includes/twitter.php:138
+#: includes/twitter.php:151
 #@ mtphr-widgets
 msgid "Number of Tweets:"
 msgstr "Number of Tweets:"
 
-#: includes/twitter.php:145
+#: includes/twitter.php:158
 #@ mtphr-widgets
 msgid "Show Icon?"
 msgstr "Show Icon?"
 
-#: includes/twitter.php:149
+#: includes/twitter.php:162
 #@ mtphr-widgets
 msgid "Use Avatar?"
 msgstr "Use Avatar?"
 
-#: includes/twitter.php:313
+#: includes/twitter.php:326
 #@ mtphr-widgets
 msgid "Error"
 msgstr "Error"
 
-#: includes/twitter.php:337
+#: includes/twitter.php:352
 #@ mtphr-widgets
 msgid "ago"
 msgstr "ago"
 
-#: includes/twitter.php:342
+#: includes/twitter.php:357
 #@ mtphr-widgets
 msgid "Sorry, but there was a problem connecting to the API."
 msgstr "Sorry, but there was a problem connecting to the API."
@@ -305,7 +305,7 @@ msgstr "Previous link text:"
 msgid "Next link text:"
 msgstr "Next link text:"
 
-#: includes/posts.php:166
+#: includes/posts.php:167
 #: includes/tabbed-posts.php:185
 #@ mtphr-widgets
 msgid "Blog Posts"
@@ -316,7 +316,7 @@ msgstr "Blog Posts"
 msgid "Get Social"
 msgstr "Get Social"
 
-#: includes/twitter.php:114
+#: includes/twitter.php:118
 #@ mtphr-widgets
 msgid "Recent Tweets"
 msgstr "Recent Tweets"
@@ -356,12 +356,7 @@ msgstr "Heading"
 msgid "Query order:"
 msgstr "Query order:"
 
-#: includes/functions.php:314
-#@ mtphr-widgets
-msgid "You (now) must authorize <strong>Metaphor Widgets</strong> access through Twitter before you can display any feeds."
-msgstr "You (now) must authorize <strong>Metaphor Widgets</strong> access through Twitter before you can display any feeds."
-
-#: includes/functions.php:314
+#: includes/twitter.php:132
 #, php-format
 #@ mtphr-widgets
 msgid "<a href=\"%s\"><strong>Click here</strong></a> to generate a pin and grant acces to <strong>Metaphor Widgets</strong>."
@@ -434,12 +429,12 @@ msgid "<strong>There was an error accessing your account.</strong><br/>Please re
 msgstr "<strong>There was an error accessing your account.</strong><br/>Please reset the settings and try again in a couple minutes."
 
 #: includes/posts.php:63
-#: includes/posts.php:169
+#: includes/posts.php:170
 #@ mtphr-widgets
 msgid "Read more"
 msgstr "Read more"
 
-#: includes/posts.php:197
+#: includes/posts.php:198
 #@ mtphr-widgets
 msgid "More Text :"
 msgstr "More Text :"
@@ -468,4 +463,14 @@ msgstr "Recent"
 #@ mtphr-widgets
 msgid "Date Format:"
 msgstr "Date Format:"
+
+#: includes/twitter.php:79
+#@ mtphr-widgets
+msgid "Twitter feed must be authorized."
+msgstr "Twitter feed must be authorized."
+
+#: includes/twitter.php:132
+#@ mtphr-widgets
+msgid "You must authorize <strong>Metaphor Widgets</strong> access through Twitter before you can display any feeds."
+msgstr "You must authorize <strong>Metaphor Widgets</strong> access through Twitter before you can display any feeds."
 

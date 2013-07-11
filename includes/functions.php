@@ -124,7 +124,7 @@ function mtphr_widgets_comment_excerpt( $excerpt, $charlength ) {
 /**
  * Get an array of social links
  *
- * @since 2.0.0
+ * @since 2.1.2
  */
 function mtphr_widgets_social_sites() {
 
@@ -133,8 +133,9 @@ function mtphr_widgets_social_sites() {
 		'facebook' => 'Facebook',
 		'linkedin' => 'LinkedIn',
 		'googleplus' => 'Google+',
+		'pinterest' => 'Pinterest',
 		'flickr' => 'Flickr',
-		'tridadvisor' => 'TripAdvisor',
+		'tripadvisor' => 'TripAdvisor',
 		'reddit' => 'reddit',
 		'posterous' => 'Posterous',
 		'plurk' => 'Plurk',
@@ -293,28 +294,6 @@ function mtphr_widgets_social_site_css() {
 			$top = intval($top+1);
 		}
 	}
-}
-
-
-
-
-add_action('admin_notices', 'mtphr_widgets_settings_notice');
-/**
- * Create an admin notice to create settings
- *
- * @since 2.0.7
- */
-function mtphr_widgets_settings_notice(){
-
-	if( !mtphr_widgets_check_twitter_access() ) {
-
-		$link = admin_url().'plugins.php?page=mtphr_widgets_settings';
-		?>
-    <div class="updated">
-       <p><?php _e('You (now) must authorize <strong>Metaphor Widgets</strong> access through Twitter before you can display any feeds.', 'mtphr-widgets'); ?><br/><?php printf( __('<a href="%s"><strong>Click here</strong></a> to generate a pin and grant acces to <strong>Metaphor Widgets</strong>.', 'mtphr-widgets'), $link ); ?></p>
-    </div>
-    <?php
-  }
 }
 
 

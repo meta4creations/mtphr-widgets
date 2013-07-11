@@ -55,11 +55,15 @@ add_action( 'wp_enqueue_scripts', 'mtphr_widgets_scripts' );
 /**
  * Register scripts
  *
- * @since 2.0.9
+ * @since 2.1.2
  */
 function mtphr_widgets_scripts(){
 
-	// Load the global widgets stylesheet
+	// Load the social stylesheet
+	wp_register_style( 'socialfont', MTPHR_WIDGETS_URL.'/assets/css/socialfont.css', false, MTPHR_WIDGETS_VERSION );
+  wp_enqueue_style( 'socialfont' );
+
+  // Load the global widgets stylesheet
 	wp_register_style( 'mtphr-widgets', MTPHR_WIDGETS_URL.'/assets/css/style.css', false, MTPHR_WIDGETS_VERSION );
   wp_enqueue_style( 'mtphr-widgets' );
 

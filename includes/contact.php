@@ -48,7 +48,7 @@ function mtphr_contact_widget() {
 /**
  * Display the widget
  *
- * @since 2.0.7
+ * @since 2.1.2
  */
 function widget( $args, $instance ) {
 
@@ -81,7 +81,7 @@ function widget( $args, $instance ) {
 
 			echo '<tr class="mtphr-contact-widget-info">';
 			if( $info['title'] != '' ) {
-				echo '<td class="mtphr-contact-widget-title"><p>'.sanitize_text_field($info['title']).'</p></td>';
+				echo '<td class="mtphr-contact-widget-title"><p>'.nl2br(wp_kses_post($info['title'])).'</p></td>';
 				echo '<td><p>'.make_clickable(nl2br(wp_kses_post($info['description']))).'</p></td>';
 			} else {
 				echo '<td colspan="2"><p>'.make_clickable(nl2br(wp_kses_post($info['description']))).'</p></td>';
@@ -221,7 +221,7 @@ function form( $instance ) {
 		if( isset($instance['contact_info'][0]) ) {
 			$all_info = '';
 			foreach( $instance['contact_info'] as $info ) {
-				$all_info .= sanitize_text_field($info['title']).'***'.esc_attr(nl2br($info['description'])).':::';
+				$all_info .= esc_attr(nl2br($info['title'])).'***'.esc_attr(nl2br($info['description'])).':::';
 			}
 			$all_info = substr( $all_info, 0, -3 );
 			$shortcode .= $all_info;
