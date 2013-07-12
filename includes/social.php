@@ -48,7 +48,7 @@ function mtphr_social_widget() {
 /**
  * Display the widget
  *
- * @since 2.1.2
+ * @since 2.1.3
  */
 function widget( $args, $instance ) {
 
@@ -83,7 +83,7 @@ function widget( $args, $instance ) {
 		echo '<div class="mtphr-social-widget-links clearfix">';
 
 		foreach( $sites as $site ) {
-			echo '<a class="mtphr-social-widget-site" href="'.esc_url($site['link']).'"'.$t.'><i class="mtphr-socon-'.$site['site'].'"></i></a>';
+			echo '<a class="mtphr-social-widget-site mtphr-social-widget-'.$site['site'].'" href="'.esc_url($site['link']).'"'.$t.'><i class="mtphr-socon-'.$site['site'].'"></i></a>';
 		}
 
 		echo '</div>';

@@ -109,6 +109,9 @@ Check out the 'Installation' tab.
 
 == Changelog ==
 
+= 2.1.3 =
+* Added site classes back to social site links.
+
 = 2.1.2 =
 * Replaced social icon sprites with custom social font.
 * PHP & CSS adjustments made due to implementation of custom font.
@@ -164,6 +167,9 @@ Check out the 'Installation' tab.
 * Added shortcodes to all widgets.
 
 == Upgrade Notice ==
+
+= 2.1.3 =
+Added site classes back to social site links.
 
 = 2.1.2 =
 Replaced social icon sprites with custom social font. PHP & CSS adjustments made due to implementation of custom font. Added Pinterest to social widget. Minor update to Contact widget code. Moved Twitter admin notice into the widget. Updated English & Italian tanslation files.
