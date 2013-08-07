@@ -235,8 +235,7 @@ function form( $instance ) {
 		$shortcode .= ( $instance['title'] != '' ) ? ' title="'.$instance['title'].'"' : '';
 		$shortcode .= ( $instance['widget_limit'] != '' ) ? ' limit="'.$instance['widget_limit'].'"' : '';
 		$shortcode .= ( $instance['excerpt_length'] != '' ) ? ' excerpt_length="'.$instance['excerpt_length'].'"' : '';
-		$shortcode .= ( $instance['author'] != '' ) ? ' author="'.$instance['author'].'"' : '';
-		$shortcode .= ( $instance['category'] != '' ) ? ' category="'.$instance['category'].'"' : '';
+		$shortcode .= ( $instance['date_format'] != '' ) ? ' date_format="'.$instance['date_format'].'"' : '';
 		$shortcode .= ']';
 		?>
 		<pre class="mtphr-widgets-code"><p><?php echo $shortcode; ?></p></pre>

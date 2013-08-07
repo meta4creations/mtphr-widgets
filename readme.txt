@@ -1,79 +1,27 @@
 === Metaphor Widgets ===
 Contributors: metaphorcreations
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FUZKZGAJSBAE6
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TYB7K2E538T3L
 Tags: widgets, posts, comments, social, twitter, contact, post navigation, navigation, collapse, content
 Requires at least: 3.0.1
-Tested up to: 3.5.1
+Tested up to: 3.6
 Stable tag: /trunk/
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Adds the following widgets: Twitter, Social, Recent Comments, Recent Posts, Contact, Post Navigation, Collapse
+Custom pack of widgets including shortcode generators.
 
 == Description ==
 
-Adds the following widgets: **Twitter**, **Social**, **Recent Comments**, **Recent Posts**, **Contact**, **Post Navigation**, **Collapse**.
+Custom pack of widgets including shortcode generators.
 
-### Twitter Widget
-Create a twitter feed to display your latest tweets. Options include:
-
-* Title
-* Twitter Username
-* Number of Tweets
-* Show (twitter) Icon
-* Use (user) Avatar
-
-
-### Social Widget
-Display an unlimited list of your social site links. Options include:
-
-* Title
-* Dynamically created website list
-* Open links in a new window/tab
-
-
-### Recent Comments Widget
-Display your sites most recent comments. Options include:
-
-* Title
-* Number of Comments
-* Excerpt Length
-* Show Avatar
-
-
-### Recent Posts Widget
-Display your sites most recent posts. Options include:
-
-* Title
-* Number of Posts
-* Excerpt Length
-* Author
-* Category
-
-
-### Contact Widget
-Create an unlimited list of contact info (or a listing of anything else). Showing a title and description. Options include:
-
-* Title
-* Dynamically created list of Titles & Descriptions
-
-
-### Post Navigation
-Add looping post navigation to single posts, including a "home" link. Options include:
-
-* Title
-* Home link text
-* Custom home link
-* Previous link text
-* Next link text
-
-
-### Collapse Widget
-Create an unlimited list of collapsible content. Showing a heading and description. Options include:
-
-* Title
-* Dynamically created list of Headings & Descriptions
-
+* Twitter
+* Social
+* Recent Comments
+* Recent Posts
+* Tabbed Posts
+* Contact
+* Post Navigation
+* Collapse
 
 ### Advanced Info
 Each widget includes a **shortcode generator**. Copy and paste the shortcodes into your posts to display the widget contents anywhere on your site.
@@ -108,6 +56,15 @@ Check out the 'Installation' tab.
 8. Widget/Shortcode Display
 
 == Changelog ==
+
+= 2.1.5 =
+* Added taxonomy filter to post navigation widget.
+* Updated post navigation shotcode generator and output.
+* Added tabbed posts widget shortcode.
+* Fixed Twitter widget time offset.
+
+= 2.1.4 =
+* Updated metphr-tabbed-posts.js file.
 
 = 2.1.3 =
 * Added site classes back to social site links.
@@ -168,44 +125,4 @@ Check out the 'Installation' tab.
 
 == Upgrade Notice ==
 
-= 2.1.3 =
-Added site classes back to social site links.
-
-= 2.1.2 =
-Replaced social icon sprites with custom social font. PHP & CSS adjustments made due to implementation of custom font. Added Pinterest to social widget. Minor update to Contact widget code. Moved Twitter admin notice into the widget. Updated English & Italian tanslation files.
-
-= 2.1.1 =
-Added 'mtphr_widgets_posts_content' filter to posts widget. Fixed php short code in the settings.php file.
-
-= 2.1.0 =
-Fixed 'Read More' attribute to Recent Posts widget
-
-= 2.0.9 =
-Fixed localization script. Added alt tag to Twitter widget avatar. Added it_IT.mo & it_IT.po files. Added Tabbed Posts widget. Added 'Read More' attribute to Recent Posts widget. Removed extra quote after Contact widget shortcode generation.
-
-= 2.0.8 =
-Added class check for tmhOAuth.
-
-= 2.0.7 =
-Added settings page to connect to Twitter API. Updated widgets for smooth transition from older plugins.
-
-= 2.0.6 =
-Minor update to Collapse widget description output.
-
-= 2.0.5 =
-Added retina images.
-
-= 2.0.4 =
-Updated to make sure the collapse widget was included.
-
-= 2.0.3 =
-Added collapse widget. Modified contact shortcode output.
-
-= 2.0.2 =
-Fixed bug in shortcode.
-
-= 2.0.1 =
-Fixed bug in shortcode. Updated navigation widget with order and orderby parameters.
-
-= 2.0.0 =
-Updated all widgets. Added shortcodes to all widgets.
+Added taxonomy filter to post navigation widget. Fixed Twitter widget time offset. Additional widget shortcode updates.

@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Metaphor Widgets v2.1.2\n"
+"Project-Id-Version: Metaphor Widgets v2.1.5\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2013-07-11 16:20:06+0000\n"
+"PO-Revision-Date: 2013-08-07 14:34:48+0000\n"
 "Last-Translator: admin <joe@metaphorcreations.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -39,7 +39,7 @@ msgstr "%s ago"
 #: includes/collapse.php:128
 #: includes/comments.php:156
 #: includes/contact.php:159
-#: includes/navigation.php:162
+#: includes/navigation.php:187
 #: includes/posts.php:180
 #: includes/social.php:151
 #: includes/tabbed-posts.php:196
@@ -69,7 +69,7 @@ msgstr "Show Avatar?"
 #: includes/collapse.php:174
 #: includes/comments.php:181
 #: includes/contact.php:205
-#: includes/navigation.php:216
+#: includes/navigation.php:268
 #: includes/posts.php:238
 #: includes/social.php:203
 #: includes/tabbed-posts.php:221
@@ -81,7 +81,7 @@ msgstr "Show Advanced Info"
 #: includes/collapse.php:179
 #: includes/comments.php:186
 #: includes/contact.php:210
-#: includes/navigation.php:221
+#: includes/navigation.php:273
 #: includes/posts.php:243
 #: includes/social.php:208
 #: includes/tabbed-posts.php:226
@@ -93,7 +93,7 @@ msgstr "Widget ID:"
 #: includes/collapse.php:185
 #: includes/comments.php:192
 #: includes/contact.php:216
-#: includes/navigation.php:227
+#: includes/navigation.php:279
 #: includes/posts.php:249
 #: includes/social.php:214
 #: includes/tabbed-posts.php:232
@@ -262,50 +262,51 @@ msgstr "Add your address here..."
 msgid "Displays previous, next, and archive links for single posts."
 msgstr "Displays previous, next, and archive links for single posts."
 
-#: includes/navigation.php:44
+#: includes/navigation.php:45
 #@ mtphr-widgets
 msgid "Metaphor Post Navigation"
 msgstr "Metaphor Post Navigation"
 
-#: includes/navigation.php:149
+#: includes/navigation.php:171
 #: includes/shortcodes.php:279
 #@ mtphr-widgets
 msgid " home"
 msgstr " home"
 
-#: includes/navigation.php:151
+#: includes/navigation.php:173
 #: includes/shortcodes.php:281
 #@ mtphr-widgets
 msgid "Previous"
 msgstr "Previous"
 
-#: includes/navigation.php:152
+#: includes/navigation.php:174
 #: includes/shortcodes.php:282
 #@ mtphr-widgets
 msgid "Next"
 msgstr "Next"
 
-#: includes/navigation.php:168
+#: includes/navigation.php:193
 #@ mtphr-widgets
 msgid "Home link text:"
 msgstr "Home link text:"
 
-#: includes/navigation.php:174
+#: includes/navigation.php:211
 #@ mtphr-widgets
 msgid "Custom home link:"
 msgstr "Custom home link:"
 
-#: includes/navigation.php:180
+#: includes/navigation.php:199
 #@ mtphr-widgets
 msgid "Previous link text:"
 msgstr "Previous link text:"
 
-#: includes/navigation.php:186
+#: includes/navigation.php:205
 #@ mtphr-widgets
 msgid "Next link text:"
 msgstr "Next link text:"
 
 #: includes/posts.php:167
+#: includes/shortcodes.php:324
 #: includes/tabbed-posts.php:185
 #@ mtphr-widgets
 msgid "Blog Posts"
@@ -351,7 +352,7 @@ msgstr "Add a description here..."
 msgid "Heading"
 msgstr "Heading"
 
-#: includes/navigation.php:192
+#: includes/navigation.php:217
 #@ mtphr-widgets
 msgid "Query order:"
 msgstr "Query order:"
@@ -473,4 +474,14 @@ msgstr "Twitter feed must be authorized."
 #@ mtphr-widgets
 msgid "You must authorize <strong>Metaphor Widgets</strong> access through Twitter before you can display any feeds."
 msgstr "You must authorize <strong>Metaphor Widgets</strong> access through Twitter before you can display any feeds."
+
+#: includes/navigation.php:240
+#@ mtphr-widgets
+msgid "Taxonomy:"
+msgstr ""
+
+#: includes/navigation.php:261
+#@ mtphr-widgets
+msgid "Terms: <small>Use slugs separated by commas (,)</small>"
+msgstr ""
 

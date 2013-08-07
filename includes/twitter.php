@@ -300,7 +300,7 @@ function mtphr_get_twitter_widget_feed( $twitter_name ) {
 /**
  * Display the feed on th site
  *
- * @since 2.0.9
+ * @since 2.1.5
  */
 function mtphr_display_twitter_widget_feed( $twitter_feed, $widget_limit, $twitter_image, $twitter_avatar ) {
 
@@ -349,7 +349,7 @@ function mtphr_display_twitter_widget_feed( $twitter_feed, $widget_limit, $twitt
 				} else {
 					$output .= '<li>';
 				}
-				$output .= '"'.mtphr_widgets_twitter_links( $twitter_text ).'"<span class="mtphr-twitter-widget-date">'.human_time_diff( strtotime($twitter_date), current_time('timestamp') ).' '.__('ago','mtphr-widgets').'</span>';
+				$output .= '"'.mtphr_widgets_twitter_links( $twitter_text ).'"<span class="mtphr-twitter-widget-date">'.human_time_diff( strtotime($twitter_date), current_time('timestamp', 1) ).' '.__('ago','mtphr-widgets').'</span>';
 				$output .= '</li>';
 			}
 		}
