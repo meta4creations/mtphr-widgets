@@ -71,9 +71,10 @@ function widget( $args, $instance ) {
 
 	$taxonomy = isset( $instance['tax'] ) ? $instance['tax'] : '';
 	$operator = isset( $instance['operator'] ) ? $instance['operator'] : 'IN';
+	$terms = isset( $instance['terms'] ) ? $instance['terms'] : '';
 	$taxonomy = apply_filters( 'mtphr_widgets_navigation_taxonomy', $taxonomy, $widget_id );
 	$operator = apply_filters( 'mtphr_widgets_navigation_operator', $operator, $widget_id );
-	$terms = apply_filters( 'mtphr_widgets_navigation_terms', $instance['terms'], $widget_id );
+	$terms = apply_filters( 'mtphr_widgets_navigation_terms', $terms, $widget_id );
 
 	// Before widget (defined by themes)
 	echo $before_widget;
