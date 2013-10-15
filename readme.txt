@@ -57,6 +57,11 @@ Check out the 'Installation' tab.
 
 == Changelog ==
 
+= 2.1.6 =
+* Added dynamic detection of taxonomy & terms query args for the navigation widget
+* Re-ordered social links alphabetically for social widget
+* Updated translation files
+
 = 2.1.5 =
 * Added taxonomy filter to post navigation widget.
 * Updated post navigation shotcode generator and output.
@@ -125,4 +130,4 @@ Check out the 'Installation' tab.
 
 == Upgrade Notice ==
 
-Added taxonomy filter to post navigation widget. Fixed Twitter widget time offset. Additional widget shortcode updates.
+Added dynamic detection of taxonomy & terms query args for the navigation widget. Re-ordered social links alphabetically for social widget. Updated translation files.
