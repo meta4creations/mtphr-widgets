@@ -124,7 +124,7 @@ function mtphr_widgets_comment_excerpt( $excerpt, $charlength ) {
 /**
  * Get an array of social links
  *
- * @since 2.1.6
+ * @since 2.1.7
  */
 function mtphr_widgets_social_sites() {
 
@@ -151,6 +151,7 @@ function mtphr_widgets_social_sites() {
 		'googleplus' => 'Google+',
 		'googletalk' => 'Google Talk',
 		'grooveshark' => 'Grooveshark',
+		'instagram' => 'Instagram',
 		'lastfm' => 'Last.fm',
 		'linkedin' => 'LinkedIn',
 		'magnolia' => 'Magnolia',

@@ -221,7 +221,7 @@ function mtphr_widgets_metaboxer_list( $field, $value='' ) {
 		$output .= '<tr><td class="mtphr-widgets-metaboxer-list-item-handle"></td>'.$header_str.'</tr>';
 	}
 	
-	$buttons = '<td class="mtphr-widgets-metaboxer-list-item-delete"><a href="#">Delete</a></td><td class="mtphr-widgets-metaboxer-list-item-add"><a href="#">Add</a></td>';
+	$buttons = '<td class="mtphr-widgets-metaboxer-list-item-delete"><a href="#"></a></td><td class="mtphr-widgets-metaboxer-list-item-add"><a href="#"></a></td>';
 	if( is_array($value) ) {
 		foreach( $value as $i=>$v ) {
 			$structure = mtphr_widgets_metaboxer_list_structure( $i, $field, $v );

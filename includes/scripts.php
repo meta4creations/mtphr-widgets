@@ -19,6 +19,10 @@ function mtphr_widgets_admin_scripts( $hook ) {
 	global $typenow;
 
 	if ( $hook == 'widgets.php' ) {
+	
+		// Load the fontastic font
+		wp_register_style( 'mtphr-widgets-font', MTPHR_WIDGETS_URL.'/assets/fontastic/styles.css', false, MTPHR_WIDGETS_VERSION );
+	  wp_enqueue_style( 'mtphr-widgets-font' );
 
 		// Load the style sheet
 		wp_register_style( 'mtphr-widgets-metaboxer', MTPHR_WIDGETS_URL.'/includes/metaboxer/metaboxer.css', false, MTPHR_WIDGETS_VERSION );
@@ -59,9 +63,9 @@ add_action( 'wp_enqueue_scripts', 'mtphr_widgets_scripts' );
  */
 function mtphr_widgets_scripts(){
 
-	// Load the social stylesheet
-	wp_register_style( 'socialfont', MTPHR_WIDGETS_URL.'/assets/css/socialfont.css', false, MTPHR_WIDGETS_VERSION );
-  wp_enqueue_style( 'socialfont' );
+	// Load the fontastic font
+	wp_register_style( 'mtphr-widgets-font', MTPHR_WIDGETS_URL.'/assets/fontastic/styles.css', false, MTPHR_WIDGETS_VERSION );
+  wp_enqueue_style( 'mtphr-widgets-font' );
 
   // Load the global widgets stylesheet
 	wp_register_style( 'mtphr-widgets', MTPHR_WIDGETS_URL.'/assets/css/style.css', false, MTPHR_WIDGETS_VERSION );

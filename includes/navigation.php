@@ -168,7 +168,7 @@ function update( $new_instance, $old_instance ) {
 /**
  * Widget settings
  *
- * @since 2.1.5
+ * @since 2.1.7
  */
 function form( $instance ) {
 
@@ -192,31 +192,31 @@ function form( $instance ) {
   <!-- Widget Title: Text Input -->
 	<p>
 		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'mtphr-widgets' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:97%;" />
+		<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:97%;" />
 	</p>
 
 	<!--Home Text: Text Input -->
 	<p style="float:left;width:125px;margin-right:10px;">
 		<label for="<?php echo $this->get_field_id( 'home' ); ?>"><?php _e( 'Home link text:', 'mtphr-widgets' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'home' ); ?>" name="<?php echo $this->get_field_name( 'home' ); ?>" value="<?php echo $instance['home']; ?>" style="width:97%;" />
+		<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'home' ); ?>" name="<?php echo $this->get_field_name( 'home' ); ?>" value="<?php echo $instance['home']; ?>" style="width:97%;" />
 	</p>
 
 	<!-- Previous Text: Text Input -->
 	<p style="float:left;width:125px;margin-right:10px;">
 		<label for="<?php echo $this->get_field_id( 'previous' ); ?>"><?php _e( 'Previous link text:', 'mtphr-widgets' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'previous' ); ?>" name="<?php echo $this->get_field_name( 'previous' ); ?>" value="<?php echo $instance['previous']; ?>" style="width:97%;" />
+		<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'previous' ); ?>" name="<?php echo $this->get_field_name( 'previous' ); ?>" value="<?php echo $instance['previous']; ?>" style="width:97%;" />
 	</p>
 
 	<!-- Next Title: Text Input -->
 	<p style="float:left;width:125px;margin-right:10px;">
 		<label for="<?php echo $this->get_field_id( 'next' ); ?>"><?php _e( 'Next link text:', 'mtphr-widgets' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'next' ); ?>" name="<?php echo $this->get_field_name( 'next' ); ?>" value="<?php echo $instance['next']; ?>" style="width:97%;" />
+		<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'next' ); ?>" name="<?php echo $this->get_field_name( 'next' ); ?>" value="<?php echo $instance['next']; ?>" style="width:97%;" />
 	</p>
 
 	<!--Home Link: Text Input -->
 	<p style="clear:both;">
 		<label for="<?php echo $this->get_field_id( 'home_link' ); ?>"><?php _e( 'Custom home link:', 'mtphr-widgets' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'home_link' ); ?>" name="<?php echo $this->get_field_name( 'home_link' ); ?>" value="<?php echo $instance['home_link']; ?>" style="width:97%;" />
+		<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'home_link' ); ?>" name="<?php echo $this->get_field_name( 'home_link' ); ?>" value="<?php echo $instance['home_link']; ?>" style="width:97%;" />
 	</p>
 
 	<!-- Order: Select -->
@@ -266,7 +266,7 @@ function form( $instance ) {
 	<!-- Terms: Text Input -->
 	<p>
 		<label for="<?php echo $this->get_field_id( 'terms' ); ?>"><?php _e( 'Terms: <small>Use slugs separated by commas (,)</small>', 'mtphr-widgets' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'terms' ); ?>" name="<?php echo $this->get_field_name( 'terms' ); ?>" value="<?php echo $instance['terms']; ?>" style="width:97%;" />
+		<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'terms' ); ?>" name="<?php echo $this->get_field_name( 'terms' ); ?>" value="<?php echo $instance['terms']; ?>" style="width:97%;" />
 	</p>
 
 	<!-- Advanced: Checkbox -->
@@ -278,7 +278,7 @@ function form( $instance ) {
 	<!-- Widget ID: Text -->
 	<p class="mtphr-widget-id">
 		<label for="<?php echo $this->get_field_id( 'widget_id' ); ?>"><?php _e( 'Widget ID:', 'mtphr-widgets' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'widget_id' ); ?>" name="<?php echo $this->get_field_name( 'widget_id' ); ?>" value="<?php echo substr( $this->get_field_id(''), 0, -1 ); ?>" style="width:97%;" disabled />
+		<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'widget_id' ); ?>" name="<?php echo $this->get_field_name( 'widget_id' ); ?>" value="<?php echo substr( $this->get_field_id(''), 0, -1 ); ?>" style="width:97%;" disabled />
 	</p>
 
 	<!-- Shortcode -->

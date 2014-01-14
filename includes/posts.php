@@ -158,7 +158,7 @@ function update( $new_instance, $old_instance ) {
 /**
  * Widget settings
  *
- * @since 2.0.9
+ * @since 2.1.7
  */
 function form( $instance ) {
 
@@ -178,7 +178,7 @@ function form( $instance ) {
   <!-- Widget Title: Text Input -->
 	<p>
 		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'mtphr-widgets' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:97%;" />
+		<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:97%;" />
 	</p>
 
   <!-- Widget Limit: Text Input -->
@@ -196,7 +196,7 @@ function form( $instance ) {
 	<!--Read More: Text Input -->
 	<p>
 		<label for="<?php echo $this->get_field_id( 'read_more' ); ?>"><?php _e( 'More Text :', 'mtphr-widgets' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'read_more' ); ?>" name="<?php echo $this->get_field_name( 'read_more' ); ?>" value="<?php echo $instance['read_more']; ?>" style="width:97%;" />
+		<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'read_more' ); ?>" name="<?php echo $this->get_field_name( 'read_more' ); ?>" value="<?php echo $instance['read_more']; ?>" style="width:97%;" />
 	</p>
 
 	<!-- Author: Select -->
@@ -241,7 +241,7 @@ function form( $instance ) {
 	<!-- Widget ID: Text -->
 	<p class="mtphr-widget-id">
 		<label for="<?php echo $this->get_field_id( 'widget_id' ); ?>"><?php _e( 'Widget ID:', 'mtphr-widgets' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'widget_id' ); ?>" name="<?php echo $this->get_field_name( 'widget_id' ); ?>" value="<?php echo substr( $this->get_field_id(''), 0, -1 ); ?>" style="width:97%;" disabled />
+		<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'widget_id' ); ?>" name="<?php echo $this->get_field_name( 'widget_id' ); ?>" value="<?php echo substr( $this->get_field_id(''), 0, -1 ); ?>" style="width:97%;" disabled />
 	</p>
 
 	<!-- Shortcode -->

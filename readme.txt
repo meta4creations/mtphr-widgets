@@ -3,7 +3,7 @@ Contributors: metaphorcreations
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TYB7K2E538T3L
 Tags: widgets, posts, comments, social, twitter, contact, post navigation, navigation, collapse, content
 Requires at least: 3.0.1
-Tested up to: 3.6
+Tested up to: 3.8
 Stable tag: /trunk/
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -56,6 +56,14 @@ Check out the 'Installation' tab.
 8. Widget/Shortcode Display
 
 == Changelog ==
+
+= 2.1.7 =
+* Converted icon font
+* Added Instagram to social widget
+* Remove pixel icons and replaced with icon font icons
+* Fixed input display issue in widgets
+* Updated css to display social icons with new font
+* Additional css updates
 
 = 2.1.6 =
 * Added dynamic detection of taxonomy & terms query args for the navigation widget
@@ -130,4 +138,4 @@ Check out the 'Installation' tab.
 
 == Upgrade Notice ==
 
-Added dynamic detection of taxonomy & terms query args for the navigation widget. Re-ordered social links alphabetically for social widget. Updated translation files.
+Converted to icon font, added Instagram to social widget, and other updates.
