@@ -24,13 +24,17 @@ function mtphr_widgets_localization() {
 /**
  * Convert twitter links
  *
- * @since 2.0.0
+ * @since 2.1.8
  */
-function mtphr_widgets_twitter_links( $string ) {
+function mtphr_widgets_twitter_links( $string, $window='' ) {
 
 	$string = make_clickable( $string );
-	$string = preg_replace("/[@]+([A-Za-z0-9-_]+)/", "<a href=\"http://twitter.com/\\1\" target=\"_blank\">\\0</a>", $string );
-	$string = preg_replace("/[#]+([A-Za-z0-9-_]+)/", "<a href=\"http://twitter.com/search?q=%23\\1\" target=\"_blank\">\\0</a>", $string );
+	$string = preg_replace( "/[@]+([A-Za-z0-9-_]+)/", "<a href=\"http://twitter.com/\\1\">\\0</a>", $string );
+	$string = preg_replace( "/[#]+([A-Za-z0-9-_]+)/", "<a href=\"http://twitter.com/search?q=%23\\1\">\\0</a>", $string );
+	
+	if( $window != '' ) {
+		$string = preg_replace( "|<a (.+?)>|i", "<a $1 target=\"_blank\">", $string );
+	}
 
   return $string;
 }
@@ -124,7 +128,7 @@ function mtphr_widgets_comment_excerpt( $excerpt, $charlength ) {
 /**
  * Get an array of social links
  *
- * @since 2.1.7
+ * @since 2.1.8
  */
 function mtphr_widgets_social_sites() {
 
@@ -144,6 +148,7 @@ function mtphr_widgets_social_sites() {
 		'dribble' => 'Dribble',
 		'ebay' => 'eBay',
 		'ember' => 'Ember',
+		'envato' => 'Envato',
 		'evernote' => 'Evernote',
 		'facebook' => 'Facebook',
 		'feedburner' => 'Feedburner',
@@ -224,6 +229,29 @@ function mtphr_widgets_social_update( $instance ) {
 			'link' => $instance['linkedin_link']
 		);
 		$instance['linkedin_link'] = '';
+	}
+
+	return $instance;
+}
+
+
+
+/**
+ * Update the social sites to 2.1.8
+ *
+ * @since 2.1.8
+ */
+function mtphr_widgets_social_update_2_1_8( $instance ) {
+
+	if( is_array($instance['sites']) && count($instance['sites']) > 0 && isset($instance['sites'][0]['site'])  ) {
+	
+		$updated = array();
+		foreach( $instance['sites'] as $site ) {
+			if( isset($site['site']) ) {
+				$updated[$site['site']] = $site['link'];
+			}
+		}
+		$instance['sites'] = $updated;
 	}
 
 	return $instance;

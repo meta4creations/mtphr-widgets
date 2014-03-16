@@ -21,7 +21,7 @@ jQuery( document ).ready( function($) {
 	// Show or hide the advanced fields
 	function mtphr_widgets_advanced_fields( $advanced ) {
 
-		if( $advanced.children('input[type="checkbox"]').is(':checked') ) {
+		if( $advanced.find('input[type="checkbox"]').is(':checked') ) {
 			$advanced.siblings('.mtphr-widget-id').show();
 			$advanced.siblings('.mtphr-widget-shortcode').show();
 		} else {
@@ -52,6 +52,63 @@ jQuery( document ).ready( function($) {
 			}, 100);
 		}
 	});
+	
+	
+	
+	
+	/* --------------------------------------------------------- */
+	/* !Social sites - 2.1.8 */
+	/* --------------------------------------------------------- */
+
+	$('.metaphor-widgets-social-sites').sortable( {
+		handle: '.metaphor-widgets-social-site-icon',
+		items: '.metaphor-widgets-social-site',
+		axis: 'y',
+		helper: function(e, tr) {
+	    var $originals = tr.children();
+	    var $helper = tr.clone();
+	    $helper.children().each(function(index) {
+	      // Set helper cell sizes to match the original sizes
+	      $(this).width($originals.eq(index).width())
+	    });
+	    return $helper;
+	  }
+	});
+
+	$('.metaphor-widgets-social-icon').live('click', function(e) {
+		e.preventDefault();
+
+		var $table = $(this).parent().siblings('.metaphor-widgets-social-sites'),
+				site = $(this).attr('href'),
+				prefix = $(this).attr('data-prefix'),
+				
+		site = site.substr(1, site.length);
+
+		if( $(this).hasClass('active') ) {
+			$(this).removeClass('active');
+			apex_social_settings_remove_icon( site, $table );
+		} else {
+			$(this).addClass('active');
+			apex_social_settings_add_icon( site, $table, prefix );
+		}
+	});
+
+	function apex_social_settings_remove_icon( site, $table ) {
+		var $row = $table.find('.metaphor-widgets-social-'+site);
+		$row.remove();
+	}
+
+	function apex_social_settings_add_icon( site, $table, prefix ) {
+		var row = '<tr class="metaphor-widgets-social-site metaphor-widgets-social-'+site+'">';
+		row += '<td class="metaphor-widgets-social-site-icon"><a tabindex="-1" href="#'+site+'"><i class="metaphor-widgets-ico-'+site+'"></i></a></td>';
+		row += '<td><input type="text" name="'+prefix+'['+site+']" value="" /></td>';
+		row += '</tr>';
+
+		var $row = $(row);
+
+		$table.append( $row );
+		$row.find('input').focus();
+	}
 	
 	
 

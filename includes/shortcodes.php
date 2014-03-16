@@ -110,7 +110,7 @@ add_shortcode( 'mtphr_social_widget', 'mtphr_social_widget_display' );
 /**
  * Display the social widget shortcode
  *
- * @since 2.0.0
+ * @since 2.1.8
  */
 function mtphr_social_widget_display( $atts, $content = null ) {
 	extract( shortcode_atts( array(
@@ -128,11 +128,7 @@ function mtphr_social_widget_display( $atts, $content = null ) {
 
 		// Split the site name and url
 		$group_assets = explode( '***', $group );
-		$site = array(
-			'site' => sanitize_text_field($group_assets[0]),
-			'link' => esc_url($group_assets[1])
-		);
-		$sites_array[] = $site;
+		$sites_array[sanitize_text_field($group_assets[0])] = esc_url($group_assets[1]);
 	}
 
 	$instance = array(

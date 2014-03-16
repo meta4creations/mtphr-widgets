@@ -47,7 +47,7 @@ function mtphr_twitter_widget() {
 /**
  * Display the widget
  *
- * @since 2.1.2
+ * @since 2.1.8
  */
 function widget( $args, $instance ) {
 
@@ -62,6 +62,7 @@ function widget( $args, $instance ) {
 	$widget_limit = apply_filters( 'mtphr_widgets_twitter_limit', intval( $instance['widget_limit'] ), $widget_id );
 	$twitter_image = apply_filters( 'mtphr_widgets_twitter_image', isset( $instance['widget_image'] ), $widget_id );
 	$twitter_avatar = apply_filters( 'mtphr_widgets_twitter_avatar', isset( $instance['widget_avatar'] ), $widget_id );
+	$new_window = ( !isset($instance['new_window_default']) ) ? 'on' : isset( $instance['new_window'] );
 
 	if ( $widget_limit == '' || $widget_limit == 0 ) {
 		$widget_limit = 3;
@@ -79,7 +80,7 @@ function widget( $args, $instance ) {
 		echo __( 'Twitter feed must be authorized.', 'mtphr-widgets' );
 	} else {
 		// Display the twitter feed
-		mtphr_twitter_widget_feed( $twitter_name, $widget_limit, $twitter_image, $twitter_avatar );
+		mtphr_twitter_widget_feed( $twitter_name, $widget_limit, $twitter_image, $twitter_avatar, $new_window );
 	}
 
 	// After widget (defined by themes)
@@ -89,7 +90,7 @@ function widget( $args, $instance ) {
 /**
  * Update the widget
  *
- * @since 2.0.0
+ * @since 2.1.8
  */
 function update( $new_instance, $old_instance ) {
 
@@ -101,6 +102,8 @@ function update( $new_instance, $old_instance ) {
 	$instance['widget_limit'] = intval( $new_instance['widget_limit'] );
 	$instance['widget_image'] = $new_instance['widget_image'];
 	$instance['widget_avatar'] = $new_instance['widget_avatar'];
+	$instance['new_window'] = $new_instance['new_window'];
+	$instance['new_window_default'] = $new_instance['new_window_default'];
 	$instance['advanced'] = $new_instance['advanced'];
 
 	return $instance;
@@ -109,7 +112,7 @@ function update( $new_instance, $old_instance ) {
 /**
  * Widget settings
  *
- * @since 2.1.7
+ * @since 2.1.8
  */
 function form( $instance ) {
 
@@ -120,10 +123,13 @@ function form( $instance ) {
 		'widget_limit' => 3,
 		'widget_image' => '',
 		'widget_avatar' => '',
+		'new_window' => '',
+		'new_window_default' => '',
 		'advanced' => ''
 	);
 
 	$instance = wp_parse_args( (array) $instance, $defaults );
+	$instance['new_window'] = ( $instance['new_window_default'] == '' ) ? 'on' : $instance['new_window'];
 
 	if( !mtphr_widgets_check_twitter_access() ) {
 		$link = admin_url().'plugins.php?page=mtphr_widgets_settings'; ?>
@@ -150,6 +156,9 @@ function form( $instance ) {
 		<p>
 			<label for="<?php echo $this->get_field_id( 'widget_limit' ); ?>"><?php _e( 'Number of Tweets:', 'mtphr-widgets' ); ?></label><br/>
 			<input class="widefat" type="number" id="<?php echo $this->get_field_id( 'widget_limit' ); ?>" name="<?php echo $this->get_field_name( 'widget_limit' ); ?>" value="<?php echo $instance['widget_limit']; ?>" style="width:50px;" />
+
+			<label style="margin-left:10px;"><input class="checkbox" type="checkbox" value="on" <?php checked( $instance['new_window'], 'on' ); ?> name="<?php echo $this->get_field_name( 'new_window' ); ?>" /> <?php _e('Open links in window/tab', 'mtphr-widgets'); ?></label>
+			<input type="hidden" value="on" name="<?php echo $this->get_field_name( 'new_window_default' ); ?>" />
 		</p>
 
 		<!-- Display Widget Image: Checkbox -->
@@ -199,9 +208,9 @@ function form( $instance ) {
 /**
  * Display the feed
  *
- * @since 2.0.7
+ * @since 2.1.8
  */
-function mtphr_twitter_widget_feed( $twitter_name, $widget_limit, $twitter_image, $twitter_avatar ) {
+function mtphr_twitter_widget_feed( $twitter_name, $widget_limit, $twitter_image, $twitter_avatar, $new_window ) {
 
 	if ( $twitter_name != "" ) {
 
@@ -214,7 +223,7 @@ function mtphr_twitter_widget_feed( $twitter_name, $widget_limit, $twitter_image
 
 			// Get the cache file contents & display the feed
 			$twitter_feed = file_get_contents( $cachefile );
-			mtphr_display_twitter_widget_feed( $twitter_feed, $widget_limit, $twitter_image, $twitter_avatar );
+			mtphr_display_twitter_widget_feed( $twitter_feed, $widget_limit, $twitter_image, $twitter_avatar, $new_window );
 
 		} else {
 
@@ -237,7 +246,7 @@ function mtphr_twitter_widget_feed( $twitter_name, $widget_limit, $twitter_image
 					fwrite( $fp, $feed );
 					fclose( $fp );
 
-					mtphr_display_twitter_widget_feed( $twitter_feed, $widget_limit, $twitter_image, $twitter_avatar );
+					mtphr_display_twitter_widget_feed( $twitter_feed, $widget_limit, $twitter_image, $twitter_avatar, $new_window );
 				}
 
 			} else {
@@ -252,7 +261,7 @@ function mtphr_twitter_widget_feed( $twitter_name, $widget_limit, $twitter_image
 				fclose( $fp );
 
 				// Display the twitter feed
-				mtphr_display_twitter_widget_feed( $twitter_feed, $widget_limit, $twitter_image, $twitter_avatar );
+				mtphr_display_twitter_widget_feed( $twitter_feed, $widget_limit, $twitter_image, $twitter_avatar, $new_window );
 			}
 
 			// End and close the output buffer
@@ -264,7 +273,7 @@ function mtphr_twitter_widget_feed( $twitter_name, $widget_limit, $twitter_image
 /**
  * Use curl to get the feed
  *
- * @since 2.0.7
+ * @since 2.1.8
  */
 function mtphr_get_twitter_widget_feed( $twitter_name ) {
 
@@ -300,9 +309,9 @@ function mtphr_get_twitter_widget_feed( $twitter_name ) {
 /**
  * Display the feed on th site
  *
- * @since 2.1.5
+ * @since 2.1.8
  */
-function mtphr_display_twitter_widget_feed( $twitter_feed, $widget_limit, $twitter_image, $twitter_avatar ) {
+function mtphr_display_twitter_widget_feed( $twitter_feed, $widget_limit, $twitter_image, $twitter_avatar, $new_window ) {
 
 	// Store the data in a variable
 	$output = "<ul>";
@@ -343,13 +352,13 @@ function mtphr_display_twitter_widget_feed( $twitter_feed, $widget_limit, $twitt
 					if( $twitter_avatar ) {
 						$output .= '<img src="'.$twitter_user_avatar.'" alt="'.$twitter_name.'" />';
 					} else {
-						$output .= '<i class="mtphr-socon-twitter"></i>';
+						$output .= '<i class="metaphor-widgets-ico-twitter"></i>';
 					}
 					$output .= '</span>';
 				} else {
 					$output .= '<li>';
 				}
-				$output .= '"'.mtphr_widgets_twitter_links( $twitter_text ).'"<span class="mtphr-twitter-widget-date">'.human_time_diff( strtotime($twitter_date), current_time('timestamp', 1) ).' '.__('ago','mtphr-widgets').'</span>';
+				$output .= '"'.mtphr_widgets_twitter_links( $twitter_text, $new_window ).'"<span class="mtphr-twitter-widget-date">'.human_time_diff( strtotime($twitter_date), current_time('timestamp', 1) ).' '.__('ago','mtphr-widgets').'</span>';
 				$output .= '</li>';
 			}
 		}

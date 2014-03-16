@@ -105,6 +105,7 @@
 .mtphr-twitter-widget ul,
 .mtphr-twitter-widget li {
 	list-style: none;
+	padding: 0;
 }
 .mtphr-twitter-widget ul li {
 	position: relative;
@@ -128,17 +129,20 @@
 	display: block;
 	width: 30px;
 	height: 30px;
-	font-size: 1.3em;
-	color: #FFF;
-	line-height: 30px;
+	font-size: 1.1em;
+	line-height: 35px;
 	text-align: center;
+	color: #FFF;
+	background-color: #CCC;
 }
 .mtphr-twitter-widget-date {
 	display: block;
 }
 
-/* Social Widget
------------------------------------------------------------- */
+
+/* --------------------------------------------------------- */
+/* !Social Widget */
+/* --------------------------------------------------------- */
 
 .mtphr-social-widget-links {
 	margin-left: -4px;
@@ -149,18 +153,24 @@
 	margin: 0 0 4px 4px;
 	text-decoration: none;
 }
+.mtphr-social-widget-site:hover {
+	text-decoration: none;
+}
 .mtphr-social-widget-site i {
 	display: block;
 	width: 40px;
 	height: 40px;
 	font-size: 1.3em;
-	line-height: 40px;
+	line-height: 38px;
 	text-align: center;
 	text-decoration: none;
 	color: #FFF;
 	background-color: #CCC;
-	padding-top: 5px;
 }
+.mtphr-social-widget-site i:before {
+	vertical-align: text-bottom;
+}
+
 
 /* Contact Widget
 ------------------------------------------------------------ */
