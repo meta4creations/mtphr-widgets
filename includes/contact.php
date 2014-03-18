@@ -48,7 +48,7 @@ function mtphr_contact_widget() {
 /**
  * Display the widget
  *
- * @since 2.1.2
+ * @since 2.1.9
  */
 function widget( $args, $instance ) {
 
@@ -81,10 +81,10 @@ function widget( $args, $instance ) {
 
 			echo '<tr class="mtphr-contact-widget-info">';
 			if( $info['title'] != '' ) {
-				echo '<td class="mtphr-contact-widget-title"><p>'.nl2br(wp_kses_post($info['title'])).'</p></td>';
-				echo '<td><p>'.make_clickable(nl2br(wp_kses_post($info['description']))).'</p></td>';
+				echo '<td class="mtphr-contact-widget-title">'.nl2br(wp_kses_post($info['title'])).'</td>';
+				echo '<td>'.make_clickable(nl2br(wp_kses_post($info['description']))).'</td>';
 			} else {
-				echo '<td colspan="2"><p>'.make_clickable(nl2br(wp_kses_post($info['description']))).'</p></td>';
+				echo '<td colspan="2">'.make_clickable(nl2br(wp_kses_post($info['description']))).'</td>';
 			}
 			echo '</tr>';
 
@@ -100,7 +100,7 @@ function widget( $args, $instance ) {
 /**
  * Update the widget
  *
- * @since 2.0.0
+ * @since 2.1.9
  */
 function update( $new_instance, $old_instance ) {
 
@@ -111,19 +111,13 @@ function update( $new_instance, $old_instance ) {
 	$instance['contact_info'] = $new_instance['contact_info'];
 	$instance['advanced'] = $new_instance['advanced'];
 
-	// No longer supported
-	$instance['email'] = sanitize_email( $new_instance['email'] );
-	$instance['telephone'] = sanitize_text_field( $new_instance['telephone'] );
-	$instance['fax'] = sanitize_text_field( $new_instance['fax'] );
-	$instance['address'] = wp_kses_post( $new_instance['address'] );
-
 	return $instance;
 }
 
 /**
  * Widget settings
  *
- * @since 2.1.7
+ * @since 2.1.9
  */
 function form( $instance ) {
 
@@ -159,45 +153,8 @@ function form( $instance ) {
 		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'mtphr-widgets' ); ?></label>
 		<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:97%;" />
 	</p>
-
-	<?php
-	// Create the contact structure
-	$contact_structure = array(
-		'title' => array(
-			'header' => __('Title', 'mtphr-widgets'),
-			'width' => '30%',
-			'type' => 'text'
-		),
-		'description' => array(
-			'header' => __('Description', 'mtphr-widgets'),
-			'type' => 'textarea',
-			'rows' => 1
-		)
-	);
-
-	// Set the widget fields
-	$fields = array(
-		'contact_info' => array(
-			'id' => $this->get_field_name( 'contact_info' ),
-			'type' => 'list',
-			'structure' =>  $contact_structure,
-			'widget_value' => $instance['contact_info']
-		)
-	);
-
-	foreach( $fields as $name => $field ) {
-
-		echo '<span class="mtphr-widgets-metaboxer-field mtphr-widgets-metaboxer-widget-field mtphr-widgets-metaboxer-'.$field['type'].' mtphr-widgets-metaboxer-'.$name.'">';
-		if( isset($field['name']) ) {
-			echo '<label>'.$field['name'].'</label>';
-		}
-		// Call the function to display the field
-		if ( function_exists('mtphr_widgets_metaboxer_'.$field['type']) ) {
-			call_user_func( 'mtphr_widgets_metaboxer_'.$field['type'], $field, $field['widget_value'] );
-		}
-		echo '</span>';
-	}
-	?>
+	
+	<?php echo metaphor_widgets_contact_setup( $this->get_field_name('contact_info'), $instance['contact_info'] ); ?>
 
 	<!-- Advanced: Checkbox -->
 	<p class="mtphr-widget-advanced">
@@ -232,5 +189,64 @@ function form( $instance ) {
 	</span>
 
 	<?php
+}
+}
+
+
+
+/* --------------------------------------------------------- */
+/* !Render the contact info setup - 2.1.9 */
+/* --------------------------------------------------------- */
+
+if( !function_exists('metaphor_widgets_contact_setup') ) {
+function metaphor_widgets_contact_setup( $name, $data ) {
+	
+	$html = '';
+	$html .= '<table class="mtphr-widgets-list mtphr-widgets-default-list">';
+		$html .= '<tr>';
+			$html .= '<th class="mtphr-widgets-list-handle"></th>';
+			$html .= '<th>'.__('Title', 'mtphr-widgets').'</th>';
+			$html .= '<th>'.__('Description', 'mtphr-widgets').'</th>';
+			$html .= '<th class="mtphr-widgets-list-delete"></th>';
+			$html .= '<th class="mtphr-widgets-list-add"></th>';
+		$html .= '</tr>';
+		if( is_array($data) && count($data) > 0 ) {
+			foreach( $data as $i=>$d ) {
+				$html .= metaphor_widgets_contact_row( $name, $d );
+			}
+		} else {
+			$html .= metaphor_widgets_contact_row( $name );
+		}
+	$html .= '</table>';
+	
+	return $html;
+}
+}
+
+
+/* --------------------------------------------------------- */
+/* !Render a contact row - 2.1.9 */
+/* --------------------------------------------------------- */
+
+if( !function_exists('metaphor_widgets_contact_row') ) {
+function metaphor_widgets_contact_row( $name, $data=false ) {
+	
+	$title = ( isset($data) && isset($data['title']) ) ? $data['title'] : '';
+	$description = ( isset($data) && isset($data['description']) ) ? $data['description'] : '';
+	
+	$html = '';
+	$html .= '<tr class="mtphr-widgets-list-item">';
+		$html .= '<td class="mtphr-widgets-list-handle"><span></span></td>';
+		$html .= '<td class="mtphr-widgets-contact-title">';
+			$html .= '<input type="text" name="'.$name.'[title]" data-prefix="'.$name.'" data-key="title" value="'.$title.'" size="8" />';
+		$html .= '</td>';
+		$html .= '<td class="mtphr-widgets-contact-description">';
+			$html .= '<textarea name="'.$name.'[description]" data-prefix="'.$name.'" data-key="description" rows="1">'.$description.'</textarea>';
+		$html .= '</td>';
+		$html .= '<td class="mtphr-widgets-list-delete"><a href="#"></a></td>';
+		$html .= '<td class="mtphr-widgets-list-add"><a href="#"></a></td>';
+	$html .= '</tr>';
+	
+	return $html;
 }
 }

@@ -37,6 +37,364 @@ pre.mtphr-widgets-code {
   clear: both;
 }
 
+
+/* --------------------------------------------------------- */
+/* !Settings pages */
+/* --------------------------------------------------------- */
+
+.plugins_page_mtphr_widgets_twitter_settings .subsubsub {
+	float: none;
+}
+.plugins_page_mtphr_widgets_twitter_settings .form-table {
+	max-width: 1000px;
+	background: #FFF;
+	border: 1px solid #dfdfdf;
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+.plugins_page_mtphr_widgets_twitter_settings .form-table > tbody > tr > th {
+	background: #fefefe;
+	border-right: 1px solid #dfdfdf;
+	border-bottom: 1px solid #f7f7f7;
+	padding-left: 10px;
+}
+.plugins_page_mtphr_widgets_twitter_settings .form-table > tbody > tr > td {
+	border-bottom: 1px solid #f7f7f7;
+}
+.plugins_page_mtphr_widgets_twitter_settings .form-table > tbody > tr:last-child th,
+.plugins_page_mtphr_widgets_twitter_settings .form-table > tbody > tr:last-child td {
+	border-bottom: none;
+}
+.plugins_page_mtphr_widgets_twitter_settings #wpbody-content h3 {
+	-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+	max-width: 1000px;
+	background: #fafafa;
+	border: 1px solid #dfdfdf;
+	border-bottom-width: 0;
+	padding: 10px;
+	margin-bottom: 0;
+}
+.plugins_page_mtphr_widgets_twitter_settings #wpbody-content h3 input {
+	float: right;
+	font-weight: normal;
+	margin-top: -4px;
+}
+.plugins_page_mtphr_widgets_twitter_settings #wpbody-content h3 + p {
+	-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+	max-width: 1000px;
+	background: #fafafa;
+	border: 1px solid #dfdfdf;
+	border-top-width: 0;
+	border-bottom-width: 0;
+	padding: 0 10px 10px;
+	margin: 0;
+}
+.plugins_page_mtphr_widgets_twitter_settings textarea {
+	width: 100%;
+}
+
+
+/* --------------------------------------------------------- */
+/* !Table */
+/* --------------------------------------------------------- */
+
+.mtphr-widgets-table {
+	width: 100%;
+	border-spacing: 0;
+}
+.mtphr-widgets-table > tbody > tr > td {
+	text-align: left;
+	vertical-align: top;
+	border-bottom: 1px solid #e9e9e9;
+	padding: 10px 2px;
+}
+.mtphr-widgets-table > tbody > tr:first-child > td {
+	border-top: 1px solid #dfdfdf;
+}
+.mtphr-widgets-table > tbody > tr:last-child > td,
+.mtphr-widgets-table > tbody > tr:last-child > td.mtphr-widgets-label {
+	border-bottom-color: #dfdfdf;
+}
+.mtphr-widgets-table > tbody > tr > td.mtphr-widgets-label {
+	width: 20%;
+	max-width: 200px;
+	background: #f0f0f0;
+	border-left: 1px solid #dfdfdf;
+	border-bottom: 1px solid #e9e9e9;
+}
+.mtphr-widgets-table > tbody > tr > td:last-child,
+.mtphr-widgets-table > tbody > tr > td.mtphr-widgets-label {
+	border-right: 1px solid #dfdfdf;
+}
+.mtphr-widgets-table > tbody > tr > td:first-child,
+.mtphr-widgets-table > tbody > tr > td.mtphr-widgets-label + td {
+	padding-left: 10px;
+}
+.mtphr-widgets-table > tbody > tr > td:last-child,
+.mtphr-widgets-table > tbody > tr > td.mtphr-widgets-label {
+	padding-right: 10px;
+}
+.mtphr-widgets-table label {
+	display: inline-block;
+	margin: 0 10px 10px 0;
+}
+.mtphr-widgets-table label.checkbox-label {
+	font-weight: normal;
+	margin: 0;
+}
+.mtphr-widgets-table input[type="text"],
+.mtphr-widgets-table textarea {
+	width: 100%;
+}
+.mtphr-widgets-table input[type="number"] {
+	width: 60px;
+}
+.mtphr-widgets-table .mceIframeContainer {
+	background: #FFF;
+}
+.mtphr-widgets-label-alt {
+	display: block;
+	width: auto;
+	padding-right: none !important;
+	margin-bottom: 5px;
+}
+.mtphr-widgets-label label,
+.mtphr-widgets-label-alt label {
+	display: block;
+	font-weight: bold;
+	font-size: 12px;
+	margin: 0;
+}
+.mtphr-widgets-label small,
+.mtphr-widgets-label-alt small {
+	display: block;
+	font-size: 10px;
+	line-height: 13px;
+	font-style: italic;
+	font-weight: lighter;
+}
+.mtphr-widgets-radio,
+.mtphr-widgets-table label.mtphr-widgets-radio {
+	font-weight: normal;
+	margin-right: 8px;
+	margin-left: 2px;
+	margin-bottom: 0;
+}
+.mtphr-widgets-radio input,
+.mtphr-widgets-table label.mtphr-widgets-radio input {
+	margin-top: -1px;
+	margin-right: 2px;
+}
+.mtphr-widgets-checkbox,
+.mtphr-widgets-table label.mtphr-widgets-checkbox {
+	font-weight: normal;
+	margin-right: 8px;
+	margin-left: 1px;
+	margin-bottom: 0;
+}
+.mtphr-widgets-checkbox input,
+.mtphr-widgets-table label.mtphr-widgets-checkbox input {
+	margin-top: 0;
+	margin-right: 2px;
+}
+
+
+/* --------------------------------------------------------- */
+/* !Sub tables */
+/* --------------------------------------------------------- */
+
+.mtphr-widgets-sub-table {
+	width: 100%;
+	border-spacing: 0;
+}
+.mtphr-widgets-sub-table label {
+	margin: 0;
+}
+.mtphr-widgets-sub-table td {
+	padding: 2px;
+}
+.mtphr-widgets-sub-table tr > td:first-child {
+	padding-left: 0;
+}
+.mtphr-widgets-sub-table tr > td:last-child {
+	padding-right: 0;
+}
+.mtphr-widgets-sub-table tr:first-child > td {
+	padding-top: 0;
+}
+.mtphr-widgets-sub-table tr:last-child > td {
+	padding-bottom: 0;
+}
+.mtphr-widgets-sub-table input[type="text"],
+.mtphr-widgets-sub-table textarea {
+	display: block;
+	width: 100%;
+}
+.mtphr-widgets-sub-label {
+	display: block;
+	font-style: italic;
+	line-height: 16px;
+	padding: 0 3px;
+}
+
+
+/* --------------------------------------------------------- */
+/* !Instruction Info */
+/* --------------------------------------------------------- */
+
+.plugins_page_mtphr_widgets_twitter_settings .form-table table.mtphr-widgets-instructions {
+	width: 100%;
+	border-spacing: 0;
+}
+.plugins_page_mtphr_widgets_twitter_settings .form-table table tr.mtphr-widgets-instruction:hover td {
+	background: #f7f7f7;
+}
+.plugins_page_mtphr_widgets_twitter_settings .form-table table td.mtphr-widgets-instruction-label {
+	text-align: center;
+	line-height: 24px;
+	padding-right: 8px;
+	padding: 8px 10px 10px;
+}
+.plugins_page_mtphr_widgets_twitter_settings .form-table table td.mtphr-widgets-instruction-info {
+	line-height: 24px;
+	padding: 8px 10px 10px 0;
+}
+.mtphr-widgets-instruction-number {
+	display: inline-block;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 14px;
+	color: #222;
+	margin: 0;
+}
+.mtphr-widgets-instruction-info-wrapper {
+	border-left: 1px solid #dfdfdf;	
+	padding-left: 12px;
+}
+.mtphr-widgets-instruction-info pre {
+	margin: 0;
+}
+
+
+/* --------------------------------------------------------- */
+/* !List elements */
+/* --------------------------------------------------------- */
+
+.mtphr-widgets-list {
+	width: 100%;
+}
+.mtphr-widgets-list th {
+	text-align: left;
+}
+.mtphr-widgets-list td {
+	padding: 2px;
+}
+.mtphr-widgets-list-handle,
+.mtphr-widgets-list-add,
+.mtphr-widgets-list-delete {
+	width: 16px;
+}
+.mtphr-widgets-list-handle {
+	padding-left: 0;
+}
+.mtphr-widgets-list-add,
+.mtphr-widgets-list-delete {
+	padding-right: 0;
+}
+.mtphr-widgets-list-handle span,
+.mtphr-widgets-list-handle a,
+.mtphr-widgets-list-add a,
+.mtphr-widgets-list-delete a {
+	font-family: "metaphor-widgets" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+	display: block;
+	width: 16px;
+	height: 16px;
+	font-size: 14px;
+	line-height: 16px;
+	text-align: center;
+	text-decoration: none;
+	color: #444;
+}
+.mtphr-widgets-list-handle span {
+	font-size: 16px;
+}
+.mtphr-widgets-list-handle span:before {
+	content: "2";
+}
+	.mtphr-widgets-list-handle span:hover {
+		color: #1e8cbe;
+		cursor: ns-resize;
+	}
+.mtphr-widgets-list-add a:before {
+	content: "0";
+}
+	.mtphr-widgets-list-add a:hover {
+		color: #00a651;
+	}
+.mtphr-widgets-list-delete a:before {
+	content: "1";
+}
+	.mtphr-widgets-list-delete a:hover {
+		color: #ed1c24;
+	}
+
+
+.mtphr-widgets-list-item input[type="text"] {
+	width: 100%;
+}
+.mtphr-widgets-add-spinner {
+	float: none;
+	margin: 0 0 0 5px;
+}
+
+
+/* --------------------------------------------------------- */
+/* !Default list */
+/* --------------------------------------------------------- */
+
+/*
+.mtphr-widgets-default-list td {
+	vertical-align: top;
+}
+.mtphr-widgets-default-target,
+.mtphr-widgets-default-nofollow {
+	width: 1px;
+}
+*/
+
+/* --------------------------------------------------------- */
+/* !Twitter */
+/* --------------------------------------------------------- */
+
+#mtphr-widgets-twitter-credentials {
+	float: left;
+	display: block;
+	text-align: center;
+}
+#mtphr-widgets-twitter-credentials img {
+	width: 48px;
+	height: auto;
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 50px;
+}
+#mtphr-widgets-twitter-credentials p {
+	font-weight: bold;
+}
+#mtphr-widgets-twitter-reset {
+	font-style: normal;
+}
+
+
 /* --------------------------------------------------------- */
 /* !Social */
 /* --------------------------------------------------------- */
@@ -132,4 +490,13 @@ pre.mtphr-widgets-code {
 .mtphr-widget-id,
 .mtphr-widget-shortcode {
 	display: none;
+}
+.mtphr-widgets-contact-title input {
+	display: block;
+}
+.mtphr-widgets-contact-description textarea {
+	width: 100%;
+	display: block;
+	margin: 1px;
+	padding: 3px 5px;
 }

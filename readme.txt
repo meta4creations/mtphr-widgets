@@ -57,6 +57,13 @@ Check out the 'Installation' tab.
 
 == Changelog ==
 
+= 2.1.9 =
+* Updated Contact Widget functionality and data storage
+* Removed <p> tags from contact widget table output
+* Created accessible functions of the contact input setup and display to use in themes or other plugins
+* Updated Twitter Widget to custom OAuth. You must re-activate with Twitter
+* Updated English translation files
+
 = 2.1.8 =
 * Updated Social Widget functionality and data storage
 * Added Envato to Social Widget
@@ -144,4 +151,4 @@ Check out the 'Installation' tab.
 
 == Upgrade Notice ==
 
-Social & Twitter widget updates
+Updated Contact & Twitter widgets. **You must re-authorize your Twitter access after this update**.

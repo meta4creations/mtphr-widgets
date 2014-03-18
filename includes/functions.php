@@ -331,12 +331,18 @@ function mtphr_widgets_social_site_css() {
 /**
  * Check for Twitter access
  *
- * @since 2.0.7
+ * @since 2.1.9
  */
+if( !function_exists('mtphr_widgets_check_twitter_access') ) {
 function mtphr_widgets_check_twitter_access() {
 
-	$access = get_option('mtphr_widgets_twitter_access', array());
-	return isset($access['oauth_token']);
+	$settings = mtphr_widgets_twitter_settings();
+	if( $settings['access_token'] == '' ) {
+		return false;
+	} else {
+		return true;
+	}
+}
 }
 
 

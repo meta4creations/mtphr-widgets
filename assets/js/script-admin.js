@@ -111,6 +111,90 @@ jQuery( document ).ready( function($) {
 	}
 	
 	
+	
+	/* --------------------------------------------------------- */
+	/* !Default list - 2.1.9 */
+	/* --------------------------------------------------------- */
+	
+	if( $('.mtphr-widgets-default-list').length > 0 ) {
+	
+		function mtphr_widgets_default_handle_toggle( $table ) {
+			if( $table.find('.mtphr-widgets-list-item').length > 1 ) {
+				$table.find('.mtphr-widgets-list-handle').show();
+				$table.find('.mtphr-widgets-list-delete').show();
+			} else {
+				$table.find('.mtphr-widgets-list-handle').hide();
+				$table.find('.mtphr-widgets-list-delete').hide();
+			}
+		}
+	
+		function mtphr_widgets_default_set_order( $table ) {
+			
+			$table.find('.mtphr-widgets-list-item').each( function(index) {	
+				$(this).find('textarea, input, select').each( function() {
+					var prefix = $(this).attr('data-prefix'),
+							key = $(this).attr('data-key');
+					$(this).attr('name', prefix+'['+index+']['+key+']');
+				});
+			});
+			
+			mtphr_widgets_default_handle_toggle( $table );
+		}
+		
+		$('.mtphr-widgets-default-list').sortable( {
+			handle: '.mtphr-widgets-list-handle',
+			items: '.mtphr-widgets-list-item',
+			axis: 'y',
+		  helper: function(e, tr) {
+		    var $originals = tr.children();
+		    var $helper = tr.clone();
+		    $helper.children().each(function(index) {
+		      $(this).width($originals.eq(index).width());
+		      $(this).height($originals.eq(index).height());
+		    });
+		    return $helper;
+		  },
+		});
+		
+		// Delete list item
+		$('.mtphr-widgets-default-list').find('.mtphr-widgets-list-delete').live( 'click', function(e) {
+			e.preventDefault();
+			
+			var $table = $(this).parents('.mtphr-widgets-default-list');
+
+			// Fade out the item
+			$(this).parents('.mtphr-widgets-list-item').fadeOut( function() {
+				$(this).remove();
+				mtphr_widgets_default_set_order( $table );
+				mtphr_widgets_default_handle_toggle( $table );
+			});
+		});
+		
+		// Add new row
+		$('.mtphr-widgets-default-list').find('.mtphr-widgets-list-add').live( 'click', function(e) {
+		  e.preventDefault();
+
+		  // Save the container
+		  var $table = $(this).parents('.mtphr-widgets-default-list'),
+		  		$container = $(this).parents('.mtphr-widgets-list-item'),
+		  		$new = $container.clone();
+		  		
+		  $new.find('textarea, input, select').each( function() {
+				$(this).val('');
+			});
+			
+			// Add the new row
+			$container.after( $new );
+			mtphr_widgets_default_set_order( $table );
+			mtphr_widgets_default_handle_toggle( $table );
+		});	
+		
+		$('.mtphr-widgets-default-list').each( function(index) {
+			mtphr_widgets_default_set_order( $(this) );
+		});
+	}
+	
+	
 
 	
 	

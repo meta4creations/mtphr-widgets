@@ -2,7 +2,7 @@
 /*
 Plugin Name: Metaphor Widgets
 Description: Custom widgets pack. Includes recent posts, recent comments, contact, twitter, social, & navigation widgets.
-Version: 2.1.8
+Version: 2.1.9
 Author: Metaphor Creations
 Author URI: http://www.metaphorcreations.com
 License: GPL2
@@ -45,9 +45,9 @@ if( in_array('mtphr-widgets-pack-1/mtphr-widgets-pack-1.php', $active_plugins) )
 
 	/**Define Widget Constants */
 	if ( WP_DEBUG ) {
-		define ( 'MTPHR_WIDGETS_VERSION', '2.1.8-'.time() );
+		define ( 'MTPHR_WIDGETS_VERSION', '2.1.9-'.time() );
 	} else {
-		define ( 'MTPHR_WIDGETS_VERSION', '2.1.8' );
+		define ( 'MTPHR_WIDGETS_VERSION', '2.1.9' );
 	}
 	define ( 'MTPHR_WIDGETS_DIR', plugin_dir_path(__FILE__) );
 	define ( 'MTPHR_WIDGETS_URL', plugins_url().'/mtphr-widgets' );
@@ -63,6 +63,8 @@ if( in_array('mtphr-widgets-pack-1/mtphr-widgets-pack-1.php', $active_plugins) )
 
 	/** Load Functions */
 	require_once( MTPHR_WIDGETS_DIR.'includes/scripts.php' );
+	require_once( MTPHR_WIDGETS_DIR.'includes/helpers.php' );
+	require_once( MTPHR_WIDGETS_DIR.'includes/filters.php' );
 	require_once( MTPHR_WIDGETS_DIR.'includes/functions.php' );
 	require_once( MTPHR_WIDGETS_DIR.'includes/shortcodes.php' );
 	require_once( MTPHR_WIDGETS_DIR.'includes/tabbed-posts.php' );
@@ -73,10 +75,6 @@ if( in_array('mtphr-widgets-pack-1/mtphr-widgets-pack-1.php', $active_plugins) )
 	require_once( MTPHR_WIDGETS_DIR.'includes/contact.php' );
 	require_once( MTPHR_WIDGETS_DIR.'includes/navigation.php' );
 	require_once( MTPHR_WIDGETS_DIR.'includes/collapse.php' );
+	require_once( MTPHR_WIDGETS_DIR.'includes/wpml.php' );
 	require_once( MTPHR_WIDGETS_DIR.'includes/settings.php' );
-
-	if( !class_exists('tmhOAuth') ) {
-		require_once( MTPHR_WIDGETS_DIR.'includes/tmhOAuth.php' );
-		require_once( MTPHR_WIDGETS_DIR.'includes/tmhUtilities.php' );
-	}
 }

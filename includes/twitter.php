@@ -132,10 +132,10 @@ function form( $instance ) {
 	$instance['new_window'] = ( $instance['new_window_default'] == '' ) ? 'on' : $instance['new_window'];
 
 	if( !mtphr_widgets_check_twitter_access() ) {
-		$link = admin_url().'plugins.php?page=mtphr_widgets_settings'; ?>
+		$link = admin_url().'plugins.php?page=mtphr_widgets_twitter_settings'; ?>
 
     <div>
-       <p><?php _e('You must authorize <strong>Metaphor Widgets</strong> access through Twitter before you can display any feeds.', 'mtphr-widgets'); ?><br/><br/><?php printf( __('<a href="%s"><strong>Click here</strong></a> to generate a pin and grant acces to <strong>Metaphor Widgets</strong>.', 'mtphr-widgets'), $link ); ?></p>
+       <p><?php _e('You must authorize <strong>Metaphor Widgets</strong> access through Twitter before you can display any feeds.', 'mtphr-widgets'); ?><br/><br/><?php printf( __('<a href="%s"><strong>Click here</strong></a> for instructions on creating an app and granting acces to <strong>Metaphor Widgets</strong>.', 'mtphr-widgets'), $link ); ?></p>
     </div>
 
   <?php } else { ?>
@@ -231,7 +231,7 @@ function mtphr_twitter_widget_feed( $twitter_name, $widget_limit, $twitter_image
 			ob_start();
 
 			// Save the feed
-			$twitter_feed = mtphr_get_twitter_widget_feed( $twitter_name );
+			$twitter_feed = mtphr_widgets_twitter_user_timeline( $twitter_name );
 
 			// If errors, use old file
 			if ( !$twitter_feed ) {
@@ -267,42 +267,6 @@ function mtphr_twitter_widget_feed( $twitter_name, $widget_limit, $twitter_image
 			// End and close the output buffer
 			ob_end_flush();
 		}
-	}
-}
-
-/**
- * Use curl to get the feed
- *
- * @since 2.1.8
- */
-function mtphr_get_twitter_widget_feed( $twitter_name ) {
-
-	$access = get_option('mtphr_widgets_twitter_access', array());
-
-	if( isset($access['oauth_token']) ) {
-
-		$tmhOAuth = new tmhOAuth(array(
-		  'consumer_key'    => 'KEEIyPyhpjNBrnYCjwDoNg',
-		  'consumer_secret' => '2jRa8Z5jWUnN8cDaiawTa6SPXZzWLkQJNWmL2z7ohc',
-		  'user_token'      => $access['oauth_token'],
-		  'user_secret'     => $access['oauth_token_secret'],
-		));
-
-		$args = array(
-			'screen_name' => $twitter_name,
-		  'count' => 200,
-		  'include_rts' => true
-		);
-		$code = $tmhOAuth->request('GET', $tmhOAuth->url('1.1/statuses/user_timeline'), $args);
-		$response = $tmhOAuth->response;
-
-		if ($code == 200) {
-			return $tmhOAuth->response['response'];
-		} else {
-			return false;
-		}
-	} else {
-		return false;
 	}
 }
 
