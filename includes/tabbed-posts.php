@@ -47,7 +47,7 @@ function mtphr_tabbed_posts_widget() {
 /**
  * Display the widget
  *
- * @since 2.0.9
+ * @since 2.1.10
  */
 function widget( $args, $instance ) {
 
@@ -63,9 +63,6 @@ function widget( $args, $instance ) {
 
 	if ( $widget_limit == 0 ) {
 		$widget_limit = 3;
-	}
-	if ( $excerpt_length == 0 ) {
-		$excerpt_length = 60;
 	}
 
 	// Before widget (defined by themes)
@@ -93,9 +90,12 @@ function widget( $args, $instance ) {
 
 	if ( have_posts() ) : while ( $wp_query->have_posts() ) : $wp_query->the_post();
 		$popular_posts .= '<li>';
-		$popular_posts .= '<a class="mtphr-tabbed-posts-widget-title" href="'.get_permalink().'">'.get_the_title().'</a> ';
-		$popular_posts .= '<small class="mtphr-tabbed-posts-widget-date">'.get_the_time( get_option('date_format') ).'</small>';
-		$popular_posts .= mtphr_widgets_post_excerpt( $excerpt_length );
+			$post_item = '<a class="mtphr-tabbed-posts-widget-title" href="'.get_permalink().'">'.get_the_title().'</a> ';
+			$post_item .= '<small class="mtphr-tabbed-posts-widget-date">'.get_the_time( get_option('date_format') ).'</small>';
+			if( $excerpt_length > 0 ) {
+				$post_item .= mtphr_widgets_post_excerpt( $excerpt_length );
+			}
+			$popular_posts .= apply_filters( 'mtphr_tabbed_posts_item', $post_item, $excerpt_length );
 		$popular_posts .= '</li>';
 	endwhile;
 	else :
@@ -114,10 +114,13 @@ function widget( $args, $instance ) {
 	$wp_query->query( $args );
 
 	if ( have_posts() ) : while ( $wp_query->have_posts() ) : $wp_query->the_post();
-		$recent_posts .= '<li>';
-		$recent_posts .= '<a class="mtphr-tabbed-posts-widget-title" href="'.get_permalink().'">'.get_the_title().'</a> ';
-		$recent_posts .= '<span class="mtphr-tabbed-posts-widget-date">'.get_the_time( get_option('date_format') ).'</span>';
-		$recent_posts .= mtphr_widgets_post_excerpt( $excerpt_length );
+		$recent_posts .= '<li>';			
+			$post_item = '<a class="mtphr-tabbed-posts-widget-title" href="'.get_permalink().'">'.get_the_title().'</a> ';
+			$post_item .= '<small class="mtphr-tabbed-posts-widget-date">'.get_the_time( get_option('date_format') ).'</small>';
+			if( $excerpt_length > 0 ) {
+				$post_item .= mtphr_widgets_post_excerpt( $excerpt_length );
+			}
+			$recent_posts .= apply_filters( 'mtphr_tabbed_posts_item', $post_item, $excerpt_length );	
 		$recent_posts .= '</li>';
 	endwhile;
 	else :
@@ -128,21 +131,23 @@ function widget( $args, $instance ) {
 	wp_reset_postdata();
 
 	?>
-	<table>
-		<tr>
+	<table class="mtphr-tabs">
+		<tr class="mtphr-tabs-links">
 			<td class="mtphr-tabbed-posts-link"><a href="#0" rel="nofollow"><?php _e('Popular', 'mtphr-widgets'); ?></a></td>
 			<td class="mtphr-tabbed-posts-link"><a href="#1" rel="nofollow"><?php _e('Recent', 'mtphr-widgets'); ?></a></td>
 		</tr>
 		<tr>
-			<td class="mtphr-tabbed-posts-content-container" colspan="2">
-				<div class="mtphr-tabbed-posts-content">
-					<div class="mtphr-tabbed-posts-content-wrapper">
-						<ul><?php echo $popular_posts; ?></ul>
+			<td class="mtphr-tabs-content-container mtphr-tabbed-posts-content-container" colspan="2">
+				<div class="mtphr-tabs-content-container-inner">
+					<div class="mtphr-tabs-content mtphr-tabbed-posts-content">
+						<div class="mtphr-tabbed-posts-content-wrapper">
+							<ul><?php echo $popular_posts; ?></ul>
+						</div>
 					</div>
-				</div>
-				<div class="mtphr-tabbed-posts-content">
-					<div class="mtphr-tabbed-posts-content-wrapper">
-						<ul><?php echo $recent_posts; ?></ul>
+					<div class="mtphr-tabs-content mtphr-tabbed-posts-content">
+						<div class="mtphr-tabbed-posts-content-wrapper">
+							<ul><?php echo $recent_posts; ?></ul>
+						</div>
 					</div>
 				</div>
 			</td>

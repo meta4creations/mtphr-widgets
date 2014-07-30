@@ -81,7 +81,7 @@ function widget( $args, $instance ) {
 
 			echo '<tr class="mtphr-contact-widget-info">';
 			if( $info['title'] != '' ) {
-				echo '<td class="mtphr-contact-widget-title">'.nl2br(wp_kses_post($info['title'])).'</td>';
+				echo '<td class="mtphr-contact-widget-title">'.do_shortcode(nl2br(wp_kses_post($info['title']))).'</td>';
 				echo '<td>'.make_clickable(nl2br(wp_kses_post($info['description']))).'</td>';
 			} else {
 				echo '<td colspan="2">'.make_clickable(nl2br(wp_kses_post($info['description']))).'</td>';
@@ -146,7 +146,8 @@ function form( $instance ) {
 	);
 
 	$instance = wp_parse_args( (array) $instance, $defaults );
-	$instance = mtphr_widgets_contact_update( $instance ); ?>
+	$instance = mtphr_widgets_contact_update( $instance );
+	?>
 
   <!-- Widget Title: Text Input -->
 	<p>
@@ -238,7 +239,7 @@ function metaphor_widgets_contact_row( $name, $data=false ) {
 	$html .= '<tr class="mtphr-widgets-list-item">';
 		$html .= '<td class="mtphr-widgets-list-handle"><span></span></td>';
 		$html .= '<td class="mtphr-widgets-contact-title">';
-			$html .= '<input type="text" name="'.$name.'[title]" data-prefix="'.$name.'" data-key="title" value="'.$title.'" size="8" />';
+			$html .= '<input type="text" name="'.$name.'[title]" data-prefix="'.$name.'" data-key="title" value="'.htmlentities($title).'" size="8" />';
 		$html .= '</td>';
 		$html .= '<td class="mtphr-widgets-contact-description">';
 			$html .= '<textarea name="'.$name.'[description]" data-prefix="'.$name.'" data-key="description" rows="1">'.$description.'</textarea>';
