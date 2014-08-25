@@ -3,7 +3,7 @@ Contributors: metaphorcreations
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TYB7K2E538T3L
 Tags: widgets, posts, comments, social, twitter, contact, post navigation, navigation, collapse, content
 Requires at least: 3.0.1
-Tested up to: 3.9.1
+Tested up to: 3.9.2
 Stable tag: /trunk/
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -56,6 +56,9 @@ Check out the 'Installation' tab.
 8. Widget/Shortcode Display
 
 == Changelog ==
+
+= 2.1.11 =
+* Added plugin to GitHub
 
 = 2.1.10 =
 * Added ".mtphr-tabbed-posts-content-container-inner" div to tabbed posts widget
@@ -158,4 +161,4 @@ Check out the 'Installation' tab.
 
 == Upgrade Notice ==
 
-Update to tabbed posts widget.
+Added plugin to GitHub.
