@@ -57,6 +57,9 @@ Check out the 'Installation' tab.
 
 == Changelog ==
 
+= 2.1.12 =
+* Updated Italian translation files
+
 = 2.1.11 =
 * Added plugin to GitHub
 
@@ -161,4 +164,4 @@ Check out the 'Installation' tab.
 
 == Upgrade Notice ==
 
-Added plugin to GitHub.
+Updated Italian translation files.
