@@ -89,7 +89,6 @@ class mtphr_social_widget extends WP_Widget {
 	function update( $new_instance, $old_instance ) {
 	
 		$instance = $old_instance;
-		echo '<pre>';print_r($new_instance);echo '</pre>';
 	
 		// Strip tags (if needed) and update the widget settings
 		$instance['title'] = sanitize_text_field( $new_instance['title'] );

@@ -57,6 +57,12 @@ Check out the 'Installation' tab.
 
 == Changelog ==
 
+= 2.1.13 =
+* Updated mtphr_tabs javascript plugin
+* Removed erroneous code
+* Fixed bug in Twitter API code
+* Fixed bug in in Contact widget
+
 = 2.1.12 =
 * Updated Italian translation files
 
@@ -164,4 +170,4 @@ Check out the 'Installation' tab.
 
 == Upgrade Notice ==
 
-Updated Italian translation files.
+Metaphor tabs update and bug fixes.

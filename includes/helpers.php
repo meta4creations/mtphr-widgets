@@ -27,7 +27,7 @@ function mtphr_widgets_twitter_get_feed( $data, $settings ) {
 
 
 /* --------------------------------------------------------- */
-/* !Get a user timeline - 1.3.2 */
+/* !Get a user timeline - 2.1.13 */
 /* --------------------------------------------------------- */
 
 if( !function_exists('mtphr_widgets_twitter_user_timeline') ) {
@@ -42,8 +42,17 @@ function mtphr_widgets_twitter_user_timeline( $handle, $settings=false ) {
 	);
 	$fields['screen_name'] = $handle;
 	$twitter = mtphr_widgets_twitter_oauth( $url, $args, $fields );
-	if( $twitter['response']['code'] == '200' ) {
+	
+	if( is_wp_error($twitter) ) {
+   
+   $error_string = $twitter->get_error_message();
+   return '<div id="message" class="error"><p>' . $error_string . '</p></div>';
+   
+	} elseif( $twitter['response']['code'] == '200' ) {
 		return $twitter['body'];
+		
+	} else {
+		return '<div id="message" class="error"><p>'.sprintf(__('Error: %s', 'mtphr-widgets'), $twitter['body']).'</p></div>';	
 	}
 }
 }

@@ -48,7 +48,7 @@ function mtphr_contact_widget() {
 /**
  * Display the widget
  *
- * @since 2.1.9
+ * @since 2.1.13
  */
 function widget( $args, $instance ) {
 
@@ -80,11 +80,12 @@ function widget( $args, $instance ) {
 		foreach( $contact_info as $info ) {
 
 			echo '<tr class="mtphr-contact-widget-info">';
-			if( $info['title'] != '' ) {
+			if( isset($info['title']) && $info['title'] != '' ) {
+				$description = isset($info['description']) ? make_clickable(nl2br(wp_kses_post($info['description']))) : '';
 				echo '<td class="mtphr-contact-widget-title">'.do_shortcode(nl2br(wp_kses_post($info['title']))).'</td>';
-				echo '<td>'.make_clickable(nl2br(wp_kses_post($info['description']))).'</td>';
+				echo '<td>'.$description.'</td>';
 			} else {
-				echo '<td colspan="2">'.make_clickable(nl2br(wp_kses_post($info['description']))).'</td>';
+				echo '<td colspan="2">'.$description.'</td>';
 			}
 			echo '</tr>';
 

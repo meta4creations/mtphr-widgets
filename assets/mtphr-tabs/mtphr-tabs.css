@@ -3,10 +3,14 @@
  * Date: 6/25/2014
  *
  * @author Metaphor Creations
- * @version 1.0.0
+ * @version 1.0.1
  *
  **/
 
+.mtphr-tabs,
+.mtphr-tabs * {
+	box-sizing: border-box;
+}
 .mtphr-tabs {
 	width: 100%;
 	border-spacing: 0;

@@ -1,9 +1,9 @@
 /**
  * Metaphor Tabs
- * Date: 6/25/2014
+ * Date: 10/27/2014
  *
  * @author Metaphor Creations
- * @version 1.0.0
+ * @version 1.0.1
  *
  **/
 
@@ -40,9 +40,8 @@
 
 				// Move the content if tabs is used via shortcode
 				if( $links.find('.mtphr-tabs-content').length > 0 ) {
-					tabs.each( function(index) {
-	
-						$(this).children('a').attr('href', index);
+					$links.children('td').each( function(index) {
+						$(this).children('a').attr('href', '#'+index);
 						$container_inner.append( $(this).find('.mtphr-tabs-content') );
 					});
 				}
