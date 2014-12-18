@@ -128,7 +128,7 @@ function mtphr_widgets_comment_excerpt( $excerpt, $charlength ) {
 /**
  * Get an array of social links
  *
- * @since 2.1.8
+ * @since 2.1.14
  */
 function mtphr_widgets_social_sites() {
 
@@ -156,6 +156,7 @@ function mtphr_widgets_social_sites() {
 		'googleplus' => 'Google+',
 		'googletalk' => 'Google Talk',
 		'grooveshark' => 'Grooveshark',
+		'houzz' => 'Houzz',
 		'instagram' => 'Instagram',
 		'lastfm' => 'Last.fm',
 		'linkedin' => 'LinkedIn',
@@ -176,6 +177,7 @@ function mtphr_widgets_social_sites() {
 		'reddit' => 'reddit',
 		'rss' => 'RSS',
 		'skype' => 'Skype',
+		'spotify' => 'Spotify',
 		'stumbleupon' => 'StumbleUpon',
 		'tripadvisor' => 'TripAdvisor',
 		'tumblr' => 'Tumblr',

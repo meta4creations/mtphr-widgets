@@ -39,170 +39,179 @@
 }
 
 .metaphor-widgets-ico-aim:before {
-  content: "a";
+  content: "\e000";
 }
 .metaphor-widgets-ico-amazon:before {
-  content: "b";
+  content: "\e001";
 }
 .metaphor-widgets-ico-android:before {
-  content: "c";
+  content: "\e002";
 }
 .metaphor-widgets-ico-youtube:before {
-  content: "d";
+  content: "\e003";
 }
 .metaphor-widgets-ico-apple:before {
-  content: "e";
+  content: "\e004";
 }
 .metaphor-widgets-ico-bebo:before {
-  content: "f";
+  content: "\e005";
 }
 .metaphor-widgets-ico-behance:before {
-  content: "g";
+  content: "\e006";
 }
 .metaphor-widgets-ico-bing:before {
-  content: "h";
+  content: "\e007";
 }
 .metaphor-widgets-ico-blogger:before {
-  content: "i";
+  content: "\e008";
 }
 .metaphor-widgets-ico-cargo:before {
-  content: "j";
+  content: "\e009";
 }
 .metaphor-widgets-ico-delicious:before {
-  content: "k";
+  content: "\e00a";
 }
 .metaphor-widgets-ico-deviantart:before {
-  content: "l";
+  content: "\e00b";
 }
 .metaphor-widgets-ico-digg:before {
-  content: "m";
+  content: "\e00c";
 }
 .metaphor-widgets-ico-dribble:before {
-  content: "n";
+  content: "\e00d";
 }
 .metaphor-widgets-ico-magnolia:before {
-  content: "o";
+  content: "\e00e";
 }
 .metaphor-widgets-ico-linkedin:before {
-  content: "p";
+  content: "\e00f";
 }
 .metaphor-widgets-ico-lastfm:before {
-  content: "q";
+  content: "\e010";
 }
 .metaphor-widgets-ico-instagram:before {
-  content: "r";
+  content: "\e011";
 }
 .metaphor-widgets-ico-grooveshark:before {
-  content: "s";
+  content: "\e012";
 }
 .metaphor-widgets-ico-googletalk:before {
-  content: "t";
+  content: "\e013";
 }
 .metaphor-widgets-ico-googleplus:before {
-  content: "u";
+  content: "\e014";
 }
 .metaphor-widgets-ico-flickr:before {
-  content: "v";
+  content: "\e015";
 }
 .metaphor-widgets-ico-feedburner:before {
-  content: "w";
+  content: "\e016";
 }
 .metaphor-widgets-ico-facebook:before {
-  content: "x";
+  content: "\e017";
 }
 .metaphor-widgets-ico-evernote:before {
-  content: "y";
+  content: "\e018";
 }
 .metaphor-widgets-ico-ember:before {
-  content: "z";
+  content: "\e019";
 }
 .metaphor-widgets-ico-ebay:before {
-  content: "A";
+  content: "\e01a";
 }
 .metaphor-widgets-ico-metacafe:before {
-  content: "B";
+  content: "\e01b";
 }
 .metaphor-widgets-ico-mixx:before {
-  content: "C";
+  content: "\e01c";
 }
 .metaphor-widgets-ico-mobileme:before {
-  content: "D";
+  content: "\e01d";
 }
 .metaphor-widgets-ico-msn:before {
-  content: "E";
+  content: "\e01e";
 }
 .metaphor-widgets-ico-myspace:before {
-  content: "F";
+  content: "\e01f";
 }
 .metaphor-widgets-ico-netvibes:before {
-  content: "G";
+  content: "\e020";
 }
 .metaphor-widgets-ico-newsvine:before {
-  content: "H";
+  content: "\e021";
 }
 .metaphor-widgets-ico-orkut:before {
-  content: "I";
+  content: "\e022";
 }
 .metaphor-widgets-ico-paypal:before {
-  content: "J";
+  content: "\e023";
 }
 .metaphor-widgets-ico-picasa:before {
-  content: "K";
+  content: "\e024";
 }
 .metaphor-widgets-ico-pinterest:before {
-  content: "L";
+  content: "\e025";
 }
 .metaphor-widgets-ico-plurk:before {
-  content: "M";
+  content: "\e026";
 }
 .metaphor-widgets-ico-posterous:before {
-  content: "N";
+  content: "\e027";
 }
 .metaphor-widgets-ico-yahoobuzz:before {
-  content: "O";
+  content: "\e028";
 }
 .metaphor-widgets-ico-yahoo:before {
-  content: "P";
+  content: "\e029";
 }
 .metaphor-widgets-ico-wordpress:before {
-  content: "Q";
+  content: "\e02a";
 }
 .metaphor-widgets-ico-windows:before {
-  content: "R";
+  content: "\e02b";
 }
 .metaphor-widgets-ico-vimeo:before {
-  content: "S";
+  content: "\e02c";
 }
 .metaphor-widgets-ico-twitter:before {
-  content: "T";
+  content: "\e02d";
 }
 .metaphor-widgets-ico-tumblr:before {
-  content: "U";
+  content: "\e02e";
 }
 .metaphor-widgets-ico-tripadvisor:before {
-  content: "V";
+  content: "\e02f";
 }
 .metaphor-widgets-ico-stumbleupon:before {
-  content: "W";
+  content: "\e030";
 }
 .metaphor-widgets-ico-skype:before {
-  content: "X";
+  content: "\e031";
 }
 .metaphor-widgets-ico-rss:before {
-  content: "Y";
+  content: "\e032";
 }
 .metaphor-widgets-ico-reddit:before {
-  content: "Z";
+  content: "\e033";
 }
 .metaphor-widgets-ico-plus-alt:before {
-  content: "0";
+  content: "\e034";
 }
 .metaphor-widgets-ico-minus-alt:before {
-  content: "1";
+  content: "\e035";
 }
 .metaphor-widgets-ico-down-up-scale-1:before {
-  content: "2";
+  content: "\e036";
 }
 .metaphor-widgets-ico-envato:before {
-  content: "3";
+  content: "\e037";
+}
+.metaphor-widgets-ico-fancy:before {
+  content: "\e038";
+}
+.metaphor-widgets-ico-houzz:before {
+  content: "\e039";
+}
+.metaphor-widgets-ico-spotify:before {
+  content: "\e03a";
 }

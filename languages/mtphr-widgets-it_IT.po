@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Metaphor Widgets v2.1.13\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2014-10-31 15:56:13+0000\n"
+"PO-Revision-Date: 2014-12-18 16:45:43+0000\n"
 "Last-Translator: \n"
 "Language-Team: Max Guglielmino\n"
 "MIME-Version: 1.0\n"
@@ -400,7 +400,7 @@ msgstr "Feed Twitter deve essere autorizzato."
 #: includes/twitter.php:138
 #@ mtphr-widgets
 msgid "You must authorize <strong>Metaphor Widgets</strong> access through Twitter before you can display any feeds."
-msgstr "È necessario autorizzare <strong> Widget metafora </ strong> di accesso tramite Twitter prima di poter visualizzare qualsiasi feed."
+msgstr "È necessario autorizzare <strong>Widget metafora</strong> di accesso tramite Twitter prima di poter visualizzare qualsiasi feed."
 
 #: includes/navigation.php:247
 #@ mtphr-widgets
