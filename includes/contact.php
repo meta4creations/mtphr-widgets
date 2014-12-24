@@ -106,6 +106,8 @@ function widget( $args, $instance ) {
 function update( $new_instance, $old_instance ) {
 
 	$instance = $old_instance;
+	
+	echo '<pre>';print_r($new_instance['contact_info']);echo '</pre>';
 
 	// Strip tags (if needed) and update the widget settings
 	$instance['title'] = sanitize_text_field( $new_instance['title'] );
@@ -227,7 +229,7 @@ function metaphor_widgets_contact_setup( $name, $data ) {
 
 
 /* --------------------------------------------------------- */
-/* !Render a contact row - 2.1.9 */
+/* !Render a contact row - 2.1.15 */
 /* --------------------------------------------------------- */
 
 if( !function_exists('metaphor_widgets_contact_row') ) {
@@ -238,15 +240,15 @@ function metaphor_widgets_contact_row( $name, $data=false ) {
 	
 	$html = '';
 	$html .= '<tr class="mtphr-widgets-list-item">';
-		$html .= '<td class="mtphr-widgets-list-handle"><span></span></td>';
+		$html .= '<td class="mtphr-widgets-list-handle"><span><i class="metaphor-widgets-ico-down-up-scale-1"></i></span></td>';
 		$html .= '<td class="mtphr-widgets-contact-title">';
-			$html .= '<input type="text" name="'.$name.'[title]" data-prefix="'.$name.'" data-key="title" value="'.htmlentities($title).'" size="8" />';
+			$html .= '<textarea name="'.$name.'[title]" data-prefix="'.$name.'" data-key="title" rows="1">'.htmlentities($title).'</textarea>';
 		$html .= '</td>';
 		$html .= '<td class="mtphr-widgets-contact-description">';
-			$html .= '<textarea name="'.$name.'[description]" data-prefix="'.$name.'" data-key="description" rows="1">'.$description.'</textarea>';
+			$html .= '<textarea name="'.$name.'[description]" data-prefix="'.$name.'" data-key="description" rows="1">'.htmlentities($description).'</textarea>';
 		$html .= '</td>';
-		$html .= '<td class="mtphr-widgets-list-delete"><a href="#"></a></td>';
-		$html .= '<td class="mtphr-widgets-list-add"><a href="#"></a></td>';
+		$html .= '<td class="mtphr-widgets-list-delete"><a href="#"><i class="metaphor-widgets-ico-minus-alt"></i></a></td>';
+		$html .= '<td class="mtphr-widgets-list-add"><a href="#"><i class="metaphor-widgets-ico-plus-alt"></i></a></td>';
 	$html .= '</tr>';
 	
 	return $html;

@@ -100,13 +100,14 @@ class mtphr_social_widget extends WP_Widget {
 		}
 		$instance['sites'] = $sites;
 		$instance['new_tab'] = $new_instance['new_tab'];
+		$instance['advanced'] = $new_instance['advanced'];
 	
 		return $instance;
 	}
 
 	
 	/* --------------------------------------------------------- */
-	/* !Widget settings - 2.1.8 */
+	/* !Widget settings - 2.1.15 */
 	/* --------------------------------------------------------- */
 	
 	function form( $instance ) {
@@ -115,7 +116,8 @@ class mtphr_social_widget extends WP_Widget {
 		$defaults = array(
 			'title' => __('Get Social', 'mtphr-widgets'),
 			'sites' => '',
-			'new_tab' => true
+			'new_tab' => true,
+			'advanced' => ''
 		);
 	
 		$instance = wp_parse_args( (array) $instance, $defaults );
@@ -137,9 +139,10 @@ class mtphr_social_widget extends WP_Widget {
 		<?php echo metaphor_widgets_social_setup( $this->get_field_name('sites'), $instance['sites'] ); ?>
 
 		<!-- Advanced: Checkbox -->
-		<p class="mtphr-widget-advanced">
-			<label><input class="checkbox" type="checkbox" /> <?php _e( 'Show Advanced Info', 'mtphr-widgets' ); ?></label>
-		</p>
+	<p class="mtphr-widget-advanced">
+		<input class="checkbox" type="checkbox" <?php checked( $instance['advanced'], 'on' ); ?> id="<?php echo $this->get_field_id( 'advanced' ); ?>" name="<?php echo $this->get_field_name( 'advanced' ); ?>" />
+		<label for="<?php echo $this->get_field_id( 'advanced' ); ?>"><?php _e( 'Show Advanced Info', 'mtphr-widgets' ); ?></label>
+	</p>
 	
 		<!-- Widget ID: Text -->
 		<p class="mtphr-widget-id">

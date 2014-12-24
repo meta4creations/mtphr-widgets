@@ -327,25 +327,16 @@ pre.mtphr-widgets-code {
 .mtphr-widgets-list-handle span {
 	font-size: 16px;
 }
-.mtphr-widgets-list-handle span:before {
-	content: "2";
+.mtphr-widgets-list-handle span:hover {
+	color: #1e8cbe;
+	cursor: ns-resize;
 }
-	.mtphr-widgets-list-handle span:hover {
-		color: #1e8cbe;
-		cursor: ns-resize;
-	}
-.mtphr-widgets-list-add a:before {
-	content: "0";
+.mtphr-widgets-list-add a:hover {
+	color: #00a651;
 }
-	.mtphr-widgets-list-add a:hover {
-		color: #00a651;
-	}
-.mtphr-widgets-list-delete a:before {
-	content: "1";
+.mtphr-widgets-list-delete a:hover {
+	color: #ed1c24;
 }
-	.mtphr-widgets-list-delete a:hover {
-		color: #ed1c24;
-	}
 
 
 .mtphr-widgets-list-item input[type="text"] {
@@ -484,19 +475,30 @@ pre.mtphr-widgets-code {
 }
 
 
-/* Contact
+/* Contact & Collapse
 ------------------------------------------------------------ */
 
 .mtphr-widget-id,
 .mtphr-widget-shortcode {
 	display: none;
 }
-.mtphr-widgets-contact-title input {
-	display: block;
+.mtphr-widgets-contact-title,
+.mtphr-widgets-collapse-title {
+	width: 35%;
 }
-.mtphr-widgets-contact-description textarea {
+.mtphr-widgets-contact-title textarea,
+.mtphr-widgets-contact-description textarea,
+.mtphr-widgets-collapse-title textarea,
+.mtphr-widgets-collapse-description textarea {
 	width: 100%;
 	display: block;
 	margin: 1px;
 	padding: 3px 5px;
+}
+.mtphr-widgets-contact-title,
+.mtphr-widgets-contact-description,
+.mtphr-widgets-collapse-title,
+.mtphr-widgets-collapse-description,
+.mtphr-widgets-collapse-open {
+	vertical-align: top;
 }

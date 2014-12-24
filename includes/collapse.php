@@ -72,11 +72,14 @@ function widget( $args, $instance ) {
 	if( isset($collapse_info[0]) ) {
 		foreach( $collapse_info as $info ) {
 			if( $info['title'] != '' ) {
-				?>
-					<div class="mtphr-collapse-widget-block">
-					<p class="mtphr-collapse-widget-heading"><a href="#"><span class="mtphr-collapse-widget-toggle"></span><?php echo sanitize_text_field($info['title']); ?></a></p>
-					<p class="mtphr-collapse-widget-description"><?php echo make_clickable($info['description']); ?></p></div>
-				<?php
+				$active = ( isset($info['open']) && $info['open'] == 'on' ) ? ' active' : '';
+				$style = ( isset($info['open']) && $info['open'] == 'on' ) ? ' style="display:block;"' : '';
+				echo '<div class="mtphr-collapse-widget-block">';
+					echo '<p class="mtphr-collapse-widget-heading'.$active.'">';
+						$toggle = apply_filters( 'mtphr_collapse_widget_toggle', '<span class="mtphr-collapse-widget-toggle"><span class="mtphr-toggle-expand"><i class="metaphor-widgets-ico-plus-square"></i></span><span class="mtphr-toggle-collapse"><i class="metaphor-widgets-ico-minus-square"></i></span></span>' );
+						echo '<a href="#">'.$toggle.sanitize_text_field($info['title']).'</a>';
+				echo '</p>';
+				echo '<p class="mtphr-collapse-widget-description"'.$style.'>'.make_clickable($info['description']).'</p></div>';
 			}	
 		}
 	}
@@ -105,7 +108,7 @@ function update( $new_instance, $old_instance ) {
 /**
  * Widget settings
  *
- * @since 2.1.7
+ * @since 2.1.15
  */
 function form( $instance ) {
 
@@ -114,7 +117,7 @@ function form( $instance ) {
 		'title' => __('Information', 'mtphr-widgets'),
 		'collapse_info' => array(
 			array(
-				'title' => __('Add a heading here...', 'mtphr-widgets'),
+				'title' => __('Add title here...', 'mtphr-widgets'),
 				'description' => __('Add a description here...', 'mtphr-widgets')
 			)
 		),
@@ -128,45 +131,8 @@ function form( $instance ) {
 		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'mtphr-widgets' ); ?></label>
 		<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:97%;" />
 	</p>
-
-	<?php
-	// Create the collapse structure	
-	$collapse_structure = array(
-		'title' => array(
-			'header' => __('Heading', 'mtphr-widgets'),
-			'width' => '30%',
-			'type' => 'text'
-		),
-		'description' => array(
-			'header' => __('Description', 'mtphr-widgets'),
-			'type' => 'textarea',
-			'rows' => 1
-		)
-	);
 	
-	// Set the widget fields
-	$fields = array(
-		'collapse_info' => array(
-			'id' => $this->get_field_name( 'collapse_info' ),
-			'type' => 'list',
-			'structure' =>  $collapse_structure,
-			'widget_value' => $instance['collapse_info']
-		)
-	);
-	
-	foreach( $fields as $name => $field ) {
-	
-		echo '<span class="mtphr-widgets-metaboxer-field mtphr-widgets-metaboxer-widget-field mtphr-widgets-metaboxer-'.$field['type'].' mtphr-widgets-metaboxer-'.$name.'">';
-		if( isset($field['name']) ) {
-			echo '<label>'.$field['name'].'</label>';
-		}
-		// Call the function to display the field
-		if ( function_exists('mtphr_widgets_metaboxer_'.$field['type']) ) {
-			call_user_func( 'mtphr_widgets_metaboxer_'.$field['type'], $field, $field['widget_value'] );
-		}
-		echo '</span>';
-	}
-	?>
+	<?php echo metaphor_widgets_collapse_setup( $this->get_field_name('collapse_info'), $instance['collapse_info'] ); ?>
 	
 	<!-- Advanced: Checkbox -->
 	<p class="mtphr-widget-advanced">
@@ -203,3 +169,65 @@ function form( $instance ) {
 	<?php
 }
 }
+
+
+/* --------------------------------------------------------- */
+/* !Render the collapse info setup - 2.1.15 */
+/* --------------------------------------------------------- */
+
+if( !function_exists('metaphor_widgets_collapse_setup') ) {
+function metaphor_widgets_collapse_setup( $name, $data ) {
+	
+	$html = '';
+	$html .= '<table class="mtphr-widgets-list mtphr-widgets-default-list">';
+		$html .= '<tr>';
+			$html .= '<th class="mtphr-widgets-list-handle"></th>';
+			$html .= '<th>'.__('Title', 'mtphr-widgets').'</th>';
+			$html .= '<th>'.__('Description', 'mtphr-widgets').'</th>';
+			$html .= '<th colspan="3">'.__('Open', 'mtphr-widgets').'</th>';
+		$html .= '</tr>';
+		if( is_array($data) && count($data) > 0 ) {
+			foreach( $data as $i=>$d ) {
+				$html .= metaphor_widgets_collapse_row( $name, $d );
+			}
+		} else {
+			$html .= metaphor_widgets_collapse_row( $name );
+		}
+	$html .= '</table>';
+	
+	return $html;
+}
+}
+
+
+/* --------------------------------------------------------- */
+/* !Render a collapse row - 2.1.15 */
+/* --------------------------------------------------------- */
+
+if( !function_exists('metaphor_widgets_collapse_row') ) {
+function metaphor_widgets_collapse_row( $name, $data=false ) {
+	
+	$title = ( isset($data) && isset($data['title']) ) ? $data['title'] : '';
+	$description = ( isset($data) && isset($data['description']) ) ? $data['description'] : '';
+	$open = ( isset($data) && isset($data['open']) && $data['open'] == 'on' ) ? $data['open'] : '';
+	
+	$html = '';
+	$html .= '<tr class="mtphr-widgets-list-item">';
+		$html .= '<td class="mtphr-widgets-list-handle"><span><i class="metaphor-widgets-ico-down-up-scale-1"></i></span></td>';
+		$html .= '<td class="mtphr-widgets-collapse-title">';
+			$html .= '<textarea name="'.$name.'[title]" data-prefix="'.$name.'" data-key="title" rows="1">'.htmlentities($title).'</textarea>';
+		$html .= '</td>';
+		$html .= '<td class="mtphr-widgets-collapse-description">';
+			$html .= '<textarea name="'.$name.'[description]" data-prefix="'.$name.'" data-key="description" rows="1">'.htmlentities($description).'</textarea>';
+		$html .= '</td>';
+		$html .= '<td class="mtphr-widgets-collapse-open">';
+			$html .= '<input type="checkbox" name="'.$name.'[open]" data-prefix="'.$name.'" data-key="open" value="on" '.checked($open, 'on', false).' />';
+		$html .= '</td>';
+		$html .= '<td class="mtphr-widgets-list-delete"><a href="#"><i class="metaphor-widgets-ico-minus-alt"></i></a></td>';
+		$html .= '<td class="mtphr-widgets-list-add"><a href="#"><i class="metaphor-widgets-ico-plus-alt"></i></a></td>';
+	$html .= '</tr>';
+	
+	return $html;
+}
+}
+

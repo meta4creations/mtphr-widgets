@@ -208,65 +208,24 @@ function form( $instance ) {
 /**
  * Display the feed
  *
- * @since 2.1.8
+ * @since 2.1.15
  */
 function mtphr_twitter_widget_feed( $twitter_name, $widget_limit, $twitter_image, $twitter_avatar, $new_window ) {
 
 	if ( $twitter_name != "" ) {
 
-		// Create variables for the cache file and cache time
-		$cachefile = MTPHR_WIDGETS_DIR.'assets/cache/' . $twitter_name . '-twitter-cache';
-		$cachetime = 600;
-
-		// if the file exists & the time it was created is less then cache time
-		if ( (file_exists($cachefile)) && ( time() - $cachetime < filemtime($cachefile) ) ) {
-
-			// Get the cache file contents & display the feed
-			$twitter_feed = file_get_contents( $cachefile );
-			mtphr_display_twitter_widget_feed( $twitter_feed, $widget_limit, $twitter_image, $twitter_avatar, $new_window );
-
-		} else {
-
-			// Turn on output buffering
-			ob_start();
-
-			// Save the feed
+		$twitter_feed = get_transient('mtphr_twitter_'.$twitter_name);
+		
+		if( false === $twitter_feed ) {
+			
+			$settings = mtphr_widgets_twitter_settings();
 			$twitter_feed = mtphr_widgets_twitter_user_timeline( $twitter_name );
 
-			// If errors, use old file
-			if ( !$twitter_feed ) {
-
-				if ( (file_exists($cachefile)) ) {
-
-					// Get the cached file
-					$twitter_feed = file_get_contents( $cachefile );
-
-					// Resave the feed to reset the cache time
-					$fp = fopen( $cachefile, 'w' );
-					fwrite( $fp, $feed );
-					fclose( $fp );
-
-					mtphr_display_twitter_widget_feed( $twitter_feed, $widget_limit, $twitter_image, $twitter_avatar, $new_window );
-				}
-
-			} else {
-
-				// Create or open the cache file
-				$fp = fopen( $cachefile, 'w' );
-
-				// Write the twitter feed to the cache file
-				fwrite( $fp, $twitter_feed );
-
-				// Close the file
-				fclose( $fp );
-
-				// Display the twitter feed
-				mtphr_display_twitter_widget_feed( $twitter_feed, $widget_limit, $twitter_image, $twitter_avatar, $new_window );
-			}
-
-			// End and close the output buffer
-			ob_end_flush();
+			set_transient('mtphr_twitter_'.$twitter_name, $twitter_feed, MINUTE_IN_SECONDS * $settings['cache_time']);
 		}
+		
+		// Display the twitter feed
+		mtphr_display_twitter_widget_feed( $twitter_feed, $widget_limit, $twitter_image, $twitter_avatar, $new_window );
 	}
 }
 

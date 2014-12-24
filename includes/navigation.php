@@ -144,7 +144,7 @@ function widget( $args, $instance ) {
 /**
  * Update the widget
  *
- * @since 2.1.5
+ * @since 2.1.15
  */
 function update( $new_instance, $old_instance ) {
 
@@ -161,6 +161,7 @@ function update( $new_instance, $old_instance ) {
 	$instance['tax'] = $new_instance['tax'];
 	$instance['operator'] = $new_instance['operator'];
 	$instance['terms'] = sanitize_text_field($new_instance['terms']);
+	$instance['advanced'] = $new_instance['advanced'];
 
 	return $instance;
 }
@@ -168,7 +169,7 @@ function update( $new_instance, $old_instance ) {
 /**
  * Widget settings
  *
- * @since 2.1.7
+ * @since 2.1.15
  */
 function form( $instance ) {
 

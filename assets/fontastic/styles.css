@@ -215,3 +215,9 @@
 .metaphor-widgets-ico-spotify:before {
   content: "\e03a";
 }
+.metaphor-widgets-ico-plus-square:before {
+  content: "\e03b";
+}
+.metaphor-widgets-ico-minus-square:before {
+  content: "\e03c";
+}

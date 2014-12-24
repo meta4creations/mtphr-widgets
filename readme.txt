@@ -57,6 +57,16 @@ Check out the 'Installation' tab.
 
 == Changelog ==
 
+= 2.1.15 =
+* Fixed bugs with Contact widget in admin
+* Multipe Collapse widget updates
+* Added "Open by default" option for Collapse widget
+* Switched to transients to store Twitter feeds
+* File organization
+* Updated Fontastic font icons
+* Removed plugin check for discontinued Metaphor Widgets Pack 1
+* Removed all Metaboxer files and references
+
 = 2.1.14 =
 * Fixed error in Italian translation
 * Added Houzz & Spotify to Social Widget

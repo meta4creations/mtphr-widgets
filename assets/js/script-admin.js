@@ -20,7 +20,6 @@ jQuery( document ).ready( function($) {
 	
 	// Show or hide the advanced fields
 	function mtphr_widgets_advanced_fields( $advanced ) {
-
 		if( $advanced.find('input[type="checkbox"]').is(':checked') ) {
 			$advanced.siblings('.mtphr-widget-id').show();
 			$advanced.siblings('.mtphr-widget-shortcode').show();
@@ -30,50 +29,46 @@ jQuery( document ).ready( function($) {
 		}	
 	}
 	
-	// Listen for the save button
-	$('.widget-control-save').click( function() {
+	$(document).on( 'widget-updated', function( e, widget) {
 		
-		var $widget = $(this).parents('.widget');
-		if( $widget.find('.mtphr-widget-advanced').length > 0 ) {
-
-			var $spinner = $(this).siblings('.spinner');
-			
-			// Wait for the spinner to disappear and run jquery
-			var mtphr_widgets_check = setInterval( function() {
-				if( $spinner.not(':visible') ) {
-					clearInterval( mtphr_widgets_check );
-					
-					// Hide or show advanced fields
-					setTimeout( function() {
-						var $advanced = $widget.find('.mtphr-widget-advanced');
-						mtphr_widgets_advanced_fields( $advanced );
-					}, 200);	
-				}
-			}, 100);
+		$(widget).find('.mtphr-widgets-default-list').each( function(index) {
+			mtphr_widgets_default_set_order( $(this) );
+			mtphr_widgets_set_sortable( $(this) ) ;
+		});
+		
+		$(widget).find('.metaphor-widgets-social-sites').each( function(index) {
+			mtphr_widgets_social_set_sortable( $(this) );
+		});
+		
+		var $advanced = $(widget).find('.mtphr-widget-advanced');
+		if( $advanced.length > 0 ) {
+			mtphr_widgets_advanced_fields( $advanced );
 		}
+		
 	});
-	
-	
+
 	
 	
 	/* --------------------------------------------------------- */
 	/* !Social sites - 2.1.8 */
 	/* --------------------------------------------------------- */
-
-	$('.metaphor-widgets-social-sites').sortable( {
-		handle: '.metaphor-widgets-social-site-icon',
-		items: '.metaphor-widgets-social-site',
-		axis: 'y',
-		helper: function(e, tr) {
-	    var $originals = tr.children();
-	    var $helper = tr.clone();
-	    $helper.children().each(function(index) {
-	      // Set helper cell sizes to match the original sizes
-	      $(this).width($originals.eq(index).width())
-	    });
-	    return $helper;
-	  }
-	});
+	
+	function mtphr_widgets_social_set_sortable( $list ) {
+		$list.sortable( {
+			handle: '.metaphor-widgets-social-site-icon',
+			items: '.metaphor-widgets-social-site',
+			axis: 'y',
+			helper: function(e, tr) {
+		    var $originals = tr.children();
+		    var $helper = tr.clone();
+		    $helper.children().each(function(index) {
+		      // Set helper cell sizes to match the original sizes
+		      $(this).width($originals.eq(index).width())
+		    });
+		    return $helper;
+		  }
+		});
+	}
 
 	$('.metaphor-widgets-social-icon').live('click', function(e) {
 		e.preventDefault();
@@ -86,19 +81,19 @@ jQuery( document ).ready( function($) {
 
 		if( $(this).hasClass('active') ) {
 			$(this).removeClass('active');
-			apex_social_settings_remove_icon( site, $table );
+			mtphr_widgets_social_settings_remove_icon( site, $table );
 		} else {
 			$(this).addClass('active');
-			apex_social_settings_add_icon( site, $table, prefix );
+			mtphr_widgets_social_settings_add_icon( site, $table, prefix );
 		}
 	});
 
-	function apex_social_settings_remove_icon( site, $table ) {
+	function mtphr_widgets_social_settings_remove_icon( site, $table ) {
 		var $row = $table.find('.metaphor-widgets-social-'+site);
 		$row.remove();
 	}
 
-	function apex_social_settings_add_icon( site, $table, prefix ) {
+	function mtphr_widgets_social_settings_add_icon( site, $table, prefix ) {
 		var row = '<tr class="metaphor-widgets-social-site metaphor-widgets-social-'+site+'">';
 		row += '<td class="metaphor-widgets-social-site-icon"><a tabindex="-1" href="#'+site+'"><i class="metaphor-widgets-ico-'+site+'"></i></a></td>';
 		row += '<td><input type="text" name="'+prefix+'['+site+']" value="" /></td>';
@@ -110,38 +105,44 @@ jQuery( document ).ready( function($) {
 		$row.find('input').focus();
 	}
 	
+	mtphr_widgets_social_set_sortable( $('.metaphor-widgets-social-sites') );
+	
 	
 	
 	/* --------------------------------------------------------- */
-	/* !Default list - 2.1.9 */
+	/* !Default list - 2.1.15 */
 	/* --------------------------------------------------------- */
 	
-	if( $('.mtphr-widgets-default-list').length > 0 ) {
-	
-		function mtphr_widgets_default_handle_toggle( $table ) {
-			if( $table.find('.mtphr-widgets-list-item').length > 1 ) {
-				$table.find('.mtphr-widgets-list-handle').show();
-				$table.find('.mtphr-widgets-list-delete').show();
-			} else {
-				$table.find('.mtphr-widgets-list-handle').hide();
-				$table.find('.mtphr-widgets-list-delete').hide();
-			}
+	function mtphr_widgets_default_handle_toggle( $table ) {
+		if( $table.find('.mtphr-widgets-list-item').length > 1 ) {
+			$table.find('.mtphr-widgets-list-handle').show();
+			$table.find('.mtphr-widgets-list-delete').show();
+		} else {
+			$table.find('.mtphr-widgets-list-handle').hide();
+			$table.find('.mtphr-widgets-list-delete').hide();
 		}
-	
-		function mtphr_widgets_default_set_order( $table ) {
-			
-			$table.find('.mtphr-widgets-list-item').each( function(index) {	
-				$(this).find('textarea, input, select').each( function() {
-					var prefix = $(this).attr('data-prefix'),
-							key = $(this).attr('data-key');
-					$(this).attr('name', prefix+'['+index+']['+key+']');
-				});
+	}
+
+	function mtphr_widgets_default_set_order( $table ) {
+		$table.find('.mtphr-widgets-list-item').each( function(index) {	
+			$(this).find('textarea, input, select').each( function() {
+				var prefix = $(this).attr('data-prefix'),
+						key = $(this).attr('data-key');
+				$(this).attr('name', prefix+'['+index+']['+key+']');
 			});
-			
-			mtphr_widgets_default_handle_toggle( $table );
-		}
+		});
 		
-		$('.mtphr-widgets-default-list').sortable( {
+		mtphr_widgets_default_handle_toggle( $table );
+	}
+	
+	function mtphr_widgets_default_init( $list ) {
+		$list.each( function(index) {
+			mtphr_widgets_default_set_order( $(this) );
+		});
+	}
+	
+	function mtphr_widgets_set_sortable( $list ) {
+		$list.sortable( {
 			handle: '.mtphr-widgets-list-handle',
 			items: '.mtphr-widgets-list-item',
 			axis: 'y',
@@ -155,47 +156,42 @@ jQuery( document ).ready( function($) {
 		    return $helper;
 		  },
 		});
-		
-		// Delete list item
-		$('.mtphr-widgets-default-list').find('.mtphr-widgets-list-delete').live( 'click', function(e) {
-			e.preventDefault();
-			
-			var $table = $(this).parents('.mtphr-widgets-default-list');
-
-			// Fade out the item
-			$(this).parents('.mtphr-widgets-list-item').fadeOut( function() {
-				$(this).remove();
-				mtphr_widgets_default_set_order( $table );
-				mtphr_widgets_default_handle_toggle( $table );
-			});
-		});
-		
-		// Add new row
-		$('.mtphr-widgets-default-list').find('.mtphr-widgets-list-add').live( 'click', function(e) {
-		  e.preventDefault();
-
-		  // Save the container
-		  var $table = $(this).parents('.mtphr-widgets-default-list'),
-		  		$container = $(this).parents('.mtphr-widgets-list-item'),
-		  		$new = $container.clone();
-		  		
-		  $new.find('textarea, input, select').each( function() {
-				$(this).val('');
-			});
-			
-			// Add the new row
-			$container.after( $new );
-			mtphr_widgets_default_set_order( $table );
-			mtphr_widgets_default_handle_toggle( $table );
-		});	
-		
-		$('.mtphr-widgets-default-list').each( function(index) {
-			mtphr_widgets_default_set_order( $(this) );
-		});
 	}
 	
-	
+	// Delete list item
+	$('.mtphr-widgets-default-list').find('.mtphr-widgets-list-delete').live( 'click', function(e) {
+		e.preventDefault();
+		
+		var $table = $(this).parents('.mtphr-widgets-default-list');
 
+		// Fade out the item
+		$(this).parents('.mtphr-widgets-list-item').fadeOut( function() {
+			$(this).remove();
+			mtphr_widgets_default_set_order( $table );
+			mtphr_widgets_default_handle_toggle( $table );
+		});
+	});
 	
+	// Add new row
+	$('.mtphr-widgets-default-list').find('.mtphr-widgets-list-add').live( 'click', function(e) {
+	  e.preventDefault();
+
+	  // Save the container
+	  var $table = $(this).parents('.mtphr-widgets-default-list'),
+	  		$container = $(this).parents('.mtphr-widgets-list-item'),
+	  		$new = $container.clone();
+	  		
+	  $new.find('textarea, input, select').each( function() {
+			$(this).val('');
+		});
+		
+		// Add the new row
+		$container.after( $new );
+		mtphr_widgets_default_set_order( $table );
+		mtphr_widgets_default_handle_toggle( $table );
+	});	
 	
+	mtphr_widgets_default_init( $('.mtphr-widgets-default-list') );
+	mtphr_widgets_set_sortable( $('.mtphr-widgets-default-list') );
+
 });

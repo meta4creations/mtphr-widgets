@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Metaphor Widgets v2.1.13\n"
+"Project-Id-Version: Metaphor Widgets v2.1.15\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2014-10-31 15:55:11+0000\n"
+"PO-Revision-Date: 2014-12-24 16:41:24+0000\n"
 "Last-Translator: admin <joe@metaphorcreations.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -36,12 +36,12 @@ msgstr ""
 msgid "%s ago"
 msgstr ""
 
-#: includes/collapse.php:128
+#: includes/collapse.php:131
 #: includes/comments.php:156
-#: includes/contact.php:155
-#: includes/navigation.php:194
+#: includes/contact.php:157
+#: includes/navigation.php:195
 #: includes/posts.php:180
-#: includes/social.php:128
+#: includes/social.php:130
 #: includes/tabbed-posts.php:201
 #: includes/twitter.php:145
 #@ mtphr-widgets
@@ -66,36 +66,36 @@ msgstr ""
 msgid "Show Avatar?"
 msgstr ""
 
-#: includes/collapse.php:174
+#: includes/collapse.php:140
 #: includes/comments.php:181
-#: includes/contact.php:164
-#: includes/navigation.php:275
+#: includes/contact.php:166
+#: includes/navigation.php:276
 #: includes/posts.php:238
-#: includes/social.php:141
+#: includes/social.php:144
 #: includes/tabbed-posts.php:226
 #: includes/twitter.php:177
 #@ mtphr-widgets
 msgid "Show Advanced Info"
 msgstr ""
 
-#: includes/collapse.php:179
+#: includes/collapse.php:145
 #: includes/comments.php:186
-#: includes/contact.php:169
-#: includes/navigation.php:280
+#: includes/contact.php:171
+#: includes/navigation.php:281
 #: includes/posts.php:243
-#: includes/social.php:146
+#: includes/social.php:149
 #: includes/tabbed-posts.php:231
 #: includes/twitter.php:182
 #@ mtphr-widgets
 msgid "Widget ID:"
 msgstr ""
 
-#: includes/collapse.php:185
+#: includes/collapse.php:151
 #: includes/comments.php:192
-#: includes/contact.php:175
-#: includes/navigation.php:286
+#: includes/contact.php:177
+#: includes/navigation.php:287
 #: includes/posts.php:249
-#: includes/social.php:152
+#: includes/social.php:155
 #: includes/tabbed-posts.php:237
 #: includes/twitter.php:188
 #@ mtphr-widgets
@@ -112,31 +112,32 @@ msgstr ""
 msgid "Metaphor Contact"
 msgstr ""
 
-#: includes/contact.php:130
-#: includes/functions.php:273
+#: includes/contact.php:132
+#: includes/functions.php:275
 #@ mtphr-widgets
 msgid "Email"
 msgstr ""
 
-#: includes/contact.php:134
-#: includes/functions.php:280
+#: includes/contact.php:136
+#: includes/functions.php:282
 #@ mtphr-widgets
 msgid "Tel"
 msgstr ""
 
-#: includes/contact.php:138
-#: includes/functions.php:287
+#: includes/contact.php:140
+#: includes/functions.php:289
 #@ mtphr-widgets
 msgid "Fax"
 msgstr ""
 
-#: includes/contact.php:210
+#: includes/collapse.php:185
+#: includes/contact.php:212
 #@ mtphr-widgets
 msgid "Title"
 msgstr ""
 
-#: includes/collapse.php:141
-#: includes/contact.php:211
+#: includes/collapse.php:186
+#: includes/contact.php:213
 #@ mtphr-widgets
 msgid "Description"
 msgstr ""
@@ -172,7 +173,7 @@ msgstr ""
 msgid "Metaphor Social Links"
 msgstr ""
 
-#: includes/social.php:183
+#: includes/social.php:186
 #@ mtphr-widgets
 msgid "Open links in a new window/tab"
 msgstr ""
@@ -207,17 +208,17 @@ msgstr ""
 msgid "Use Avatar?"
 msgstr ""
 
-#: includes/twitter.php:299
+#: includes/twitter.php:258
 #@ mtphr-widgets
 msgid "Error"
 msgstr ""
 
-#: includes/twitter.php:325
+#: includes/twitter.php:284
 #@ mtphr-widgets
 msgid "ago"
 msgstr ""
 
-#: includes/twitter.php:330
+#: includes/twitter.php:289
 #@ mtphr-widgets
 msgid "Sorry, but there was a problem connecting to the API."
 msgstr ""
@@ -227,22 +228,17 @@ msgstr ""
 msgid "Number of Comments:"
 msgstr ""
 
-#: mtphr-widgets.php:41
-#@ mtphr-widgets
-msgid "In order to use the new <strong>Metaphor Widgets</strong> you must deactivate <strong>Metaphor Widgets Pack #1</strong>"
-msgstr ""
-
 #: includes/comments.php:145
 #@ mtphr-widgets
 msgid "Latest Comments"
 msgstr ""
 
-#: includes/contact.php:127
+#: includes/contact.php:129
 #@ mtphr-widgets
 msgid "Contact"
 msgstr ""
 
-#: includes/contact.php:143
+#: includes/contact.php:145
 #@ mtphr-widgets
 msgid "Add your address here..."
 msgstr ""
@@ -257,40 +253,40 @@ msgstr ""
 msgid "Metaphor Post Navigation"
 msgstr ""
 
-#: includes/navigation.php:178
+#: includes/navigation.php:179
 #: includes/shortcodes.php:275
 #@ mtphr-widgets
 msgid " home"
 msgstr ""
 
-#: includes/navigation.php:180
+#: includes/navigation.php:181
 #: includes/shortcodes.php:277
 #@ mtphr-widgets
 msgid "Previous"
 msgstr ""
 
-#: includes/navigation.php:181
+#: includes/navigation.php:182
 #: includes/shortcodes.php:278
 #@ mtphr-widgets
 msgid "Next"
 msgstr ""
 
-#: includes/navigation.php:200
+#: includes/navigation.php:201
 #@ mtphr-widgets
 msgid "Home link text:"
 msgstr ""
 
-#: includes/navigation.php:218
+#: includes/navigation.php:219
 #@ mtphr-widgets
 msgid "Custom home link:"
 msgstr ""
 
-#: includes/navigation.php:206
+#: includes/navigation.php:207
 #@ mtphr-widgets
 msgid "Previous link text:"
 msgstr ""
 
-#: includes/navigation.php:212
+#: includes/navigation.php:213
 #@ mtphr-widgets
 msgid "Next link text:"
 msgstr ""
@@ -302,7 +298,7 @@ msgstr ""
 msgid "Blog Posts"
 msgstr ""
 
-#: includes/social.php:116
+#: includes/social.php:117
 #@ mtphr-widgets
 msgid "Get Social"
 msgstr ""
@@ -322,27 +318,17 @@ msgstr ""
 msgid "Metaphor Collapse"
 msgstr ""
 
-#: includes/collapse.php:114
+#: includes/collapse.php:117
 #@ mtphr-widgets
 msgid "Information"
 msgstr ""
 
-#: includes/collapse.php:117
-#@ mtphr-widgets
-msgid "Add a heading here..."
-msgstr ""
-
-#: includes/collapse.php:118
+#: includes/collapse.php:121
 #@ mtphr-widgets
 msgid "Add a description here..."
 msgstr ""
 
-#: includes/collapse.php:136
-#@ mtphr-widgets
-msgid "Heading"
-msgstr ""
-
-#: includes/navigation.php:224
+#: includes/navigation.php:225
 #@ mtphr-widgets
 msgid "Query order:"
 msgstr ""
@@ -399,12 +385,12 @@ msgstr ""
 msgid "You must authorize <strong>Metaphor Widgets</strong> access through Twitter before you can display any feeds."
 msgstr ""
 
-#: includes/navigation.php:247
+#: includes/navigation.php:248
 #@ mtphr-widgets
 msgid "Taxonomy:"
 msgstr ""
 
-#: includes/navigation.php:268
+#: includes/navigation.php:269
 #@ mtphr-widgets
 msgid "Terms: <small>Use slugs separated by commas (,)</small>"
 msgstr ""
@@ -608,5 +594,15 @@ msgstr ""
 #, php-format
 #@ mtphr-widgets
 msgid "Error: %s"
+msgstr ""
+
+#: includes/collapse.php:120
+#@ mtphr-widgets
+msgid "Add title here..."
+msgstr ""
+
+#: includes/collapse.php:187
+#@ mtphr-widgets
+msgid "Open"
 msgstr ""
 

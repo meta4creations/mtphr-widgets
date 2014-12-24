@@ -195,27 +195,40 @@
 	margin-bottom: 0;
 }
 .mtphr-collapse-widget-toggle {
+	display: block;
 	position: absolute;
 	left: 0;
 	top: 50%;
-	display: block;
-	width: 9px;
-	height: 9px;
-	background: url(../images/toggle.png) no-repeat left top;
-	background-size: 9px 45px;
 	margin-top: -5px;
 }
-@media screen and (-webkit-device-pixel-ratio: 2) {
-	.mtphr-collapse-widget-toggle {
-		background: url(../images/toggle@2x.png) no-repeat left top;
-	}
+.mtphr-collapse-widget-toggle span {
+	font-style: normal;	
+	font-weight: bold;
 }
-.mtphr-collapse-widget-heading.active .mtphr-collapse-widget-toggle {
-	background-position: 0 -36px;
+.mtphr-collapse-widget-toggle .mtphr-toggle-expand {
+	display: block;
+}
+.mtphr-collapse-widget-heading.active .mtphr-collapse-widget-toggle .mtphr-toggle-expand {
+	display: none;
+}
+.mtphr-collapse-widget-toggle .mtphr-toggle-collapse {
+	display: none;
+}
+.mtphr-collapse-widget-heading.active .mtphr-collapse-widget-toggle .mtphr-toggle-collapse {
+	display: block;
+}
+.mtphr-collapse-widget-toggle i {
+	display: block;
+	width: 12px;
+	height: 12px;
+	font-size: 12px;
+	line-height: 12px;
+	color: #CCC;
 }
 .mtphr-collapse-widget-description {
 	display: none;
 	padding-left: 17px;
+	margin-bottom: 10px;
 }
 
 /* Tabbed Posts
