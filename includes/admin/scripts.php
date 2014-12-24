@@ -1,18 +1,18 @@
 <?php
 
 /* --------------------------------------------------------- */
-/* !Register the admin scripts - 2.1.15 */
+/* !Register the admin scripts - 2.1.16 */
 /* --------------------------------------------------------- */
 
 function mtphr_widgets_admin_scripts( $hook ) {
 
 	global $typenow;
+	
+	// Load the fontastic font
+	wp_register_style( 'mtphr-widgets-font', MTPHR_WIDGETS_URL.'/assets/fontastic/styles.css', false, MTPHR_WIDGETS_VERSION );
+  wp_enqueue_style( 'mtphr-widgets-font' );
 
 	if ( $hook == 'widgets.php' ) {
-	
-		// Load the fontastic font
-		wp_register_style( 'mtphr-widgets-font', MTPHR_WIDGETS_URL.'/assets/fontastic/styles.css', false, MTPHR_WIDGETS_VERSION );
-	  wp_enqueue_style( 'mtphr-widgets-font' );
 
 		// Load scipts for the media uploader
 		if(function_exists( 'wp_enqueue_media' )){

@@ -57,6 +57,9 @@ Check out the 'Installation' tab.
 
 == Changelog ==
 
+= 2.1.16 =
+* Fixed icon font bug in last update
+
 = 2.1.15 =
 * Fixed bugs with Contact widget in admin
 * Multipe Collapse widget updates
@@ -184,4 +187,4 @@ Check out the 'Installation' tab.
 
 == Upgrade Notice ==
 
-Fixed error in Italian translation and added Houzz & Spotify to Social Widget.
+Multips updates and bug fixes.
