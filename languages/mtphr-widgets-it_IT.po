@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Metaphor Widgets v2.1.15\n"
+"Project-Id-Version: Metaphor Widgets v2.1.16\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2014-12-24 16:41:05+0000\n"
+"PO-Revision-Date: 2015-01-22 17:19:12+0000\n"
 "Last-Translator: \n"
 "Language-Team: Max Guglielmino\n"
 "MIME-Version: 1.0\n"
@@ -336,13 +336,13 @@ msgstr "Aggiungi una descrizione qui..."
 msgid "Query order:"
 msgstr "Ordine query:"
 
-#: includes/settings.php:464
-#: includes/settings.php:465
+#: includes/settings.php:452
+#: includes/settings.php:453
 #@ mtphr-widgets
 msgid "Metaphor Widgets"
 msgstr "Metaphor Widgets"
 
-#: includes/settings.php:483
+#: includes/settings.php:471
 #@ mtphr-widgets
 msgid "Metaphor Widgets Settings"
 msgstr "Impostazioni Metaphor Widgets"
@@ -473,111 +473,79 @@ msgstr "Tempo della Cache"
 msgid "Set the amount of time your feeds should stay cached"
 msgstr "impostare per quanto tempo i tuoi feeds dovrebbero rimanere in cache"
 
-#: includes/settings.php:159
-#, php-format
-#@ mtphr-widgets
-msgid "Log in to your Twitter account at %s"
-msgstr "Accedi con il tuo account Twitter a %s"
-
-#: includes/settings.php:170
+#: includes/settings.php:158
 #@ mtphr-widgets
 msgid "My applications"
 msgstr "Le Mie Applicazioni"
 
-#: includes/settings.php:171
-#, php-format
-#@ mtphr-widgets
-msgid "Hover over your avatar and select %s"
-msgstr "Scegli il tuo avatar e seleziona %s"
-
-#: includes/settings.php:182
+#: includes/settings.php:170
 #@ mtphr-widgets
 msgid "Create New App"
 msgstr "Creare una Nuova App"
 
-#: includes/settings.php:183
+#: includes/settings.php:171
 #, php-format
 #@ mtphr-widgets
 msgid "Select %s"
 msgstr "Seleziona %s"
 
-#: includes/settings.php:194
+#: includes/settings.php:182
 #@ mtphr-widgets
 msgid "Give your application an appropriate <strong>Name</strong> and <strong>Description</strong>"
 msgstr "Dai alla tua applicazione un <strong>Nome</strong> e una <strong>Descrizione</strong> adeguata"
 
-#: includes/settings.php:205
+#: includes/settings.php:193
 #@ mtphr-widgets
 msgid "Copy and paste the following URL into the <strong>Website</strong> field"
 msgstr "Copia e incolla la seguente URL nel campo <strong>Website</strong>"
 
-#: includes/settings.php:217
+#: includes/settings.php:205
 #@ mtphr-widgets
 msgid "Copy and paste the following URL into the <strong>Callback URL</strong> field"
 msgstr "Copia e incolla la seguente URL nel campo <strong>Richiama URL</strong> (callback URL)"
 
-#: includes/settings.php:229
-#@ mtphr-widgets
-msgid "Select the checkbox to agree to the <strong>Developer Rules of the Road</strong>"
-msgstr "Spunta la casella per accettare <strong>Developer Rules of the Road</strong>"
-
-#: includes/settings.php:240
+#: includes/settings.php:228
 #@ mtphr-widgets
 msgid "Select <strong>Create your Twitter Application</strong> to register your new application"
 msgstr "Selezionare <strong>Crea la tua Applicazione di Twitter</strong> per registrare la tua nuova applicazione"
 
 #: includes/settings.php:251
 #@ mtphr-widgets
-msgid "Once your application is created select the <strong>API Keys</strong> tab on your application page"
-msgstr "Una volta che l'applicazione è stata creata seleziona il tab <strong>API Keys</strong>  sulla tua pagina applicazione"
-
-#: includes/settings.php:262
-#@ mtphr-widgets
-msgid "Copy and paste the generated <strong>API key</strong> here"
-msgstr "Copiare e incollare l' <strong>API key</strong> generata qui"
-
-#: includes/settings.php:263
-#@ mtphr-widgets
 msgid "API key"
 msgstr "API key"
 
-#: includes/settings.php:274
-#@ mtphr-widgets
-msgid "Copy and paste the generated <strong>API secret</strong> here"
-msgstr "Copiare e incollare l' <strong>API secret</strong> generata qui"
-
-#: includes/settings.php:275
+#: includes/settings.php:263
 #@ mtphr-widgets
 msgid "API secret"
 msgstr "API secret"
 
-#: includes/settings.php:286
+#: includes/settings.php:274
 #@ mtphr-widgets
 msgid "Select <strong>Save Changes</strong> below"
 msgstr "Seleziona <strong>Salva Cambiamenti</strong> qui sotto"
 
-#: includes/settings.php:333
+#: includes/settings.php:321
 #@ mtphr-widgets
 msgid "Authorize Twitter"
 msgstr "Autorizzare Twitter"
 
-#: includes/settings.php:337
+#: includes/settings.php:325
 #@ mtphr-widgets
 msgid "There was an error with the Twitter API."
 msgstr "Si era verificato un errore con l'API Twitter"
 
-#: includes/settings.php:358
+#: includes/settings.php:346
 #@ mtphr-widgets
 msgid "Sorry, there was an issue authorizing Twitter."
 msgstr "Spiacenti, esisteva già un'autorizzazione per Twitter."
 
-#: includes/settings.php:359
+#: includes/settings.php:347
 #, php-format
 #@ mtphr-widgets
 msgid "Error %s:"
 msgstr "Errore %s:"
 
-#: includes/settings.php:407
+#: includes/settings.php:395
 #@ mtphr-widgets
 msgid "Minutes"
 msgstr "Minuti"
@@ -608,4 +576,30 @@ msgstr "Aggiungi titolo qui..."
 #@ mtphr-widgets
 msgid "Open"
 msgstr "Aperto"
+
+#: includes/settings.php:159
+#, php-format
+#@ mtphr-widgets
+msgid "Go to your Twitter Apps page %s and log into your account"
+msgstr "Vai alla tua pagina di Twitter Apps %s e accedi al tuo account"
+
+#: includes/settings.php:217
+#@ mtphr-widgets
+msgid "Select the checkbox to agree to the <strong>Developer Agreement</strong>"
+msgstr "Selezionare la casella di controllo per accettare la <strong>Accordo Developer</strong>"
+
+#: includes/settings.php:239
+#@ mtphr-widgets
+msgid "Once your application is created select the <strong>Keys and Access Tokens</strong> tab on your App page"
+msgstr "Una volta creata l'applicazione selezionare <strong>Keys and Access Tokens</strong> nella pagina App"
+
+#: includes/settings.php:250
+#@ mtphr-widgets
+msgid "Copy and paste the <strong>Consumer Key (API Key)</strong> here"
+msgstr "Copia e incolla il <strong>Consumer Key (API Key)</strong> qui"
+
+#: includes/settings.php:262
+#@ mtphr-widgets
+msgid "Copy and paste the <strong>Consumer Secret (API Secret)</strong> here"
+msgstr "Copia e incolla il <strong>Consumer Secret (API Secret)</strong> qui"
 

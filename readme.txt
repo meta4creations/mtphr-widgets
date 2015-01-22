@@ -57,6 +57,10 @@ Check out the 'Installation' tab.
 
 == Changelog ==
 
+= 2.1.17 =
+* Updated Twitter Widget settings instructions
+* Updated Italian translation
+
 = 2.1.16 =
 * Fixed icon font bug in last update
 
@@ -187,4 +191,4 @@ Check out the 'Installation' tab.
 
 == Upgrade Notice ==
 
-Multips updates and bug fixes.
+Updated Twitter Widget settings instructions.

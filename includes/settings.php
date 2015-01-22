@@ -155,8 +155,8 @@ function mtphr_widgets_twitter_settings_api_info( $args ) {
 				echo '</td>';
 				echo '<td class="mtphr-widgets-instruction-info">';
 					echo '<div class="mtphr-widgets-instruction-info-wrapper">';
-						$url = '<a href="https://dev.twitter.com" target="_blank"><strong>https://dev.twitter.com</strong></a>';
-						echo sprintf(__( 'Log in to your Twitter account at %s', 'mtphr-widgets' ), $url);
+						$url = '<a href="https://apps.twitter.com" target="_blank"><strong>'.__('My applications', 'mtphr-widgets').'</strong></a>';
+						echo sprintf(__( 'Go to your Twitter Apps page %s and log into your account', 'mtphr-widgets' ), $url);
 					echo '</div>';
 				echo '</td>';
 			echo '</tr>';
@@ -164,18 +164,6 @@ function mtphr_widgets_twitter_settings_api_info( $args ) {
 			echo '<tr class="mtphr-widgets-instruction">';
 				echo '<td class="mtphr-widgets-instruction-label">';
 					echo '<span class="mtphr-widgets-instruction-number">2</span>';
-				echo '</td>';
-				echo '<td class="mtphr-widgets-instruction-info">';
-					echo '<div class="mtphr-widgets-instruction-info-wrapper">';
-						$url = '<a href="https://apps.twitter.com" target="_blank"><strong>'.__('My applications', 'mtphr-widgets').'</strong></a>';
-						echo sprintf(__( 'Hover over your avatar and select %s', 'mtphr-widgets' ), $url);
-					echo '</div>';
-				echo '</td>';
-			echo '</tr>';
-			
-			echo '<tr class="mtphr-widgets-instruction">';
-				echo '<td class="mtphr-widgets-instruction-label">';
-					echo '<span class="mtphr-widgets-instruction-number">3</span>';
 				echo '</td>';
 				echo '<td class="mtphr-widgets-instruction-info">';
 					echo '<div class="mtphr-widgets-instruction-info-wrapper">';
@@ -187,7 +175,7 @@ function mtphr_widgets_twitter_settings_api_info( $args ) {
 			
 			echo '<tr class="mtphr-widgets-instruction">';
 				echo '<td class="mtphr-widgets-instruction-label">';
-					echo '<span class="mtphr-widgets-instruction-number">4</span>';
+					echo '<span class="mtphr-widgets-instruction-number">3</span>';
 				echo '</td>';
 				echo '<td class="mtphr-widgets-instruction-info">';
 					echo '<div class="mtphr-widgets-instruction-info-wrapper">';
@@ -198,7 +186,7 @@ function mtphr_widgets_twitter_settings_api_info( $args ) {
 			
 			echo '<tr class="mtphr-widgets-instruction">';
 				echo '<td class="mtphr-widgets-instruction-label">';
-					echo '<span class="mtphr-widgets-instruction-number">5</span>';
+					echo '<span class="mtphr-widgets-instruction-number">4</span>';
 				echo '</td>';
 				echo '<td class="mtphr-widgets-instruction-info">';
 					echo '<div class="mtphr-widgets-instruction-info-wrapper">';
@@ -210,7 +198,7 @@ function mtphr_widgets_twitter_settings_api_info( $args ) {
 			
 			echo '<tr class="mtphr-widgets-instruction">';
 				echo '<td class="mtphr-widgets-instruction-label">';
-					echo '<span class="mtphr-widgets-instruction-number">6</span>';
+					echo '<span class="mtphr-widgets-instruction-number">5</span>';
 				echo '</td>';
 				echo '<td class="mtphr-widgets-instruction-info">';
 					echo '<div class="mtphr-widgets-instruction-info-wrapper">';
@@ -222,18 +210,18 @@ function mtphr_widgets_twitter_settings_api_info( $args ) {
 			
 			echo '<tr class="mtphr-widgets-instruction">';
 				echo '<td class="mtphr-widgets-instruction-label">';
-					echo '<span class="mtphr-widgets-instruction-number">7</span>';
+					echo '<span class="mtphr-widgets-instruction-number">6</span>';
 				echo '</td>';
 				echo '<td class="mtphr-widgets-instruction-info">';
 					echo '<div class="mtphr-widgets-instruction-info-wrapper">';
-						echo __( 'Select the checkbox to agree to the <strong>Developer Rules of the Road</strong>', 'mtphr-widgets' ).' ';
+						echo __( 'Select the checkbox to agree to the <strong>Developer Agreement</strong>', 'mtphr-widgets' ).' ';
 					echo '</div>';
 				echo '</td>';
 			echo '</tr>';
 			
 			echo '<tr class="mtphr-widgets-instruction">';
 				echo '<td class="mtphr-widgets-instruction-label">';
-					echo '<span class="mtphr-widgets-instruction-number">8</span>';
+					echo '<span class="mtphr-widgets-instruction-number">7</span>';
 				echo '</td>';
 				echo '<td class="mtphr-widgets-instruction-info">';
 					echo '<div class="mtphr-widgets-instruction-info-wrapper">';
@@ -244,11 +232,23 @@ function mtphr_widgets_twitter_settings_api_info( $args ) {
 			
 			echo '<tr class="mtphr-widgets-instruction">';
 				echo '<td class="mtphr-widgets-instruction-label">';
+					echo '<span class="mtphr-widgets-instruction-number">8</span>';
+				echo '</td>';
+				echo '<td class="mtphr-widgets-instruction-info">';
+					echo '<div class="mtphr-widgets-instruction-info-wrapper">';
+						echo __( 'Once your application is created select the <strong>Keys and Access Tokens</strong> tab on your App page', 'mtphr-widgets' ).' ';
+					echo '</div>';
+				echo '</td>';
+			echo '</tr>';
+			
+			echo '<tr class="mtphr-widgets-instruction">';
+				echo '<td class="mtphr-widgets-instruction-label">';
 					echo '<span class="mtphr-widgets-instruction-number">9</span>';
 				echo '</td>';
 				echo '<td class="mtphr-widgets-instruction-info">';
 					echo '<div class="mtphr-widgets-instruction-info-wrapper">';
-						echo __( 'Once your application is created select the <strong>API Keys</strong> tab on your application page', 'mtphr-widgets' ).' ';
+						echo __( 'Copy and paste the <strong>Consumer Key (API Key)</strong> here', 'mtphr-widgets' ).' ';
+						echo '<input style="width:auto;" type="text" name="mtphr_widgets_twitter_settings[key]" value="'.$settings['key'].'" placeholder="'.__('API key', 'mtphr-widgets').'" size="30" />';
 					echo '</div>';
 				echo '</td>';
 			echo '</tr>';
@@ -259,19 +259,7 @@ function mtphr_widgets_twitter_settings_api_info( $args ) {
 				echo '</td>';
 				echo '<td class="mtphr-widgets-instruction-info">';
 					echo '<div class="mtphr-widgets-instruction-info-wrapper">';
-						echo __( 'Copy and paste the generated <strong>API key</strong> here', 'mtphr-widgets' ).' ';
-						echo '<input style="width:auto;" type="text" name="mtphr_widgets_twitter_settings[key]" value="'.$settings['key'].'" placeholder="'.__('API key', 'mtphr-widgets').'" size="30" />';
-					echo '</div>';
-				echo '</td>';
-			echo '</tr>';
-			
-			echo '<tr class="mtphr-widgets-instruction">';
-				echo '<td class="mtphr-widgets-instruction-label">';
-					echo '<span class="mtphr-widgets-instruction-number">11</span>';
-				echo '</td>';
-				echo '<td class="mtphr-widgets-instruction-info">';
-					echo '<div class="mtphr-widgets-instruction-info-wrapper">';
-						echo __( 'Copy and paste the generated <strong>API secret</strong> here', 'mtphr-widgets' ).' ';
+						echo __( 'Copy and paste the <strong>Consumer Secret (API Secret)</strong> here', 'mtphr-widgets' ).' ';
 						echo '<input style="width:auto;" type="text" name="mtphr_widgets_twitter_settings[secret]" value="'.$settings['secret'].'" placeholder="'.__('API secret', 'mtphr-widgets').'" size="30" />';
 					echo '</div>';
 				echo '</td>';
@@ -279,7 +267,7 @@ function mtphr_widgets_twitter_settings_api_info( $args ) {
 			
 			echo '<tr class="mtphr-widgets-instruction">';
 				echo '<td class="mtphr-widgets-instruction-label">';
-					echo '<span class="mtphr-widgets-instruction-number">12</span>';
+					echo '<span class="mtphr-widgets-instruction-number">11</span>';
 				echo '</td>';
 				echo '<td class="mtphr-widgets-instruction-info">';
 					echo '<div class="mtphr-widgets-instruction-info-wrapper">';

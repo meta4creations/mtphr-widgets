@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Metaphor Widgets v2.1.15\n"
+"Project-Id-Version: Metaphor Widgets v2.1.16\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2014-12-24 16:41:24+0000\n"
+"PO-Revision-Date: 2015-01-22 17:16:58+0000\n"
 "Last-Translator: admin <joe@metaphorcreations.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -333,13 +333,13 @@ msgstr ""
 msgid "Query order:"
 msgstr ""
 
-#: includes/settings.php:464
-#: includes/settings.php:465
+#: includes/settings.php:452
+#: includes/settings.php:453
 #@ mtphr-widgets
 msgid "Metaphor Widgets"
 msgstr ""
 
-#: includes/settings.php:483
+#: includes/settings.php:471
 #@ mtphr-widgets
 msgid "Metaphor Widgets Settings"
 msgstr ""
@@ -470,111 +470,79 @@ msgstr ""
 msgid "Set the amount of time your feeds should stay cached"
 msgstr ""
 
-#: includes/settings.php:159
-#, php-format
+#: includes/settings.php:158
 #@ mtphr-widgets
-msgid "Log in to your Twitter account at %s"
+msgid "My applications"
 msgstr ""
 
 #: includes/settings.php:170
 #@ mtphr-widgets
-msgid "My applications"
+msgid "Create New App"
 msgstr ""
 
 #: includes/settings.php:171
 #, php-format
 #@ mtphr-widgets
-msgid "Hover over your avatar and select %s"
+msgid "Select %s"
 msgstr ""
 
 #: includes/settings.php:182
 #@ mtphr-widgets
-msgid "Create New App"
-msgstr ""
-
-#: includes/settings.php:183
-#, php-format
-#@ mtphr-widgets
-msgid "Select %s"
-msgstr ""
-
-#: includes/settings.php:194
-#@ mtphr-widgets
 msgid "Give your application an appropriate <strong>Name</strong> and <strong>Description</strong>"
 msgstr ""
 
-#: includes/settings.php:205
+#: includes/settings.php:193
 #@ mtphr-widgets
 msgid "Copy and paste the following URL into the <strong>Website</strong> field"
 msgstr ""
 
-#: includes/settings.php:217
+#: includes/settings.php:205
 #@ mtphr-widgets
 msgid "Copy and paste the following URL into the <strong>Callback URL</strong> field"
 msgstr ""
 
-#: includes/settings.php:229
-#@ mtphr-widgets
-msgid "Select the checkbox to agree to the <strong>Developer Rules of the Road</strong>"
-msgstr ""
-
-#: includes/settings.php:240
+#: includes/settings.php:228
 #@ mtphr-widgets
 msgid "Select <strong>Create your Twitter Application</strong> to register your new application"
 msgstr ""
 
 #: includes/settings.php:251
 #@ mtphr-widgets
-msgid "Once your application is created select the <strong>API Keys</strong> tab on your application page"
-msgstr ""
-
-#: includes/settings.php:262
-#@ mtphr-widgets
-msgid "Copy and paste the generated <strong>API key</strong> here"
+msgid "API key"
 msgstr ""
 
 #: includes/settings.php:263
 #@ mtphr-widgets
-msgid "API key"
+msgid "API secret"
 msgstr ""
 
 #: includes/settings.php:274
 #@ mtphr-widgets
-msgid "Copy and paste the generated <strong>API secret</strong> here"
-msgstr ""
-
-#: includes/settings.php:275
-#@ mtphr-widgets
-msgid "API secret"
-msgstr ""
-
-#: includes/settings.php:286
-#@ mtphr-widgets
 msgid "Select <strong>Save Changes</strong> below"
 msgstr ""
 
-#: includes/settings.php:333
+#: includes/settings.php:321
 #@ mtphr-widgets
 msgid "Authorize Twitter"
 msgstr ""
 
-#: includes/settings.php:337
+#: includes/settings.php:325
 #@ mtphr-widgets
 msgid "There was an error with the Twitter API."
 msgstr ""
 
-#: includes/settings.php:358
+#: includes/settings.php:346
 #@ mtphr-widgets
 msgid "Sorry, there was an issue authorizing Twitter."
 msgstr ""
 
-#: includes/settings.php:359
+#: includes/settings.php:347
 #, php-format
 #@ mtphr-widgets
 msgid "Error %s:"
 msgstr ""
 
-#: includes/settings.php:407
+#: includes/settings.php:395
 #@ mtphr-widgets
 msgid "Minutes"
 msgstr ""
@@ -604,5 +572,31 @@ msgstr ""
 #: includes/collapse.php:187
 #@ mtphr-widgets
 msgid "Open"
+msgstr ""
+
+#: includes/settings.php:159
+#, php-format
+#@ mtphr-widgets
+msgid "Go to your Twitter Apps page %s and log into your account"
+msgstr ""
+
+#: includes/settings.php:217
+#@ mtphr-widgets
+msgid "Select the checkbox to agree to the <strong>Developer Agreement</strong>"
+msgstr ""
+
+#: includes/settings.php:239
+#@ mtphr-widgets
+msgid "Once your application is created select the <strong>Keys and Access Tokens</strong> tab on your App page"
+msgstr ""
+
+#: includes/settings.php:250
+#@ mtphr-widgets
+msgid "Copy and paste the <strong>Consumer Key (API Key)</strong> here"
+msgstr ""
+
+#: includes/settings.php:262
+#@ mtphr-widgets
+msgid "Copy and paste the <strong>Consumer Secret (API Secret)</strong> here"
 msgstr ""
 
