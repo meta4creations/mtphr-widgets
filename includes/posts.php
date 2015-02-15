@@ -47,7 +47,7 @@ function mtphr_posts_widget() {
 /**
  * Display the widget
  *
- * @since 2.1.1
+ * @since 2.1.18
  */
 function widget( $args, $instance ) {
 
@@ -70,11 +70,6 @@ function widget( $args, $instance ) {
 	if ( $widget_limit == 0 ) {
 		$widget_limit = 3;
 	}
-	/*
-if ( $excerpt_length == 0 ) {
-		$excerpt_length = 72;
-	}
-*/
 
 	// Before widget (defined by themes)
 	echo $before_widget;
@@ -98,10 +93,12 @@ if ( $excerpt_length == 0 ) {
 	$wp_query = null;
 	$wp_query = new WP_Query();
 	$wp_query->query( $args );
+	
+	$output = '';
 
 	if ( have_posts() ) :
 
-	$output = '<ul>';
+	$output .= '<ul>';
 
 	// Start the Loop
 	while ( $wp_query->have_posts() ) : $wp_query->the_post();

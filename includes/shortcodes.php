@@ -12,7 +12,7 @@ add_shortcode( 'mtphr_contact_widget', 'mtphr_contact_widget_display' );
 /**
  * Display the contact widget shortcode
  *
- * @since 2.0.3
+ * @since 2.1.18
  */
 function mtphr_contact_widget_display( $atts, $content = null ) {
 	extract( shortcode_atts( array(
@@ -50,7 +50,8 @@ function mtphr_contact_widget_display( $atts, $content = null ) {
 		'after_title' => '</h3>'
 	);
 	ob_start();
-	the_widget( 'mtphr_contact_widget', $instance, $args );
+	$widget = new mtphr_contact_widget(); 
+	$widget->widget( $args, $instance ); 
 	return ob_get_clean();
 }
 
@@ -61,7 +62,7 @@ add_shortcode( 'mtphr_collapse_widget', 'mtphr_collapse_widget_display' );
 /**
  * Display the contact widget shortcode
  *
- * @since 2.0.3
+ * @since 2.1.18
  */
 function mtphr_collapse_widget_display( $atts, $content = null ) {
 	extract( shortcode_atts( array(
@@ -99,7 +100,8 @@ function mtphr_collapse_widget_display( $atts, $content = null ) {
 		'after_title' => '</h3>'
 	);
 	ob_start();
-	the_widget( 'mtphr_collapse_widget', $instance, $args );
+	$widget = new mtphr_collapse_widget(); 
+	$widget->widget( $args, $instance ); 
 	return ob_get_clean();
 }
 
@@ -110,7 +112,7 @@ add_shortcode( 'mtphr_social_widget', 'mtphr_social_widget_display' );
 /**
  * Display the social widget shortcode
  *
- * @since 2.1.8
+ * @since 2.1.18
  */
 function mtphr_social_widget_display( $atts, $content = null ) {
 	extract( shortcode_atts( array(
@@ -144,7 +146,8 @@ function mtphr_social_widget_display( $atts, $content = null ) {
 	);
 
 	ob_start();
-	the_widget( 'mtphr_social_widget', $instance, $args );
+	$widget = new mtphr_social_widget(); 
+	$widget->widget( $args, $instance ); 
 	return ob_get_clean();
 }
 
@@ -155,7 +158,7 @@ add_shortcode( 'mtphr_twitter_widget', 'mtphr_twitter_widget_display' );
 /**
  * Display the contact widget shortcode
  *
- * @since 2.0.0
+ * @since 2.1.18
  */
 function mtphr_twitter_widget_display( $atts, $content = null ) {
 	extract( shortcode_atts( array(
@@ -184,7 +187,8 @@ function mtphr_twitter_widget_display( $atts, $content = null ) {
 		'after_title' => '</h3>'
 	);
 	ob_start();
-	the_widget( 'mtphr_twitter_widget', $instance, $args );
+	$widget = new mtphr_twitter_widget(); 
+	$widget->widget( $args, $instance );
 	return ob_get_clean();
 }
 
@@ -195,13 +199,14 @@ add_shortcode( 'mtphr_posts_widget', 'mtphr_posts_widget_display' );
 /**
  * Display the posts widget shortcode
  *
- * @since 2.0.0
+ * @since 2.1.18
  */
 function mtphr_posts_widget_display( $atts, $content = null ) {
 	extract( shortcode_atts( array(
 		'title' => '',
 		'limit' => 3,
 		'excerpt_length' => 72,
+		'read_more' => __('Read more', 'mtphr-widgets'),
 		'author' => '',
 		'category' => ''
 	), $atts ) );
@@ -210,6 +215,7 @@ function mtphr_posts_widget_display( $atts, $content = null ) {
 		'title' => sanitize_text_field($title),
 		'widget_limit' => intval($limit),
 		'excerpt_length' => intval($excerpt_length),
+		'read_more' => sanitize_text_field($read_more),
 		'author' => sanitize_text_field($author),
 		'category' => sanitize_text_field($category)
 	);
@@ -220,7 +226,8 @@ function mtphr_posts_widget_display( $atts, $content = null ) {
 		'after_title' => '</h3>'
 	);
 	ob_start();
-	the_widget( 'mtphr_posts_widget', $instance, $args );
+	$widget = new mtphr_posts_widget(); 
+	$widget->widget( $args, $instance );
 	return ob_get_clean();
 }
 
@@ -231,7 +238,7 @@ add_shortcode( 'mtphr_comments_widget', 'mtphr_comments_widget_display' );
 /**
  * Display the posts widget shortcode
  *
- * @since 2.0.0
+ * @since 2.1.18
  */
 function mtphr_comments_widget_display( $atts, $content = null ) {
 	extract( shortcode_atts( array(
@@ -256,7 +263,8 @@ function mtphr_comments_widget_display( $atts, $content = null ) {
 		'after_title' => '</h3>'
 	);
 	ob_start();
-	the_widget( 'mtphr_comments_widget', $instance, $args );
+	$widget = new mtphr_comments_widget(); 
+	$widget->widget( $args, $instance );
 	return ob_get_clean();
 }
 
@@ -267,7 +275,7 @@ add_shortcode( 'mtphr_post_navigation_widget', 'mtphr_post_navigation_widget_dis
 /**
  * Display the post navigation shortcode
  *
- * @since 2.1.5
+ * @since 2.1.18
  */
 function mtphr_post_navigation_widget_display( $atts, $content = null ) {
 	extract( shortcode_atts( array(
@@ -302,7 +310,8 @@ function mtphr_post_navigation_widget_display( $atts, $content = null ) {
 		'after_title' => '</h3>'
 	);
 	ob_start();
-	the_widget( 'mtphr_post_navigation', $instance, $args );
+	$widget = new mtphr_post_navigation(); 
+	$widget->widget( $args, $instance );
 	return ob_get_clean();
 }
 
@@ -313,7 +322,7 @@ add_shortcode( 'mtphr_tabbed_posts_widget', 'mtphr_tabbed_posts_widget_display' 
 /**
  * Display the tabbed posts shortcode
  *
- * @since 2.1.5
+ * @since 2.1.18
  */
 function mtphr_tabbed_posts_widget_display( $atts, $content = null ) {
 	extract( shortcode_atts( array(
@@ -336,7 +345,8 @@ function mtphr_tabbed_posts_widget_display( $atts, $content = null ) {
 		'after_title' => '</h3>'
 	);
 	ob_start();
-	the_widget( 'mtphr_tabbed_posts_widget', $instance, $args );
+	$widget = new mtphr_tabbed_posts_widget(); 
+	$widget->widget( $args, $instance );
 	return ob_get_clean();
 }
 

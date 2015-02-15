@@ -48,7 +48,7 @@ function mtphr_contact_widget() {
 /**
  * Display the widget
  *
- * @since 2.1.13
+ * @since 2.1.18
  */
 function widget( $args, $instance ) {
 
@@ -78,16 +78,21 @@ function widget( $args, $instance ) {
 
 	if( is_array($contact_info) ) {
 		foreach( $contact_info as $info ) {
-
-			echo '<tr class="mtphr-contact-widget-info">';
-			if( isset($info['title']) && $info['title'] != '' ) {
-				$description = isset($info['description']) ? make_clickable(nl2br(wp_kses_post($info['description']))) : '';
-				echo '<td class="mtphr-contact-widget-title">'.do_shortcode(nl2br(wp_kses_post($info['title']))).'</td>';
-				echo '<td>'.$description.'</td>';
-			} else {
-				echo '<td colspan="2">'.$description.'</td>';
+			
+			$has_title = (isset($info['title']) && $info['title'] != '');
+			$has_description = (isset($info['description']) && $info['description'] != '');
+			$colspan = ( !$has_title || !$has_description ) ? ' colspan="2"' : '';
+			
+			if( $has_title || $has_description ) {
+				echo '<tr class="mtphr-contact-widget-info">';
+				if( $has_title ) {
+					echo '<td class="mtphr-contact-widget-title"'.$colspan.'>'.do_shortcode(make_clickable(convert_chars(wptexturize($info['title'])))).'</td>';
+				}
+				if( $has_description ) {
+					echo '<td class="mtphr-contact-widget-description"'.$colspan.'>'.do_shortcode(make_clickable(convert_chars(wptexturize($info['description'])))).'</td>';
+				}
+				echo '</tr>';
 			}
-			echo '</tr>';
 
 		}
 	}
