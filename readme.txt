@@ -57,6 +57,9 @@ Check out the 'Installation' tab.
 
 == Changelog ==
 
+= 2.1.20 =
+* Added Skype protocol to front-end
+
 = 2.1.19 =
 * Added Skype protocol
 
@@ -200,4 +203,4 @@ Check out the 'Installation' tab.
 
 == Upgrade Notice ==
 
-Added Skype protocol.
+Added Skype protocol to front-end.
