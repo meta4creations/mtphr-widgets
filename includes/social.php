@@ -224,7 +224,7 @@ function metaphor_widgets_social_setup( $name, $sites ) {
 
 
 /* --------------------------------------------------------- */
-/* !Display the social links - 2.1.8 */
+/* !Display the social links - 2.1.21 */
 /* --------------------------------------------------------- */
 
 if( !function_exists('metaphor_widgets_social_links_display') ) {
@@ -236,7 +236,8 @@ function metaphor_widgets_social_links_display( $sites, $new_tab ) {
 	// If there is at least one site
 	if( is_array($sites) && count($sites) > 0 ) {
 		foreach( $sites as $site=>$url ) {
-			$html .= '<a class="mtphr-social-widget-site mtphr-social-widget-'.$site.'" href="'.esc_url($url).'"'.$t.'><i class="metaphor-widgets-ico-'.$site.'"></i></a>';
+			$icon = apply_filters( 'mtphr_social_widget_site_icon', '<i class="metaphor-widgets-ico-'.$site.'"></i>', $site );
+			$html .= '<a class="mtphr-social-widget-site mtphr-social-widget-'.$site.'" href="'.esc_url($url).'"'.$t.'>'.$icon.'</a>';
 		}
 	}
 	

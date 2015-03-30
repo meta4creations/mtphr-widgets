@@ -57,6 +57,9 @@ Check out the 'Installation' tab.
 
 == Changelog ==
 
+= 2.1.21 =
+* Added filter to social widget icons
+
 = 2.1.20 =
 * Added Skype protocol to front-end
 
@@ -203,4 +206,4 @@ Check out the 'Installation' tab.
 
 == Upgrade Notice ==
 
-Added Skype protocol to front-end.
+Added filter to social widget icons.
