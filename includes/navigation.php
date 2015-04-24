@@ -48,7 +48,7 @@ function mtphr_post_navigation() {
 /**
  * Display the widget
  *
- * @since 2.1.6
+ * @since 2.1.22
  */
 function widget( $args, $instance ) {
 
@@ -122,8 +122,8 @@ function widget( $args, $instance ) {
 		$current = array_search( get_the_id(), $p_ids );
 		$prev_post = (($current-1) < 0) ? (count($p_ids)-1) : $current-1;
 		$next_post = (($current+1) == count($p_ids)) ? 0 : $current+1;
-		$prev_permalink = ( $taxonomy && $terms ) ? add_query_arg( array('taxonomy' => $taxonomy, 'terms' => $terms), get_permalink($p_ids[$prev_post]) ) : remove_query_arg( array('taxonomy', 'terms'), get_permalink($p_ids[$prev_post]) );
-		$next_permalink = ( $taxonomy && $terms ) ? add_query_arg( array('taxonomy' => $taxonomy, 'terms' => $terms), get_permalink($p_ids[$next_post]) ) : remove_query_arg( array('taxonomy', 'terms'), get_permalink($p_ids[$next_post]) );
+		$prev_permalink = ( $taxonomy && $terms ) ? esc_url( add_query_arg(array('taxonomy' => $taxonomy, 'terms' => $terms), get_permalink($p_ids[$prev_post])) ) : esc_url( remove_query_arg(array('taxonomy', 'terms'), get_permalink($p_ids[$prev_post])) );
+		$next_permalink = ( $taxonomy && $terms ) ? esc_url( add_query_arg(array('taxonomy' => $taxonomy, 'terms' => $terms), get_permalink($p_ids[$next_post])) ) : esc_url( remove_query_arg(array('taxonomy', 'terms'), get_permalink($p_ids[$next_post])) );
 		?>
 
 		<nav>
