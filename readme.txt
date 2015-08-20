@@ -3,7 +3,7 @@ Contributors: metaphorcreations
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TYB7K2E538T3L
 Tags: widgets, posts, comments, social, twitter, contact, post navigation, navigation, collapse, content
 Requires at least: 3.0.1
-Tested up to: 4.2
+Tested up to: 4.3
 Stable tag: /trunk/
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -56,6 +56,9 @@ Check out the 'Installation' tab.
 8. Widget/Shortcode Display
 
 == Changelog ==
+
+= 2.2 =
+* Updated widget classes
 
 = 2.1.22 =
 * Fixed add_query_arg() and remove_query_arg() usage
@@ -209,4 +212,4 @@ Check out the 'Installation' tab.
 
 == Upgrade Notice ==
 
-Fixed add_query_arg() and remove_query_arg() usage.
+Updated widget classes.

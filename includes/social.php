@@ -1,50 +1,18 @@
 <?php
 
-/* --------------------------------------------------------- */
-/* !Register the widget - 1.0.0 */
-/* --------------------------------------------------------- */
-
-function mtphr_social_widget_init() {
-	register_widget( 'mtphr_social_widget' );
-}
-add_action( 'widgets_init', 'mtphr_social_widget_init' );
-
-
- 
-/* --------------------------------------------------------- */
-/* !Create a class for the widget - 1.0.0 */
-/* --------------------------------------------------------- */
-
+/**
+ * Create a class for the widget
+ *
+ * @since 2.2
+ */
 class mtphr_social_widget extends WP_Widget {
-
-
-	/* --------------------------------------------------------- */
-	/* !Widget setup - 2.0.0 */
-	/* --------------------------------------------------------- */
-
-	function mtphr_social_widget() {
 	
-		// Widget settings
-		$widget_ops = array(
-			'classname' => 'mtphr-social-widget',
-			'description' => __('Displays your social links.', 'mtphr-widgets')
-		);
-	
-		// Widget control settings
-		$control_ops = array(
-			'id_base' => 'mtphr-social',
-			'width' => 400
-		);
-	
-		// Create the widget
-		$this->WP_Widget( 'mtphr-social', __('Metaphor Social Links', 'mtphr-widgets'), $widget_ops, $control_ops );
+	/** Constructor */
+	function __construct() {
+		parent::__construct( 'mtphr-social', __('Metaphor Social Links', 'mtphr-widgets'), array( 'description' => __('Displays your social links.', 'mtphr-widgets') ) );
 	}
-
  
-	/* --------------------------------------------------------- */
-	/* !Display the widget - 2.1.8 */
-	/* --------------------------------------------------------- */
-	
+	/** @see WP_Widget::widget */
 	function widget( $args, $instance ) {
 	
 		extract( $args );
@@ -81,11 +49,7 @@ class mtphr_social_widget extends WP_Widget {
 		echo $after_widget;
 	}
 
-
-	/* --------------------------------------------------------- */
-	/* !Update the widget - 2.1.8 */
-	/* --------------------------------------------------------- */
-	
+	/** @see WP_Widget::update */	
 	function update( $new_instance, $old_instance ) {
 	
 		$instance = $old_instance;
@@ -105,11 +69,7 @@ class mtphr_social_widget extends WP_Widget {
 		return $instance;
 	}
 
-	
-	/* --------------------------------------------------------- */
-	/* !Widget settings - 2.1.15 */
-	/* --------------------------------------------------------- */
-	
+	/** @see WP_Widget::form */
 	function form( $instance ) {
 	
 		// Set up some default widget settings
@@ -244,3 +204,13 @@ function metaphor_widgets_social_links_display( $sites, $new_tab ) {
 	return $html;
 }
 }
+
+
+/* --------------------------------------------------------- */
+/* !Register the widget - 2.2 */
+/* --------------------------------------------------------- */
+
+function mtphr_social_widget_init() {
+	register_widget( 'mtphr_social_widget' );
+}
+add_action( 'widgets_init', 'mtphr_social_widget_init' );
