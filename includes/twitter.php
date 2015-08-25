@@ -3,13 +3,20 @@
 /**
  * Create a class for the widget
  *
- * @since 2.2
+ * @since 2.2.1
  */
 class mtphr_twitter_widget extends WP_Widget {
 	
 	/** Constructor */
 	function __construct() {
-		parent::__construct( 'mtphr-twitter', __('Metaphor Twitter Feed', 'mtphr-widgets'), array( 'description' => __('Displays a users latest twitter comments.', 'mtphr-widgets') ) );
+		parent::__construct(
+			'mtphr-twitter',
+			__('Metaphor Twitter Feed', 'mtphr-widgets'),
+			array(
+				'classname' => 'mtphr-twitter-widget',
+				'description' => __('Displays a users latest twitter comments.', 'mtphr-widgets')
+			) 
+		);
 	}
 		
 	/** @see WP_Widget::widget */

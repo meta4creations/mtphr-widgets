@@ -3,13 +3,20 @@
 /**
  * Create a class for the widget
  *
- * @since 2.2
+ * @since 2.2.1
  */
 class mtphr_tabbed_posts_widget extends WP_Widget {
 	
 	/** Constructor */
 	function __construct() {
-		parent::__construct( 'mtphr-tabbed-posts', __('Metaphor Tabbed Posts', 'mtphr-widgets'), array( 'description' => __('Displays recent posts.', 'mtphr-widgets') ) );
+		parent::__construct(
+			'mtphr-tabbed-posts',
+			__('Metaphor Tabbed Posts', 'mtphr-widgets'),
+			array(
+				'classname' => 'mtphr-tabbed-posts-widget',
+				'description' => __('Displays recent posts.', 'mtphr-widgets')
+			)
+		);
 	}
 	
 	/** @see WP_Widget::widget */

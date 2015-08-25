@@ -3,13 +3,20 @@
 /**
  * Create a class for the widget
  *
- * @since 2.2
+ * @since 2.2.1
  */
 class mtphr_contact_widget extends WP_Widget {
 	
 	/** Constructor */
 	function __construct() {
-		parent::__construct( 'mtphr-contact', __('Metaphor Contact', 'mtphr-widgets'), array( 'description' => __('Displays contact information.', 'mtphr-widgets') ) );
+		parent::__construct(
+			'mtphr-contact',
+			__('Metaphor Contact', 'mtphr-widgets'),
+			array(
+				'classname' => 'mtphr-contact-widget',
+				'description' => __('Displays contact information.', 'mtphr-widgets')
+			)
+		);
 	}
 	
 	/** @see WP_Widget::widget */

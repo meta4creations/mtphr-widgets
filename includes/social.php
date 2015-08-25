@@ -3,13 +3,20 @@
 /**
  * Create a class for the widget
  *
- * @since 2.2
+ * @since 2.2.1
  */
 class mtphr_social_widget extends WP_Widget {
 	
 	/** Constructor */
 	function __construct() {
-		parent::__construct( 'mtphr-social', __('Metaphor Social Links', 'mtphr-widgets'), array( 'description' => __('Displays your social links.', 'mtphr-widgets') ) );
+		parent::__construct(
+			'mtphr-social',
+			__('Metaphor Social Links', 'mtphr-widgets'),
+			array(
+				'classname' => 'mtphr-social-widget',
+				'description' => __('Displays your social links.', 'mtphr-widgets')
+			)
+		);
 	}
  
 	/** @see WP_Widget::widget */
