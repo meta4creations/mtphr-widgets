@@ -3,13 +3,20 @@
 /**
  * Create a class for the widget
  *
- * @since 2.2
+ * @since 2.2.1
  */
 class mtphr_post_navigation extends WP_Widget {
 	
 	/** Constructor */
 	function __construct() {
-		parent::__construct( 'mtphr-post-navigation', __('Metaphor Post Navigation', 'mtphr-widgets'), array( 'description' => __('Displays previous, next, and archive links for single posts.', 'mtphr-widgets') ) );
+		parent::__construct(
+			'mtphr-post-navigation',
+			__('Metaphor Post Navigation', 'mtphr-widgets'),
+			array(
+				'classname' => 'mtphr-post-navigation',
+				'description' => __('Displays previous, next, and archive links for single posts.', 'mtphr-widgets')
+			)
+		);
 	}
 	
 	/** @see WP_Widget::widget */

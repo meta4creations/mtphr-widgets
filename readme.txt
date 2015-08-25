@@ -57,6 +57,9 @@ Check out the 'Installation' tab.
 
 == Changelog ==
 
+= 2.2.1 =
+* Updated widget class names
+
 = 2.2 =
 * Updated widget classes
 
@@ -212,4 +215,4 @@ Check out the 'Installation' tab.
 
 == Upgrade Notice ==
 
-Updated widget classes.
+Updated widget class names.

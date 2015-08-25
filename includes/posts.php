@@ -3,13 +3,20 @@
 /**
  * Create a class for the widget
  *
- * @since 2.2
+ * @since 2.2.1
  */
 class mtphr_posts_widget extends WP_Widget {
 	
 	/** Constructor */
 	function __construct() {
-		parent::__construct( 'mtphr-posts', __('Metaphor Recent Posts', 'mtphr-widgets'), array( 'description' => __('Displays recent posts.', 'mtphr-widgets') ) );
+		parent::__construct(
+			'mtphr-posts',
+			__('Metaphor Recent Posts', 'mtphr-widgets'),
+			array(
+				'classname' => 'mtphr-posts-widget',
+				'description' => __('Displays recent posts.', 'mtphr-widgets')
+			)
+		);
 	}
 	
 	/** @see WP_Widget::widget */

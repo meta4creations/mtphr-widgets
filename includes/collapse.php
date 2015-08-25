@@ -3,13 +3,20 @@
 /**
  * Create a class for the widget
  *
- * @since 2.2
+ * @since 2.2.1
  */
 class mtphr_collapse_widget extends WP_Widget {
 	
 	/** Constructor */
 	function __construct() {
-		parent::__construct( 'mtphr-collapse', __('Metaphor Collapse', 'mtphr-widgets'), array( 'description' => __('Displays collapsible content.', 'mtphr-widgets') ) );
+		parent::__construct(
+			'mtphr-collapse',
+			__('Metaphor Collapse', 'mtphr-widgets'),
+			array(
+				'classname' => 'mtphr-collapse-widget',
+				'description' => __('Displays collapsible content.', 'mtphr-widgets')
+			)
+		);
 	}
 	
 	/** @see WP_Widget::widget */

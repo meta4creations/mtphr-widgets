@@ -3,13 +3,20 @@
 /**
  * Create a class for the widget
  *
- * @since 2.2
+ * @since 2.2.1
  */
 class mtphr_comments_widget extends WP_Widget {
 	
 	/** Constructor */
 	function __construct() {
-		parent::__construct( 'mtphr-comments', __('Metaphor Recent Comments', 'mtphr-widgets'), array( 'description' => __('Displays recent comments.', 'mtphr-widgets') ) );
+		parent::__construct(
+			'mtphr-comments',
+			__('Metaphor Recent Comments', 'mtphr-widgets'),
+			array(
+				'classname' => 'mtphr-comments-widget',
+				'description' => __('Displays recent comments.', 'mtphr-widgets')
+			)
+		);
 	}
 	
 	/** @see WP_Widget::widget */
