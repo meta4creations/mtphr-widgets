@@ -123,6 +123,16 @@ function mtphr_widgets_comment_excerpt( $excerpt, $charlength ) {
 }
 
 
+/* --------------------------------------------------------- */
+/* !Check if Metaphor Shortcodes is active 2.3 */
+/* --------------------------------------------------------- */
+
+function mtphr_widgets_mtphr_shortcodes() {
+	if( function_exists('mtphr_shortcodes_modal') && function_exists('mtphr_shortcodes_icon_admin_display') ) {
+		return true;
+	}
+}
+
 
 
 /**
@@ -189,6 +199,11 @@ function mtphr_widgets_social_sites() {
 		'yahoobuzz' => 'Yahoo! Buzz',
 		'youtube' => 'YouTube'
 	);
+	
+	if( mtphr_widgets_mtphr_shortcodes() ) {
+		$custom_icons = get_option( 'mtphr_widgets_custom_icons', array() );
+		$social_sites = array_merge( $social_sites, $custom_icons );
+	}
 
 	return $social_sites;
 }
@@ -310,6 +325,7 @@ function mtphr_widgets_contact_update( $instance ) {
  *
  * @since 2.0.0
  */
+/*
 function mtphr_widgets_social_site_css() {
 	$s = mtphr_widgets_social_sites();
 	$left = 0;
@@ -326,6 +342,7 @@ function mtphr_widgets_social_site_css() {
 		}
 	}
 }
+*/
 
 
 

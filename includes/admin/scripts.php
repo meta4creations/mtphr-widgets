@@ -1,7 +1,7 @@
 <?php
 
 /* --------------------------------------------------------- */
-/* !Register the admin scripts - 2.1.16 */
+/* !Register the admin scripts - 2.3 */
 /* --------------------------------------------------------- */
 
 function mtphr_widgets_admin_scripts( $hook ) {
@@ -9,8 +9,7 @@ function mtphr_widgets_admin_scripts( $hook ) {
 	global $typenow;
 	
 	// Load the fontastic font
-	wp_register_style( 'mtphr-widgets-font', MTPHR_WIDGETS_URL.'/assets/fontastic/styles.css', false, MTPHR_WIDGETS_VERSION );
-  wp_enqueue_style( 'mtphr-widgets-font' );
+	wp_enqueue_style( 'mtphr-widgets-font', MTPHR_WIDGETS_URL.'assets/fontastic/styles.css', false, filemtime(MTPHR_WIDGETS_DIR.'assets/fontastic/styles.css') );
   
 	// Load scipts for the media uploader
 	if(function_exists( 'wp_enqueue_media' )){
@@ -22,11 +21,13 @@ function mtphr_widgets_admin_scripts( $hook ) {
 	}
 
 	// Load the global widgets jquery
-	wp_register_script( 'mtphr-widgets-admin', MTPHR_WIDGETS_URL.'/assets/js/script-admin.js', array('jquery'), MTPHR_WIDGETS_VERSION );
-  wp_enqueue_script( 'mtphr-widgets-admin' );
+	wp_enqueue_script( 'mtphr-widgets-admin', MTPHR_WIDGETS_URL.'assets/js/script-admin.js', array('jquery'), filemtime(MTPHR_WIDGETS_DIR.'assets/js/script-admin.js') );
+  wp_localize_script( 'mtphr-widgets-admin', 'mtphr_widgets_vars', array(
+  		'security' => wp_create_nonce( 'mtphr_widgets' ),
+		)
+	);
 
 	// Load the global widgets stylesheet
-	wp_register_style( 'mtphr-widgets-admin', MTPHR_WIDGETS_URL.'/assets/css/style-admin.css', false, MTPHR_WIDGETS_VERSION );
-  wp_enqueue_style( 'mtphr-widgets-admin' );
+	wp_enqueue_style( 'mtphr-widgets-admin', MTPHR_WIDGETS_URL.'assets/css/style-admin.css', false, filemtime(MTPHR_WIDGETS_DIR.'assets/css/style-admin.css') );
 }
 add_action( 'admin_enqueue_scripts', 'mtphr_widgets_admin_scripts' );

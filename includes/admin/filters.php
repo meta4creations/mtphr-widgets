@@ -34,3 +34,57 @@ function mtphr_widgets_twitter_reset() {
 }
 add_action( 'wp_loaded', 'mtphr_widgets_twitter_reset' );
 
+
+
+/* --------------------------------------------------------- */
+/* !Add the page icons modal - 2.3 */
+/* --------------------------------------------------------- */
+
+function mtphr_widgets_custom_icons() {
+
+	if( mtphr_widgets_mtphr_shortcodes() ) {
+
+		$content = '<div id="mtphr-widgets-icon-selects">';
+			$content .= mtphr_shortcodes_icon_admin_display();
+		$content .= '</div>';
+		
+		$args = array(
+			'id' => 'mtphr-widgets-icon-modal',
+			'title' => __('Select an icon', 'mtphr-widgets'),
+			'button' => __('Use icon', 'mtphr-widgets')
+		);			
+		mtphr_shortcodes_modal( $content, $args );
+	}
+}
+add_action( 'admin_footer', 'mtphr_widgets_custom_icons' );
+
+
+
+/* --------------------------------------------------------- */
+/* !Save extra icons - 2.3 */
+/* --------------------------------------------------------- */
+
+function mtphr_widgets_save_icon() {
+
+	// Get access to the database
+	global $wpdb;
+
+	// Check the nonce
+	check_ajax_referer( 'mtphr_widgets', 'security' );
+	
+	// Get variables
+	$prefix = $_POST['prefix'];
+	$id = $_POST['id'];
+	
+	$custom_icons = get_option( 'mtphr_widgets_custom_icons', array() );
+	$custom_icons[$prefix.'__'.$id] = array(
+		'prefix' => $prefix,
+		'id' => $id
+	);
+	
+	update_option( 'mtphr_widgets_custom_icons', $custom_icons );
+
+	die(); // this is required to return a proper result
+}
+add_action( 'wp_ajax_mtphr_widgets_save_icon', 'mtphr_widgets_save_icon' );
+
