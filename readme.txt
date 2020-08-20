@@ -2,7 +2,7 @@
 Contributors: metaphorcreations
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TYB7K2E538T3L
 Tags: widgets, posts, comments, social, twitter, contact, post navigation, navigation, collapse, content
-Requires at least: 4.5
+Requires at least: 5.5
 Tested up to: 4.9.1
 Stable tag: /trunk/
 License: GPLv2 or later
@@ -48,14 +48,18 @@ Check out the 'Installation' tab.
 
 1. Recent Posts Settings
 2. Recent Comments Settings
-3. Twitter Feed Settings
-4. Social Links Settings
-5. Contact Settings
-6. Navigation Settings
-7. Collapse Settings
-8. Widget/Shortcode Display
+3. Social Links Settings
+4. Contact Settings
+5. Navigation Settings
+6. Collapse Settings
+7. Widget/Shortcode Display
 
 == Changelog ==
+
+= 2.4 =
+* Resolved javascript errors with WP 5.5
+* Removed Twitter widget due to outdated API code
+* Resolved Collapse widget javascript error
 
 = 2.3.1 =
 * Resolved contact widget not saving error
@@ -222,4 +226,4 @@ Check out the 'Installation' tab.
 
 == Upgrade Notice ==
 
-Resolved contact widget not saving error
+Resolved javascript errors with WP 5.5 and removed Twitter Widget

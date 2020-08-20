@@ -168,7 +168,6 @@ function metaphor_widgets_collapse_setup( $name, $data ) {
 
 if( !function_exists('metaphor_widgets_collapse_row') ) {
 function metaphor_widgets_collapse_row( $name, $data=false ) {
-	
 	$title = ( isset($data) && isset($data['title']) ) ? $data['title'] : '';
 	$description = ( isset($data) && isset($data['description']) ) ? $data['description'] : '';
 	$open = ( isset($data) && isset($data['open']) && $data['open'] == 'on' ) ? $data['open'] : '';
@@ -177,13 +176,13 @@ function metaphor_widgets_collapse_row( $name, $data=false ) {
 	$html .= '<tr class="mtphr-widgets-list-item">';
 		$html .= '<td class="mtphr-widgets-list-handle"><span><i class="metaphor-widgets-ico-down-up-scale-1"></i></span></td>';
 		$html .= '<td class="mtphr-widgets-collapse-title">';
-			$html .= '<textarea name="'.$name.'[title]" data-prefix="'.$name.'" data-key="title" rows="1">'.htmlentities($title).'</textarea>';
+			$html .= '<textarea name="'.$name.'[title]" data-name="'.$name.'" data-key="title" rows="1">'.htmlentities($title).'</textarea>';
 		$html .= '</td>';
 		$html .= '<td class="mtphr-widgets-collapse-description">';
-			$html .= '<textarea name="'.$name.'[description]" data-prefix="'.$name.'" data-key="description" rows="1">'.htmlentities($description).'</textarea>';
+			$html .= '<textarea name="'.$name.'[description]" data-name="'.$name.'" data-key="description" rows="1">'.htmlentities($description).'</textarea>';
 		$html .= '</td>';
 		$html .= '<td class="mtphr-widgets-collapse-open">';
-			$html .= '<input type="checkbox" name="'.$name.'[open]" data-prefix="'.$name.'" data-key="open" value="on" '.checked($open, 'on', false).' />';
+			$html .= '<input type="checkbox" name="'.$name.'[open]" data-name="'.$name.'" data-key="open" value="on" '.checked($open, 'on', false).' />';
 		$html .= '</td>';
 		$html .= '<td class="mtphr-widgets-list-delete"><a href="#"><i class="metaphor-widgets-ico-minus-alt"></i></a></td>';
 		$html .= '<td class="mtphr-widgets-list-add"><a href="#"><i class="metaphor-widgets-ico-plus-alt"></i></a></td>';

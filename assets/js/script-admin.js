@@ -14,7 +14,7 @@ jQuery( document ).ready( function($) {
 	});
 	
 	// Listen for the advanced fields toggle
-	$('.mtphr-widget-advanced').live( 'click', function(e) {
+	$('body').on( 'click', '.mtphr-widget-advanced', function(e) {
 		mtphr_widgets_advanced_fields( $(this) );		
 	});
 	
@@ -70,7 +70,7 @@ jQuery( document ).ready( function($) {
 		});
 	}
 
-	$('.metaphor-widgets-social-icon').live('click', function(e) {
+	$('body').on('click', '.metaphor-widgets-social-icon', function(e) {
 		e.preventDefault();
 
 		var $table = $(this).parent().siblings('.metaphor-widgets-social-sites'),
@@ -175,7 +175,7 @@ jQuery( document ).ready( function($) {
 	}
 	
 	// Delete list item
-	$('.mtphr-widgets-default-list').find('.mtphr-widgets-list-delete').live( 'click', function(e) {
+	$('body').on( 'click', '.mtphr-widgets-default-list .mtphr-widgets-list-delete', function(e) {
 		e.preventDefault();
 		
 		var $table = $(this).parents('.mtphr-widgets-default-list');
@@ -189,7 +189,7 @@ jQuery( document ).ready( function($) {
 	});
 	
 	// Add new row
-	$('.mtphr-widgets-default-list').find('.mtphr-widgets-list-add').live( 'click', function(e) {
+	$('body').on( 'click', '.mtphr-widgets-default-list .mtphr-widgets-list-add', function(e) {
 	  e.preventDefault();
 
 	  // Save the container
@@ -211,10 +211,21 @@ jQuery( document ).ready( function($) {
 	mtphr_widgets_set_sortable( $('.mtphr-widgets-default-list') );
 	
 	
+	/**
+	 * Widget added listener
+	*/
+	$( document ).on( 'widget-added', function( e, $widget ) {
+		mtphr_widgets_default_init( $('.mtphr-widgets-default-list') );
+		mtphr_widgets_set_sortable( $('.mtphr-widgets-default-list') );
+		mtphr_widgets_social_set_sortable( $('.metaphor-widgets-social-sites') );
+	} );
+
+	
+	
 	
 	var $icon, $input;
 	
-	$('.mtphr-shortcodes-modal-link').live( 'click', function() {
+	$('body').on( 'click', '.mtphr-shortcodes-modal-link', function() {
 		
 		var $modal = $('#mtphr-widgets-icon-modal'),
 				$widget = $(this).parents('.widget-content'),
@@ -224,7 +235,7 @@ jQuery( document ).ready( function($) {
 				
 		$modal.children('.mtphr-shortcodes-icon-select').removeClass('active');
 
-		$modal.find('.mtphr-shortcodes-icon-select').live( 'click', function(e) {
+		$modal.on( 'click', '.mtphr-shortcodes-icon-select', function(e) {
 			e.preventDefault();
 
 			var prefix = $(this).attr('data-prefix'),

@@ -2,7 +2,7 @@
 /*
 Plugin Name: Metaphor Widgets
 Description: Custom widgets pack. Includes recent posts, recent comments, contact, twitter, social, & navigation widgets.
-Version: 2.3.1
+Version: 2.4
 Author: Metaphor Creations
 Author URI: http://www.metaphorcreations.com
 License: GPL2
@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 
 /**Define Widget Constants */
-define( 'MTPHR_WIDGETS_VERSION', '2.3.1' );
+define( 'MTPHR_WIDGETS_VERSION', '2.4' );
 define( 'MTPHR_WIDGETS_DIR', trailingslashit(plugin_dir_path(__FILE__)) );
 define( 'MTPHR_WIDGETS_URL', trailingslashit(plugins_url()).'mtphr-widgets/' );
 
@@ -51,10 +51,10 @@ require_once( MTPHR_WIDGETS_DIR.'includes/shortcodes.php' );
 require_once( MTPHR_WIDGETS_DIR.'includes/tabbed-posts.php' );
 require_once( MTPHR_WIDGETS_DIR.'includes/posts.php' );
 require_once( MTPHR_WIDGETS_DIR.'includes/comments.php' );
-require_once( MTPHR_WIDGETS_DIR.'includes/twitter.php' );
+//require_once( MTPHR_WIDGETS_DIR.'includes/twitter.php' );
 require_once( MTPHR_WIDGETS_DIR.'includes/social.php' );
 require_once( MTPHR_WIDGETS_DIR.'includes/contact.php' );
 require_once( MTPHR_WIDGETS_DIR.'includes/navigation.php' );
 require_once( MTPHR_WIDGETS_DIR.'includes/collapse.php' );
 require_once( MTPHR_WIDGETS_DIR.'includes/wpml.php' );
-require_once( MTPHR_WIDGETS_DIR.'includes/settings.php' );
+//require_once( MTPHR_WIDGETS_DIR.'includes/settings.php' );
