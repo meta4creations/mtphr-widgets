@@ -170,6 +170,9 @@
 .mtphr-social-widget-site i:before {
 	vertical-align: text-bottom;
 }
+.mtphr-social-widget-hidden {
+	display: none;
+}
 
 
 /* Contact Widget

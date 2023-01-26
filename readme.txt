@@ -3,7 +3,7 @@ Contributors: metaphorcreations
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TYB7K2E538T3L
 Tags: widgets, posts, comments, social, twitter, contact, post navigation, navigation, collapse, content
 Requires at least: 5.5
-Tested up to: 4.9.1
+Tested up to: 5.7
 Stable tag: /trunk/
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -55,6 +55,10 @@ Check out the 'Installation' tab.
 7. Widget/Shortcode Display
 
 == Changelog ==
+
+= 2.4.1 =
+* Added aria-hidden="true" to social icons for accessibility
+* Added hidden label to social icons for accessibility
 
 = 2.4 =
 * Resolved javascript errors with WP 5.5
@@ -226,4 +230,4 @@ Check out the 'Installation' tab.
 
 == Upgrade Notice ==
 
-Resolved javascript errors with WP 5.5 and removed Twitter Widget
+Accessibility updates for social icons

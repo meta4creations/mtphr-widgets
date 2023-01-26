@@ -235,7 +235,7 @@ function metaphor_widgets_social_setup( $name, $sites ) {
 /* --------------------------------------------------------- */
 
 if( !function_exists('metaphor_widgets_social_links_display') ) {
-function metaphor_widgets_social_links_display( $sites, $new_tab ) {
+function metaphor_widgets_social_links_display( $sites, $new_tab = false ) {
 	
 	$html = '';
 	$t = ( $new_tab ) ? ' target="_blank"' : '';
@@ -258,9 +258,8 @@ function metaphor_widgets_social_links_display( $sites, $new_tab ) {
 					$display = false;
 				}
 			}
-			
-			$icon = apply_filters( 'mtphr_social_widget_site_icon', '<i class="'.$prefix.' '.$prefix.'-'.$id.'"></i>', $site, $prefix, $id );
-			$html .= '<a class="mtphr-social-widget-site mtphr-social-widget-'.$site.'" href="'.esc_url($url).'"'.$t.'>'.$icon.'</a>';
+			$icon = apply_filters( 'mtphr_social_widget_site_icon', '<i class="'.$prefix.' '.$prefix.'-'.$id.'" aria-hidden="true"></i>', $site, $prefix, $id );
+			$html .= '<a class="mtphr-social-widget-site mtphr-social-widget-'.$site.'" href="'.esc_url($url).'"'.$t.' aria-label="' . sprintf( __( 'Link to %s', 'mtphr-widgets' ), $id ) . '">'.$icon.'<span class="mtphr-social-widget-hidden">' . $id . '</span></a>';
 		}
 	}
 	
