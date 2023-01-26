@@ -14,7 +14,7 @@ jQuery( document ).ready( function($) {
 	});
 	
 	// Listen for the advanced fields toggle
-	$('.mtphr-widget-advanced').live( 'click', function(e) {
+	$('body').on( 'click', '.mtphr-widget-advanced', function(e) {
 		mtphr_widgets_advanced_fields( $(this) );		
 	});
 	
@@ -70,12 +70,12 @@ jQuery( document ).ready( function($) {
 		});
 	}
 
-	$('.metaphor-widgets-social-icon').live('click', function(e) {
+	$('body').on('click', '.metaphor-widgets-social-icon', function(e) {
 		e.preventDefault();
 
 		var $table = $(this).parent().siblings('.metaphor-widgets-social-sites'),
 				site = $(this).attr('href'),
-				prefix = $(this).attr('data-prefix'),
+				name = $(this).attr('data-name'),
 				
 		site = site.substr(1, site.length);
 
@@ -84,20 +84,36 @@ jQuery( document ).ready( function($) {
 			mtphr_widgets_social_settings_remove_icon( site, $table );
 		} else {
 			$(this).addClass('active');
-			mtphr_widgets_social_settings_add_icon( site, $table, prefix );
+			mtphr_widgets_social_settings_add_icon( $(this), $table, name );
 		}
 	});
 
 	function mtphr_widgets_social_settings_remove_icon( site, $table ) {
+		
+		var $widget = $table.parents('.widget-inside'),
+				$save_btn = $widget.find('.widget-control-save');
+		
 		var $row = $table.find('.metaphor-widgets-social-'+site);
 		$row.remove();
+		
+		$save_btn.removeAttr('disabled');
+		$save_btn.attr('value', 'Save');
 	}
 
-	function mtphr_widgets_social_settings_add_icon( site, $table, prefix ) {
-		var row = '<tr class="metaphor-widgets-social-site metaphor-widgets-social-'+site+'">';
-		row += '<td class="metaphor-widgets-social-site-icon"><a tabindex="-1" href="#'+site+'"><i class="metaphor-widgets-ico-'+site+'"></i></a></td>';
-		row += '<td><input type="text" name="'+prefix+'['+site+']" value="" /></td>';
+	function mtphr_widgets_social_settings_add_icon( $link, $table, name ) {
+		
+		var href = $link.attr('href'),
+				prefix = $link.attr('data-prefix'),
+				id = $link.attr('data-id');
+				
+		href = href.substr(1, href.length);
+		
+		var row = '<tr class="metaphor-widgets-social-site metaphor-widgets-social-'+href+'">';
+		row += '<td class="metaphor-widgets-social-site-icon"><a tabindex="-1" href="#'+href+'"><i class="'+prefix+' '+prefix+'-'+id+'"></i></a></td>';
+		row += '<td><input type="text" name="'+name+'['+href+']" value="" /></td>';
 		row += '</tr>';
+		
+		
 
 		var $row = $(row);
 
@@ -126,9 +142,9 @@ jQuery( document ).ready( function($) {
 	function mtphr_widgets_default_set_order( $table ) {
 		$table.find('.mtphr-widgets-list-item').each( function(index) {	
 			$(this).find('textarea, input, select').each( function() {
-				var prefix = $(this).attr('data-prefix'),
+				var name = $(this).attr('data-name'),
 						key = $(this).attr('data-key');
-				$(this).attr('name', prefix+'['+index+']['+key+']');
+				$(this).attr('name', name+'['+index+']['+key+']');
 			});
 		});
 		
@@ -159,7 +175,7 @@ jQuery( document ).ready( function($) {
 	}
 	
 	// Delete list item
-	$('.mtphr-widgets-default-list').find('.mtphr-widgets-list-delete').live( 'click', function(e) {
+	$('body').on( 'click', '.mtphr-widgets-default-list .mtphr-widgets-list-delete', function(e) {
 		e.preventDefault();
 		
 		var $table = $(this).parents('.mtphr-widgets-default-list');
@@ -173,7 +189,7 @@ jQuery( document ).ready( function($) {
 	});
 	
 	// Add new row
-	$('.mtphr-widgets-default-list').find('.mtphr-widgets-list-add').live( 'click', function(e) {
+	$('body').on( 'click', '.mtphr-widgets-default-list .mtphr-widgets-list-add', function(e) {
 	  e.preventDefault();
 
 	  // Save the container
@@ -193,5 +209,64 @@ jQuery( document ).ready( function($) {
 	
 	mtphr_widgets_default_init( $('.mtphr-widgets-default-list') );
 	mtphr_widgets_set_sortable( $('.mtphr-widgets-default-list') );
+	
+	
+	/**
+	 * Widget added listener
+	*/
+	$( document ).on( 'widget-added', function( e, $widget ) {
+		mtphr_widgets_default_init( $('.mtphr-widgets-default-list') );
+		mtphr_widgets_set_sortable( $('.mtphr-widgets-default-list') );
+		mtphr_widgets_social_set_sortable( $('.metaphor-widgets-social-sites') );
+	} );
+
+	
+	
+	
+	var $icon, $input;
+	
+	$('body').on( 'click', '.mtphr-shortcodes-modal-link', function() {
+		
+		var $modal = $('#mtphr-widgets-icon-modal'),
+				$widget = $(this).parents('.widget-content'),
+				$table = $(this).siblings('.metaphor-widgets-social-sites'),
+				$icon_container = $(this).siblings('.metaphor-widgets-social-icon-container'),
+				name = $(this).attr('data-name');
+				
+		$modal.children('.mtphr-shortcodes-icon-select').removeClass('active');
+
+		$modal.on( 'click', '.mtphr-shortcodes-icon-select', function(e) {
+			e.preventDefault();
+
+			var prefix = $(this).attr('data-prefix'),
+					id = $(this).attr('data-id'),
+					$submit = $('.mtphr-shortcodes-modal-submit');
+			
+			$submit.removeAttr('disabled');
+			
+			$submit.click( function() {
+				
+				if( $table.find('.metaphor-widgets-social-'+prefix+'__'+id).length ) {
+					$table.find('.metaphor-widgets-social-'+prefix+'__'+id).find('input').focus();
+				} else {
+	
+					$new_icon = $('<a class="metaphor-widgets-social-icon active" href="#'+prefix+'__'+id+'" data-name="'+name+'" data-prefix="'+prefix+'" data-id="'+id+'"><i class="'+prefix+' '+prefix+'-'+id+'"></i></a>');
+					$icon_container.append( $new_icon );
+					
+					mtphr_widgets_social_settings_add_icon( $new_icon, $table, name );
+					
+					var data = {
+						action: 'mtphr_widgets_save_icon',
+						prefix: prefix,
+						id: id,
+						security: mtphr_widgets_vars.security
+					};
+					jQuery.post( ajaxurl, data, function( response ) {
+					});
+				}
+
+			});
+		});
+	});
 
 });

@@ -3,7 +3,11 @@
 /**
  * Create a class for the widget
  *
+<<<<<<< HEAD
  * @since 2.2.1
+=======
+ * @since 2.3.1
+>>>>>>> 1cbcd413f6354c4d6954153a9692ad6e3f7e6c7d
  */
 class mtphr_contact_widget extends WP_Widget {
 	
@@ -77,8 +81,6 @@ class mtphr_contact_widget extends WP_Widget {
 	function update( $new_instance, $old_instance ) {
 	
 		$instance = $old_instance;
-		
-		echo '<pre>';print_r($new_instance['contact_info']);echo '</pre>';
 	
 		// Strip tags (if needed) and update the widget settings
 		$instance['title'] = sanitize_text_field( $new_instance['title'] );
@@ -196,7 +198,7 @@ function metaphor_widgets_contact_setup( $name, $data ) {
 
 
 /* --------------------------------------------------------- */
-/* !Render a contact row - 2.1.15 */
+/* !Render a contact row - 2.3.1 */
 /* --------------------------------------------------------- */
 
 if( !function_exists('metaphor_widgets_contact_row') ) {
@@ -209,10 +211,10 @@ function metaphor_widgets_contact_row( $name, $data=false ) {
 	$html .= '<tr class="mtphr-widgets-list-item">';
 		$html .= '<td class="mtphr-widgets-list-handle"><span><i class="metaphor-widgets-ico-down-up-scale-1"></i></span></td>';
 		$html .= '<td class="mtphr-widgets-contact-title">';
-			$html .= '<textarea name="'.$name.'[title]" data-prefix="'.$name.'" data-key="title" rows="1">'.htmlentities($title).'</textarea>';
+			$html .= '<textarea name="'.$name.'[title]" data-name="'.$name.'" data-key="title" rows="1">'.htmlentities($title).'</textarea>';
 		$html .= '</td>';
 		$html .= '<td class="mtphr-widgets-contact-description">';
-			$html .= '<textarea name="'.$name.'[description]" data-prefix="'.$name.'" data-key="description" rows="1">'.htmlentities($description).'</textarea>';
+			$html .= '<textarea name="'.$name.'[description]" data-name="'.$name.'" data-key="description" rows="1">'.htmlentities($description).'</textarea>';
 		$html .= '</td>';
 		$html .= '<td class="mtphr-widgets-list-delete"><a href="#"><i class="metaphor-widgets-ico-minus-alt"></i></a></td>';
 		$html .= '<td class="mtphr-widgets-list-add"><a href="#"><i class="metaphor-widgets-ico-plus-alt"></i></a></td>';

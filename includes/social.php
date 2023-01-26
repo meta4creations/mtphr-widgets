@@ -168,34 +168,74 @@ function metaphor_widgets_social_setup( $name, $sites ) {
 	
 	$html = '';
 	$html .= '<div class="metaphor-widgets-social-icon-container clearfix">';
-		foreach( $allsites as $i=>$sitename ) {
+		foreach( $allsites as $i=>$site ) {
+			
 			$active = isset($sites[$i]) ? 'active' : '';
-			$html .= '<a class="metaphor-widgets-social-icon '.$active.'" href="#'.$i.'" title="'.$sitename.'" data-prefix="'.$name.'"><i class="metaphor-widgets-ico-'.$i.'"></i></a>';
+			
+			$prefix = 'metaphor-widgets-ico';
+			$id = $i;
+			$title = $site;
+			$href = $i;
+					
+			if( is_array($site) ) {
+				$prefix = $site['prefix'];
+				$id = $title = $site['id'];
+				$href = $site['prefix'].'__'.$site['id'];
+			}
+					
+			$html .= '<a class="metaphor-widgets-social-icon '.$active.'" href="#'.$href.'" title="'.$title.'" data-name="'.$name.'" data-prefix="'.$prefix.'" data-id="'.$id.'"><i class="'.$prefix.' '.$prefix.'-'.$id.'"></i></a>';
 		}
 	$html .= '</div>';
+	
+	if( is_plugin_active('mtphr-shortcodes/mtphr-shortcodes.php') ) {
+		$html .= '<a href="#mtphr-widgets-icon-modal" class="button button-primary mtphr-shortcodes-modal-link" data-name="'.$name.'" style="margin-bottom:15px;">'.__('Click here to add more icons!', 'mtphr-widgets').'</a>';
+	} else {
+		$url = get_bloginfo('wpurl').'/wp-admin/plugin-install.php?tab=plugin-information&plugin=mtphr-shortcodes&TB_iframe=true&width=640&height=500';
+		$html .= '<div style="margin-bottom:15px;">'.sprintf(__('Install <a class="thickbox" href="%s"><strong>Metaphor Shortcodes</strong></a> to add more icons to this list!.','mtphr-members'), $url).'</div>';
+	}
 	
 	$html .= '<table class="metaphor-widgets-social-sites">';
 		if( is_array($sites) && count($sites) > 0 ) {
 			foreach( $sites as $site=>$link ) {
-				$html .= '<tr class="metaphor-widgets-social-site metaphor-widgets-social-'.$site.'">';
-					$html .= '<td class="metaphor-widgets-social-site-icon"><a tabindex="-1" href="#'.$site.'"><i class="metaphor-widgets-ico-'.$site.'"></i></a></td>';
-					$html .= '<td><input type="text" name="'.$name.'['.$site.']" value="'.$link.'" /></td>';
-				$html .= '</tr>';
+				
+				$display = true;
+				$prefix = 'metaphor-widgets-ico';
+				$id = $site;
+				$title = $site;
+				$href = $site;
+				
+				$split = explode( '__', $site );
+				if( count($split) > 1 ) {
+					$prefix = $split[0];
+					$id = $title = $split[1];
+					if( !mtphr_widgets_mtphr_shortcodes() ) {
+						$display = false;
+					}
+				}
+				
+				if( $display ) {
+					$html .= '<tr class="metaphor-widgets-social-site metaphor-widgets-social-'.$href.'">';
+						$html .= '<td class="metaphor-widgets-social-site-icon"><a tabindex="-1" href="#'.$href.'"><i class="'.$prefix.' '.$prefix.'-'.$id.'"></i></a></td>';
+						$html .= '<td><input type="text" name="'.$name.'['.$href.']" value="'.$link.'" /></td>';
+					$html .= '</tr>';
+				} else {
+					$html .= '<input type="hidden" name="'.$name.'['.$href.']" value="'.$link.'" />';
+				}
 			}
 		}
 	$html .= '</table>';
-	
+
 	return $html;
 }
 }
 
 
 /* --------------------------------------------------------- */
-/* !Display the social links - 2.1.21 */
+/* !Display the social links - 2.3 */
 /* --------------------------------------------------------- */
 
 if( !function_exists('metaphor_widgets_social_links_display') ) {
-function metaphor_widgets_social_links_display( $sites, $new_tab ) {
+function metaphor_widgets_social_links_display( $sites, $new_tab = false ) {
 	
 	$html = '';
 	$t = ( $new_tab ) ? ' target="_blank"' : '';
@@ -203,8 +243,23 @@ function metaphor_widgets_social_links_display( $sites, $new_tab ) {
 	// If there is at least one site
 	if( is_array($sites) && count($sites) > 0 ) {
 		foreach( $sites as $site=>$url ) {
-			$icon = apply_filters( 'mtphr_social_widget_site_icon', '<i class="metaphor-widgets-ico-'.$site.'"></i>', $site );
-			$html .= '<a class="mtphr-social-widget-site mtphr-social-widget-'.$site.'" href="'.esc_url($url).'"'.$t.'>'.$icon.'</a>';
+			
+			$display = true;
+			$prefix = 'metaphor-widgets-ico';
+			$id = $site;
+			$title = $site;
+			$href = $site;
+				
+			$split = explode( '__', $site );
+			if( count($split) > 1 ) {
+				$prefix = $split[0];
+				$id = $title = $split[1];
+				if( !mtphr_widgets_mtphr_shortcodes() ) {
+					$display = false;
+				}
+			}
+			$icon = apply_filters( 'mtphr_social_widget_site_icon', '<i class="'.$prefix.' '.$prefix.'-'.$id.'" aria-hidden="true"></i>', $site, $prefix, $id );
+			$html .= '<a class="mtphr-social-widget-site mtphr-social-widget-'.$site.'" href="'.esc_url($url).'"'.$t.' aria-label="' . sprintf( __( 'Link to %s', 'mtphr-widgets' ), $id ) . '">'.$icon.'<span class="mtphr-social-widget-hidden">' . $id . '</span></a>';
 		}
 	}
 	
